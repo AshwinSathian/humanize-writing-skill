@@ -1,4 +1,4 @@
-# humanize-writing
+# humanizing-writing
 
 A Claude Code skill that changes how Claude writes — prose, docs, comments,
 commit messages, reports — so the output reads as a specific, considered
@@ -33,7 +33,7 @@ Clone the repo, then symlink it into your Claude Code skills directory:
 
 ```bash
 git clone https://github.com/AshwinSathian/humanize-writing-skill.git
-ln -s "$(pwd)/humanize-writing-skill" ~/.claude/skills/humanize-writing
+ln -s "$(pwd)/humanize-writing-skill" ~/.claude/skills/humanizing-writing
 ```
 
 The symlink means editing the cloned repo updates the live skill directly —

@@ -3,7 +3,7 @@
 Condensed from `reference/research/oss-skills.md`, which surveys 13 existing
 published "humanize writing" skills/prompts in full detail with live
 GitHub metadata. This file draws the design implications for
-`humanize-writing`.
+`humanizing-writing`.
 
 ## 1. Surveyed skills
 

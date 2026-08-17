@@ -1,5 +1,5 @@
 ---
-name: humanize-writing
+name: humanizing-writing
 description: Use when producing any written text — prose, docs, comments, commit messages, reports, emails — before finalizing output, to avoid recognizable AI-writing tells and read as a specific, considered human voice instead of generic, templated, or padded text
 ---
 
