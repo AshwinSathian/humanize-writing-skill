@@ -7,32 +7,28 @@ description: Use when producing any written text — prose, docs, comments, comm
 
 ## Overview
 
-Writing reads as AI-generated less because of specific words and more
-because of *shape*: uniform sentence rhythm, safe generic claims instead of
-specific checkable ones, and templated structure. Fix the shape first.
-Word-level tells (delve, em dashes, "boasts") are real but decay fast and
-are the weakest lever — treat the quick-reference table below as backup,
-not the method. Full sourcing: `reference/research.md`.
+Writing reads as AI-generated more from *shape* than from word choice:
+uniform sentence rhythm, safe generic claims instead of specific checkable
+ones, templated structure. Fix the shape first — word-level tells (delve,
+em dashes) are real but decay fast and are the weakest lever. Full
+sourcing: `reference/research.md`.
 
 ## Write this way
 
 - **Commit to specific, checkable claims.** Replace "plays a significant
-  role" or "experts say" with the actual fact and its actual source. If you
-  don't know the specific, say the general thing plainly — don't dress it
-  up as more authoritative than it is.
-- **Use the plain verb.** Prefer "is" over "serves as/stands as/represents";
-  prefer one strong verb over a padded phrase ("show" not "have the effect
-  of demonstrating").
+  role" or "experts say" with the actual fact and its source. Unknown? Say
+  the general thing plainly — don't dress it up as more authoritative.
+- **Use the plain verb.** "Is," not "serves as/stands as/represents." One
+  strong verb, not a padded phrase.
 - **Vary sentence rhythm on purpose.** Don't let every sentence or
-  paragraph land at the same length. Mix short with long.
-- **Reach for concrete, physical, or checkable detail over abstraction**
+  paragraph land at the same length.
+- **Reach for concrete, physical, checkable detail over abstraction**
   ("nubby, arthritic fingers" beats "profound personal struggle").
 - **Cut hedge-intensifiers**, not just banned nouns: rather, very, quite,
   arguably, in many ways.
-- **Let structure follow the content**, not a template. Don't default to a
-  triadic list, a rhetorical-question opener, or a "Despite these
-  challenges..." pivot because it's the safe shape — only use them where
-  the content actually earns them.
+- **Let structure follow the content, not a template.** Triadic lists,
+  rhetorical-question openers, "Despite these challenges..." pivots — only
+  where the content earns them, not as a default shape.
 - **Never invent facts, numbers, or sources to sound more specific.**
   Specificity has to come from something true.
 
@@ -40,31 +36,30 @@ not the method. Full sourcing: `reference/research.md`.
 
 | Tell | Why it reads as artificial |
 |---|---|
-| "Delve," "boast(s)," "underscore," "intricate," "meticulous," "testament to," "tapestry/landscape/realm" | Spiked in frequency post-ChatGPT; RLHF-reinforced word preferences, not organic usage |
-| "It's not X, it's Y" | Manufactures contrast without evidence for either half |
-| Stock transitions ("Moreover," "Furthermore," sentence-initial "Additionally") | Defaults to the statistically safest connector instead of a natural one |
-| Rule-of-three list padding | Manufactures thoroughness the content doesn't independently have |
+| delve, boast(s), underscore, intricate, meticulous, testament to, tapestry/landscape/realm | Post-ChatGPT frequency spike; RLHF-reinforced, not organic |
+| "It's not X, it's Y" | Manufactured contrast, no evidence for either half |
+| Moreover/Furthermore/sentence-initial Additionally | Statistically safe connector, not a natural one |
+| Rule-of-three list padding | Manufactures thoroughness the content lacks |
 | Vague attribution ("experts say," "studies show") | Sounds sourced without being checkable |
-| Uniform paragraph/sentence length | Low structural "burstiness" — the strongest research-backed signal, more model-independent than any word |
-| Signposted conclusions ("In conclusion," recapping everything already said) | Genre reflex, not an earned close |
-| Em dash overuse | Well-documented, but mechanism is genuinely contested — treat volume/function, not presence, as the signal |
+| Uniform paragraph/sentence length | Low "burstiness" — the strongest, most model-independent signal |
+| Signposted conclusions ("In conclusion" + recap) | Genre reflex, not an earned close |
+| Em dash overuse | Real, but contested mechanism — volume/function is the signal, not presence |
 
 Full ranked catalog (27 tells, sourced): `reference/research.md` §2.
 Contested signals (semicolons, hedging direction, lexical diversity) are
-flagged there too — don't treat them as reliable on their own.
+flagged there — don't treat them as reliable alone.
 
 ## Before finalizing
 
-Reread the draft and check:
-1. Does every paragraph sound the same length and shape? Vary it.
-2. Any claim that could be more specific without inventing anything? Make it specific.
-3. Any padded verb phrase, stock transition, or rule-of-three that isn't earned by the content? Cut or replace it.
-4. Any of the quick-reference tells present, especially clustered together? Fix the cluster, not just one instance.
+Reread the draft:
+1. Same length/shape every paragraph? Vary it.
+2. A claim that could be specific without inventing anything? Make it specific.
+3. Padded verb, stock transition, unearned rule-of-three? Cut it.
+4. Quick-reference tells present, especially clustered? Fix the cluster.
 
-This is an internal check, not a rule to hide — if asked, explain what was changed and why.
+Internal check, not a rule to hide — explain changes if asked.
 
 ## Full research
 
-`reference/research.md` (synthesis + full source list) and
-`reference/oss-skills-review.md` (what existing public humanizer skills get
-right and wrong, and why this skill differs).
+`reference/research.md` (synthesis + sources), `reference/oss-skills-review.md`
+(what existing public humanizer skills get right/wrong, and why this differs).
