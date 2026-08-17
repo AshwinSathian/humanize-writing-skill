@@ -24,12 +24,12 @@ A folded map doesn't need a battery or a signal, and unlike a phone screen
 it shows you the whole valley at once, not a scrolling fragment of it.
 Search-and-rescue teams still carry them as backup — not because they
 distrust GPS, but because a dead phone in the backcountry is a real
-scenario, not a hypothetical one. Reading a paper map also forces you to
-actually parse the terrain — contour lines, water, ridgelines — instead of
-just following a blue dot, which is why guides say map-literate hikers
-tend to notice when a trail has quietly diverged from where they meant to
-be. None of this makes phones worse for everyday use. It just means the
-map in your glovebox is doing a job GPS can't fully replace.
+scenario, not a hypothetical one. Reading a paper map also forces you to actually parse the terrain —
+contour lines, water, ridgelines — instead of just following a blue dot,
+so you're more likely to notice when a trail has quietly diverged from
+where you meant to be. None of this makes phones worse for everyday use.
+It just means the map in your glovebox is doing a job GPS can't fully
+replace.
 
 ## What changed, and why
 
@@ -39,10 +39,11 @@ map in your glovebox is doing a job GPS can't fully replace.
 - **Replaced "it's not just X, it's Y"** with a direct statement — the
   rewrite says what's true instead of staging a fake correction.
 - **Replaced vague attribution** ("studies show") with a specific,
-  observable mechanism (what reading contour lines actually forces you to
-  do) instead of an invented citation — specificity has to come from
-  something true; when you don't have a real source, explain the actual
-  mechanism instead of dressing up a vague claim as "studies show."
+  observable mechanism, stated directly in the writer's own voice — not
+  "studies show" and not a swapped-in "guides say" (which would just be
+  the same unnamed-authority tell wearing different words). Specificity
+  has to come from something true; when you don't have a real source,
+  explain the actual mechanism instead of attributing it to anyone.
 - **Cut the stock transitions** ("Moreover," "Additionally") and let
   sentences connect on their own logic instead.
 - **Varied sentence rhythm** — short declarative sentences mixed with one

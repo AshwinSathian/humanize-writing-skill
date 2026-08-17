@@ -24,8 +24,8 @@ sourcing: `reference/research.md`.
   paragraph land at the same length.
 - **Reach for concrete, physical, checkable detail over abstraction**
   ("nubby, arthritic fingers" beats "profound personal struggle").
-- **Cut hedge-intensifiers**, not just banned nouns: rather, very, quite,
-  arguably, in many ways.
+- **Cut hedge-intensifiers**, not just banned nouns: rather, very, little,
+  pretty.
 - **Let structure follow the content, not a template.** Triadic lists,
   rhetorical-question openers, "Despite these challenges..." pivots — only
   where the content earns them, not as a default shape.
@@ -36,7 +36,8 @@ sourcing: `reference/research.md`.
 
 | Tell | Why it reads as artificial |
 |---|---|
-| delve, boast(s), underscore, intricate, meticulous, testament to, tapestry/landscape/realm | Post-ChatGPT frequency spike; RLHF-reinforced, not organic |
+| delve, boast(s), underscore, intricate, meticulous | Post-ChatGPT frequency spike; RLHF-reinforced word preference (confirmed for "delve") |
+| testament to, tapestry/landscape/realm | Significance-inflation — vague grandiosity is safer than a specific claim |
 | "It's not X, it's Y" | Manufactured contrast, no evidence for either half |
 | Moreover/Furthermore/sentence-initial Additionally | Statistically safe connector, not a natural one |
 | Rule-of-three list padding | Manufactures thoroughness the content lacks |
@@ -45,7 +46,7 @@ sourcing: `reference/research.md`.
 | Signposted conclusions ("In conclusion" + recap) | Genre reflex, not an earned close |
 | Em dash overuse | Real, but contested mechanism — volume/function is the signal, not presence |
 
-Full ranked catalog (27 tells, sourced): `reference/research.md` §2.
+Full ranked catalog (27 tells, sourced): `reference/research/tells-catalog.md`.
 Contested signals (semicolons, hedging direction, lexical diversity) are
 flagged there — don't treat them as reliable alone.
 
@@ -62,4 +63,5 @@ Internal check, not a rule to hide — explain changes if asked.
 ## Full research
 
 `reference/research.md` (synthesis + sources), `reference/oss-skills-review.md`
-(what existing public humanizer skills get right/wrong, and why this differs).
+(what existing public humanizer skills get right/wrong, and why this differs),
+`examples/` (worked before/after passages with annotated fixes).
