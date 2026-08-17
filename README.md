@@ -29,7 +29,8 @@ does differently as a result.
 
 ## Install
 
-Clone the repo, then symlink it into your Claude Code skills directory:
+**As a skill** — clone the repo, then symlink it into your Claude Code
+skills directory:
 
 ```bash
 git clone https://github.com/AshwinSathian/humanize-writing-skill.git
@@ -39,9 +40,27 @@ ln -s "$(pwd)/humanize-writing-skill" ~/.claude/skills/humanizing-writing
 The symlink means editing the cloned repo updates the live skill directly —
 pull to update, no reinstall step.
 
+**As a plugin** — the repo also ships a `.claude-plugin/plugin.json`
+manifest (`claude plugin validate .` passes in strict mode). Try it without
+installing anything:
+
+```bash
+claude --plugin-dir /path/to/humanize-writing-skill
+```
+
+Once submitted and approved for Claude Code's community plugin marketplace,
+`/plugin install humanizing-writing@claude-community` will work directly.
+
+**Via skills.sh:**
+
+```bash
+npx skills add AshwinSathian/humanize-writing-skill
+```
+
 ## What's in here
 
 ```
+.claude-plugin/plugin.json     # plugin manifest (validated, claude plugin validate . --strict)
 SKILL.md                       # the skill itself — lean, always-loadable
 reference/research.md          # research synthesis: what the literature actually says
 reference/oss-skills-review.md # teardown of 13 existing public humanizer skills
