@@ -9,11 +9,11 @@ three-topic, three-model form specifically in response to an adversarial
 review finding that one comparison fell short of the "multiple
 evaluations, multiple models" bar in Anthropic's own skill-authoring
 guidance. It remains an application-scenario sanity check, not exhaustive
-pressure-testing — technique/reference skills need this kind of check, not
+pressure-testing: technique/reference skills need this kind of check, not
 discipline-rule bulletproofing (see `writing-skills` skill's "Testing All
 Skill Types" table).
 
-## Evaluation 1 — "why code review matters" (default/Sonnet)
+## Evaluation 1: "why code review matters" (default/Sonnet)
 
 ### Baseline (no skill)
 
@@ -39,12 +39,12 @@ Skill Types" table).
   issues"; "clearer naming, better structure, and more thoughtful
   tradeoffs."
 - Stock enumerator transitions doing the work a real structure should:
-  "Beyond defect detection," "Just as important," "Finally" — six
-  benefits marched through in one undifferentiated paragraph.
+  "Beyond defect detection," "Just as important," "Finally" walk through
+  six benefits in one undifferentiated paragraph.
 - Uniform shape: one single paragraph, every sentence a similar
   medium-long length, no rhythm variation.
 - Generic, non-specific claims throughout ("routinely surfaces bugs,"
-  "different approaches and idioms") — nothing a reader could check
+  "different approaches and idioms"). Nothing a reader could check
   against a concrete instance.
 
 ### Skill-loaded
@@ -70,7 +70,7 @@ Skill Types" table).
 
 **Tells absent that were present in the baseline:**
 - No rule-of-three padding anywhere.
-- No stock enumerator transitions — paragraphs are separated by an idea,
+- No stock enumerator transitions: paragraphs are separated by an idea,
   not a "Beyond X / Just as important / Finally" counter.
 - Sentence rhythm varies deliberately: "Variable names get clearer.
   Functions get shorter." (two short declaratives back to back) against
@@ -82,7 +82,7 @@ Skill Types" table).
 - Closes on a specific, earned point ("A reviewer who asks 'why' instead
   of 'no'...") instead of a signposted recap.
 
-## Evaluation 2 — "why automated tests matter" (Haiku)
+## Evaluation 2: "why automated tests matter" (Haiku)
 
 ### Baseline (no skill)
 
@@ -141,7 +141,7 @@ variation (three-word fragment "Speed compounds:" against longer
 sentences); closes on a concrete image ("hardening into something fragile
 you're afraid to change") instead of an abstract triad.
 
-## Evaluation 3 — "why written documentation matters" (Opus)
+## Evaluation 3: "why written documentation matters" (Opus)
 
 ### Baseline (no skill)
 
@@ -162,13 +162,13 @@ you're afraid to change") instead of an abstract triad.
 > relitigated because nobody wrote down why they were settled.
 
 **Notable finding:** Opus's unprompted baseline is already substantially
-better than the Sonnet/Haiku baselines above — it uses concrete imagery
+better than the Sonnet/Haiku baselines above. It uses concrete imagery
 from the start and avoids most vocabulary-level tells entirely. It still
 shows two of the structural tells the skill targets: a triadic list
 ("hallway conversation... whiteboard sketch... overheard debugging
 session") and a closing triad ("repeated explanations, duplicated work,
 and decisions quietly relitigated"). This is a useful data point on its
-own — it suggests stronger baseline models drift toward structural tells
+own: it suggests stronger baseline models drift toward structural tells
 (uniform triadic padding) even when they've already shed most word-level
 ones, which supports `research.md` §3's argument that structure is the
 harder, more durable signal.
@@ -195,7 +195,7 @@ harder, more durable signal.
 
 **What changed relative to the baseline:** no triadic list construction
 anywhere; a concrete illustrative mechanism ("the retry logic uses
-exponential backoff with jitter" — a real, generic engineering pattern
+exponential backoff with jitter": a real, generic engineering pattern
 used as a plausible example, not asserted as a specific documented fact)
 in place of the baseline's abstract "why is this like this" gesture;
 short paragraphs of noticeably different lengths and purposes rather than
@@ -213,7 +213,7 @@ effect is largest against Sonnet and Haiku baselines (which show the full
 range of word- and structure-level tells) and smaller but still present
 against the Opus baseline (which starts from stronger prose but still
 carries structural triadic padding that the skill-loaded version drops).
-This is not a claim of statistical significance — three topics across
-three models is still a small sample — but it clears the application-
-scenario bar this validation step is meant to meet, across more than one
-model as the adversarial review requested.
+This is not a claim of statistical significance; three topics across
+three models is still a small sample. It clears the application-scenario
+bar this validation step is meant to meet, across more than one model as
+the adversarial review requested.
