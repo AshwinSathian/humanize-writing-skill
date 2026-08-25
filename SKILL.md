@@ -1,6 +1,6 @@
 ---
 name: humanizing-writing
-description: Use when producing any written text (prose, docs, comments, commit messages, reports, emails) before finalizing output, to avoid recognizable AI-writing tells and read as a specific, considered human voice instead of generic, templated, or padded text
+description: Use when producing any written text (prose, docs, comments, commit messages, reports, emails) before finalizing output, or when asked to rewrite existing AI-sounding text, to avoid recognizable AI-writing tells and read as a specific, considered human voice instead of generic, templated, or padded text
 ---
 
 # Humanize Writing
@@ -44,6 +44,12 @@ dashes) are real but decay fast and are the weakest lever. Full sourcing:
 The rules above target discursive prose Claude is generating. They give
 way to context:
 
+- **An explicit, specific user request overrides these defaults.** Asked
+  for corporate buzzwords, a mandated template, or a required stock
+  phrase because that's the house style, the format, or the policy?
+  Comply, and don't silently "fix" it back afterward. This skill shapes
+  Claude's own default choices; it isn't a rule the user's actual
+  instructions have to win an argument with.
 - **Editing someone else's already-human text?** Fix what was asked,
   leave their voice, hedges, and rhythm alone. This isn't a filter to
   run over text you didn't write.
