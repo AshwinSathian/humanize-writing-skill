@@ -6,7 +6,7 @@
   "description": "Shapes any written output to avoid recognizable AI-writing tells, grounded in cited stylometry research and a teardown of existing humanizer skills, not a banned-word list.",
   "author": {
     "name": "Ashwin Sathian",
-    "url": "https://github.com/AshwinSathian"
+    "url": "https://ashwinsathian.com/"
   },
   "homepage": "https://github.com/AshwinSathian/humanize-writing-skill",
   "repository": "https://github.com/AshwinSathian/humanize-writing-skill",
