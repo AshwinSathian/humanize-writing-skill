@@ -6,6 +6,18 @@ Research date: 2026-08-18. All repos were fetched live from GitHub (raw `SKILL.m
 
 Nearly every serious entry in this space, including the two most-starred ones, is a derivative of a single primary source: Wikipedia's **["Signs of AI writing"](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing)** page, maintained by WikiProject AI Cleanup as a guide for Wikipedia editors spotting unreviewed LLM contributions. That page was written to catch AI-generated *encyclopedia* prose (inflated significance, vague sourcing, promotional language about towns and institutions), a genre with its own tells that don't map cleanly onto marketing copy, technical docs, or conversational writing. Most of the repos below copy its pattern list nearly verbatim, then bolt on a banned-word list and call it a skill. A second, smaller cluster (`harshaneel/humanize`, `conorbronsdon/avoid-ai-writing`) instead grounds itself in the actual AI-text-detection literature (perplexity, burstiness, stylometry, DetectGPT, watermarking) and is visibly more rigorous about false positives, sourcing, and where the technique's ceiling is. The rest are thin banned-word lists with no sourcing at all, some of which actively contradict good writing practice (e.g., "if even one of these words appears, the text immediately flags as machine-written," applied to words like *robust*, *insightful*, and *integrated* that are simply normal English in technical writing).
 
+## Contents
+
+Catalog (13 skills, ranked by GitHub stars): 1 blader/humanizer · 2
+conorbronsdon/avoid-ai-writing · 3 harshaneel/humanize · 4 jalaalrd/
+anti-ai-slop-writing · 5 matsuikentaro1/humanizer_academic · 6
+jpeggdev/humanize-writing · 7 gregorymm/humanize-text · 8 lguz/
+humanize-writing-skill · 9 haidrrrry/humanize-ai-writing · 10
+avectats7/anti-ai-writing · 11 aaaronmiller/humanize-writing · 12
+shaswatco/anti-ai-writing-style · 13 Sabrina Ramonov's prompt
+
+Marketplace/aggregator listings · Cross-cutting findings
+
 ---
 
 ## Catalog

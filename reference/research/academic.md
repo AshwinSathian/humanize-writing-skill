@@ -2,6 +2,18 @@
 
 Compiled from peer-reviewed papers, arXiv preprints, and conference proceedings in computational linguistics and NLP. This document is a primary research artifact: it preserves findings with full source attribution and credibility notes for a later synthesis pass. Claims are marked as single-source or multi-source-consensus wherever that distinction could be established from the available literature.
 
+## Contents
+
+1. Probability-based detection: perplexity, log-likelihood, curvature
+2. Watermarking research
+3. Stylometric / linguistic-feature research
+4. Fundamental limits, adversarial robustness, "arms race" framing
+5. Trained classifier baselines
+6. Lexical-marker / "excess vocabulary" research
+7. Repetition, degeneration, distributional-divergence metrics
+
+Summary table of consensus strength · Sources consulted
+
 ---
 
 ## 1. Probability-based detection: perplexity, log-likelihood, and curvature
@@ -278,7 +290,7 @@ This line of research is distinct from stylometric/statistical detection: instea
 
 **Claim:** A separate analysis of PubMed records confirmed that terms associated with LLM usage ("delve" chief among them) have drastically changed in frequency since ChatGPT's arrival — but this study adds an important nuance: usage rates for several of these words were *already increasing* for multiple years *before* ChatGPT's release, suggesting ChatGPT (and LLMs generally) likely accelerated a pre-existing linguistic trend in scientific English rather than single-handedly originating it from a flat baseline.
 
-**Source:** *Delving into PubMed Records: Some Terms in Medical Writing Have Drastically Changed after the Arrival of ChatGPT.* medRxiv (preprint), 2024. https://www.medrxiv.org/content/10.1101/2024.05.14.24307373v2.full
+**Source:** *Delving into PubMed Records: Some Terms in Medical Writing Have Drastically Changed after the Arrival of ChatGPT.* medRxiv (preprint), 2024. https://www.medrxiv.org/content/10.1101/2024.05.14.24307373v2.full (v1 independently confirmed during this project's citation audit; the v2 revision is referenced here but wasn't independently re-confirmed)
 
 **Credibility note:** medRxiv preprint (not yet peer-reviewed at time of indexing): should be weighted slightly lower than the Science Advances paper above, but it is methodologically independent (different research group, overlapping but not identical corpus/timeframe) and its core "acceleration of a pre-existing trend, not pure origination" nuance is an important qualifier that the Kobak et al. paper's framing (which emphasizes the sharp post-ChatGPT jump) doesn't fully surface, worth preserving as a genuine methodological caveat rather than a flat contradiction.
 
@@ -371,7 +383,7 @@ This line of research is distinct from stylometric/statistical detection: instea
 16. *Towards Possibilities & Impossibilities of AI-generated Text Detection: A Survey.* arXiv:2310.15264 [not fully verified in full text]
 17. OpenAI/HuggingFace RoBERTa GPT-2 output detector. https://huggingface.co/openai-community/roberta-large-openai-detector
 18. Kobak, D. et al. (2025). *Delving into LLM-assisted writing in biomedical publications through excess vocabulary.* Science Advances. arXiv:2406.07016. https://arxiv.org/abs/2406.07016
-19. *Delving into PubMed Records: Some Terms in Medical Writing Have Drastically Changed after the Arrival of ChatGPT.* medRxiv (2024). https://www.medrxiv.org/content/10.1101/2024.05.14.24307373v2.full
+19. *Delving into PubMed Records: Some Terms in Medical Writing Have Drastically Changed after the Arrival of ChatGPT.* medRxiv (2024). https://www.medrxiv.org/content/10.1101/2024.05.14.24307373v2.full (v1 confirmed; v2 tag unconfirmed, see note in §6.2)
 20. Juzek, T. S., & Ward, Z. B. (2024/2025). *Why Does ChatGPT "Delve" So Much?* COLING 2025. arXiv:2412.11385. https://arxiv.org/html/2412.11385v1
 21. Holtzman, A. et al. (2020). *The Curious Case of Neural Text Degeneration.* ICLR 2020. arXiv:1904.09751. https://arxiv.org/abs/1904.09751
 22. *Standardizing the Measurement of Text Diversity.* arXiv:2403.00553. https://arxiv.org/html/2403.00553v1

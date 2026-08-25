@@ -2,6 +2,16 @@
 
 Research compiled 2026-08-18. This document surveys well-regarded editorial and practitioner sources on two related questions: (1) what specifically marks prose as AI-generated ("AI tells"), and (2) what positive craft habits make prose read as authentically human (specificity, voice, rhythm, sincerity). Sources are quoted directly where possible, with credibility notes.
 
+## Contents
+
+- Part 1: Wikipedia's "Signs of AI Writing" (content, language/grammar,
+  formatting, meta indicators; the essay's own caveats)
+- Part 2: Classic prose style guides (Orwell; Strunk & White;
+  Hemingway App)
+- Part 3: Journalism/editing outlets on LLM prose (The Atlantic; Dreyer;
+  Purohit; Forbes; Poynter; Ted Chiang)
+- Synthesis: tells to avoid vs. craft to pursue
+
 ---
 
 ## Part 1: Wikipedia's "Signs of AI Writing" (WP:AICLEANUP)
