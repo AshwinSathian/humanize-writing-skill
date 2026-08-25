@@ -7,8 +7,9 @@ human voice instead of generic, templated, AI-shaped text.
 It's built from three research passes (academic detection literature,
 editorial/practitioner style guides, and a cross-referenced catalog of 27
 specific AI-writing tells), a teardown of 13 existing public "humanizer"
-skills, and one adversarial review round. Full sourcing lives in
-`reference/`, not folk wisdom.
+skills, and two adversarial review rounds. Full sourcing lives in
+`reference/`, not folk wisdom. See `CHANGELOG.md` for what each round
+actually changed.
 
 ## Why this one
 
@@ -48,8 +49,11 @@ installing anything:
 claude --plugin-dir /path/to/humanize-writing-skill
 ```
 
-Once submitted and approved for Claude Code's community plugin marketplace,
-`/plugin install humanizing-writing@claude-community` will work directly.
+**Not yet available:** `/plugin install humanizing-writing@claude-community`
+is the eventual one-line install path once this is submitted to and
+approved for Claude Code's community plugin marketplace, but that hasn't
+happened yet. Right now, the symlink, `--plugin-dir`, or `skills.sh`
+methods here are the only ways to install this.
 
 **Via skills.sh:**
 
@@ -57,11 +61,26 @@ Once submitted and approved for Claude Code's community plugin marketplace,
 npx skills add AshwinSathian/humanize-writing-skill
 ```
 
+**Verify it's working.** After installing, ask Claude something like "what
+skills do you have available?" or give it a short, obviously AI-toned
+paragraph and ask it to write something similar. A working install
+should visibly avoid the tells in `SKILL.md`'s quick-reference table. If
+it doesn't, check the symlink target resolves (`ls -la
+~/.claude/skills/humanizing-writing`) or that `--plugin-dir` points at
+this repo's root, not a subdirectory.
+
+**Uninstalling.** Remove the symlink (`rm ~/.claude/skills/humanizing-writing`)
+or drop the `--plugin-dir` flag; there's no other state to clean up. To
+disable it for one request without uninstalling, tell Claude directly.
+Per `SKILL.md`'s own "Scope" section, an explicit user instruction
+overrides the skill's defaults.
+
 ## What's in here
 
 ```
 .claude-plugin/plugin.json     # plugin manifest (validated, claude plugin validate . --strict)
 SKILL.md                       # the skill itself, lean and always-loadable
+CHANGELOG.md                   # what changed each version, and why
 reference/research.md          # research synthesis: what the literature actually says
 reference/oss-skills-review.md # teardown of 13 existing public humanizer skills
 reference/research/            # raw, fully-cited research reports (academic, editorial, tells catalog, OSS survey)
@@ -106,6 +125,18 @@ crowd-audited "Signs of AI Writing" essay, and classic prose craft guidance
 conflicts with good writing and resolves in favor of the latter: this
 skill never bans ordinary correct vocabulary, never states an invented
 numeric threshold, and never asks Claude to add unearned specifics.
+
+## Something read wrong, or didn't apply?
+
+This skill makes judgment calls, and judgment calls are sometimes wrong.
+A prior adversarial round caught it stripping a marketing page's closing
+line before that got fixed (`reference/validation-note.md` has the full
+account, including the miss). If it mangles something, [open an
+issue](https://github.com/AshwinSathian/humanize-writing-skill/issues)
+with the before/after text; that's more useful than a star. Pull requests
+that add a sourced tell, a genre gap, or a false-positive case are
+welcome. The bar is the same one this skill holds itself to: trace it to
+something real, not a hunch.
 
 ## License
 
