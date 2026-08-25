@@ -7,6 +7,16 @@ catalog of specific AI-writing tells. Raw reports with full citations live
 in `reference/research/`. This file is the condensed, load-bearing synthesis
 that `SKILL.md` and the adversarial review both work from.
 
+## Contents
+
+1. Summary
+2. Ranked tell catalog
+3. Structural vs. surface tells, and why structure matters more
+4. Positive craft guidance (not just tell-avoidance)
+5. Where "sound human" conflicts with "write well": resolved in favor
+   of good writing
+6. Full source list
+
 ## 1. Summary
 
 Two independent literatures, computational stylometry and editorial
@@ -42,7 +52,7 @@ observation. Ranked by consensus strength (very strong → contested).
 |---|---|---|
 | **"Delve"** and the excess-vocabulary cluster (boast, showcase, underscore, intricate, meticulous, commendable, pivotal, realm, garner, foster, align with) | Specific words spiked in frequency immediately after ChatGPT's release and stayed elevated | RLHF: human raters during fine-tuning scored responses containing these words more favorably; a COLING 2025 paper (Yalpi et al.) systematically ruled out training-data overrepresentation and architecture as causes, isolating RLHF as the likely mechanism (`academic.md` §6.3) |
 | **"It's not X, it's Y" / negative parallelism** | Raising and knocking down a straw contrast instead of stating the point directly | Mimics the rhetorical shape of insight without requiring evidence for either half. *The Atlantic* found ~6% of a large sample of human messages now use it too; the tell has started leaking into human writing via imitation, and the construction may process *less* clearly for readers than intended (negated terms process first) |
-| **Em dash overuse** | Markedly higher em-dash frequency than human baselines (GPT-4.1 measured at 3.28x) | **Mechanism genuinely contested**: one analysis attributes it to a training-data era shift (older, public-domain books skewing em-dash-heavy); another attributes it to RLHF rewarding the em dash's clarity/pacing function. The tell's *existence* is not in dispute; its cause is. Working editors (Dreyer) also caution the raw signal is weaker than social media suggests: volume and function matter more than presence |
+| **Em dash overuse** | Markedly higher em-dash frequency than human baselines (GPT-4.1 measured at 3.28x) | **Mechanism genuinely contested**: one analysis attributes it to a training-data era shift (older, public-domain books skewing em-dash-heavy); another attributes it to RLHF rewarding the em dash's clarity/pacing function. The tell's *existence* is not in dispute; its cause is. Working editors (Dreyer) also caution the raw signal is weaker than social media suggests: volume and function matter more than presence. **A large-scale August 2026 cross-model study (The Economist, comparing GPT, Claude, Gemini, and Grok on 1.2M words of rewritten journalism against a 1950–2024 human baseline) found the tell has already narrowed to one model: only Claude still exceeds human em-dash frequency; ChatGPT now uses markedly fewer than humans do.** Since this skill runs on Claude, that's the most directly actionable data point of the four models tested, and it argues for keeping the dash-discipline guidance, not loosening it, even as the once-cross-model story narrows (`reference/research/tells-catalog.md` #18) |
 
 ### Strong
 
@@ -172,6 +182,19 @@ in itself:
   in at least one case explicit instructions to *conceal* that formatting
   rules are being followed: advice that trades honesty and clarity for
   detector-evasion.
+- **Scope-gating is itself part of "resolved in favor of good writing."**
+  Structural-variation and specificity rules are correct for discursive
+  prose, not universal law: applied literally to formats whose
+  correctness *is* uniform structure (API docs, schemas), to fiction
+  (where invention is the job), to legal boilerplate (where enumerations
+  carry force), to marketing copy (where a persuasive close is the
+  point), or to someone else's already-human text, the same rules that
+  fix AI-shaped prose actively damage correctly-shaped non-prose or
+  non-Claude-authored text. `reference/oss-skills-review.md` §2 already
+  found this kind of genre/voice awareness among the strongest features
+  of the two most genre-conscious surveyed skills (`blader/humanizer`,
+  `matsuikentaro1/humanizer_academic`); `SKILL.md`'s "Scope" section
+  adopts the same principle explicitly rather than leaving it implicit.
 
 **Resolution:** where a "sound more human" instruction would degrade
 clarity, accuracy, or plain correctness, this skill defers to good writing.
