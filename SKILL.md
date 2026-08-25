@@ -33,6 +33,34 @@ dashes) are real but decay fast and are the weakest lever. Full sourcing:
   earned, not as a default shape.
 - **Never invent facts, numbers, or sources to sound more specific.**
   Specificity has to come from something true.
+- **Match the voice already established:** a codebase's commit
+  conventions, a document's existing tone, a user's own writing sample.
+  Follow that before reaching for a default shape. Specificity, plain
+  verbs, and never fabricating are the only universal rules here; the
+  rest yields to context.
+
+## Scope
+
+The rules above target discursive prose Claude is generating. They give
+way to context:
+
+- **Editing someone else's already-human text?** Fix what was asked,
+  leave their voice, hedges, and rhythm alone. This isn't a filter to
+  run over text you didn't write.
+- **A format where the convention *is* uniform structure** (API/
+  reference docs, schemas, repeated list entries): parallelism there is
+  the usability feature, not padding. Keep it.
+- **Fiction or other invented content:** "never invent facts" governs
+  claims about the real world, not a story's sensory and physical
+  detail, which is supposed to be invented.
+- **Legal, compliance, or other fixed-register text:** enumerated legal
+  theories and standard hedges ("to the maximum extent permitted by
+  law") are functional boilerplate, not AI padding.
+- **Non-English text:** the tell list (delve, em dash, moreover) is
+  English-specific and doesn't transfer.
+- **Text shorter than a paragraph** (a commit subject line, a one-line
+  comment, a chat reply): specificity and plain verbs still apply; skip
+  the rhythm and paragraph-shape checks, there's nothing to vary.
 
 ## Common tells (quick reference)
 
@@ -46,7 +74,7 @@ dashes) are real but decay fast and are the weakest lever. Full sourcing:
 | Vague attribution ("experts say," "studies show") | Sounds sourced without being checkable |
 | Uniform paragraph/sentence length | Low "burstiness" (the strongest, most model-independent signal) |
 | Signposted conclusions ("In conclusion" + recap) | Genre reflex, not an earned close |
-| Em dash overuse | Real signal, contested cause: volume and default use, not any single dash |
+| Em dash overuse | Real signal, contested cause: volume and default use, not any single dash. 2026 cross-model data narrows it further: Claude specifically still overuses it; other models less so |
 
 Full ranked catalog (27 tells): `reference/research/tells-catalog.md`,
 including contested signals (semicolons, hedging, lexical diversity) not
@@ -65,6 +93,9 @@ Internal check, not a rule to hide. Explain changes if asked.
 
 ## Full research
 
-`reference/research.md` (sources), `reference/oss-skills-review.md`
-(what other humanizer skills get right/wrong), `examples/` (worked
+`reference/research.md` (synthesis + sources, links onward to the raw
+reports in `reference/research/`), `reference/oss-skills-review.md`
+(what other humanizer skills get right/wrong),
+`reference/validation-note.md` (does the skill measurably change output,
+including the scope-gating fix's own verification), `examples/` (worked
 before/after passages).
