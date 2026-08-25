@@ -35,6 +35,28 @@ Every tell below cites at least two sources from Tier 1–3 where possible;
 Tier 4–5 sources are added as supplementary corroboration and labeled as
 such.
 
+## Contents
+
+**Part 1 — Word/Phrase:** 1 Delve · 2 Excess-vocabulary cluster · 3
+Testament-to · 4 Ornate nouns · 5 Copula avoidance · 6 Stock
+transitions · 7 Hedge fillers · 8 Sycophantic openers · 9 Formulaic
+sign-offs
+
+**Part 2 — Sentence/Rhetorical:** 10 Negative parallelism · 11
+Rule-of-three · 12 Rhetorical Q&A · 13 Vapid openers · 14 "Despite
+these challenges" · 15 Grandiose stakes inflation · 16 Vague
+attribution · 17 Synonym cycling
+
+**Part 3 — Punctuation:** 18 Em dash · 19 Semicolons (contested) · 20
+Curly quotes
+
+**Part 4 — Structural/Formatting:** 21 Title Case headers · 22
+Bold-lead-in bullets · 23 Low burstiness · 24 Signposted conclusions ·
+25 Perfect grammar · 26 Emoji/Unicode · 27 False-balance hedging
+(contested)
+
+Summary table · Key sources · Notes on exclusions
+
 ---
 
 ## Part 1: Word- and Phrase-Level Tells
@@ -86,9 +108,13 @@ These words travel together: corpus studies find them co-occurring far
 above baseline in the same LLM-influenced texts.
 
 - **Kobak et al., *Science Advances* (2025)**, as above. *Tier 1.*
-  Same study; found "meticulously" up 137%, "intricate" up 117%,
-  "commendable" up 83%, "meticulous" up 59% year-over-year following
-  ChatGPT's release, across a 14-million-abstract PubMed corpus.
+  Same study; found "meticulously" up 137%, "intricate" up 117%, and
+  "meticulous" up 59% year-over-year following ChatGPT's release,
+  across a 14-million-abstract PubMed corpus. (The paper reportedly also
+  gives a figure for "commendable"; this project's citation audit could
+  not independently re-confirm that specific number behind the paper's
+  paywall, so it's omitted here rather than repeated unverified. The
+  other figures in this bullet checked out.)
 - **"How much are LLMs changing the language of academic papers after
   ChatGPT? A multi-database and full text analysis,"** *Scientometrics*
   (Springer Nature), [link.springer.com/article/10.1007/s11192-026-05601-5](https://link.springer.com/article/10.1007/s11192-026-05601-5).
@@ -522,6 +548,26 @@ prose. They diverge sharply on *why*:
   but the *causal story* is genuinely unsettled and worth flagging as
   such rather than repeating one explanation as settled fact.
 
+**2026 update, model-specific:** "How to Spot AI Writing," *The
+Economist*, July 30, 2026
+([economist.com/culture/2026/07/30/how-to-spot-ai-writing](https://www.economist.com/culture/2026/07/30/how-to-spot-ai-writing);
+paywalled, corroborated via Daring Fireball's linked summary and
+independent coverage from Fast Company and others). *Tier 2.* A
+1.2-million-word, 55,940-sentence comparison of GPT, Claude, Gemini,
+and Grok rewrites of Economist journalism against a 1950–2024 human
+baseline found the tell has already narrowed to one model: only Claude
+still exceeds human em-dash frequency; ChatGPT uses markedly fewer em
+dashes than humans do. The same study corroborates entry #10 (negative
+parallelism) and identifies new candidate tells worth tracking but not
+yet added to this catalog pending independent corroboration:
+Latinate/rare vocabulary, nominalization ("conduct an analysis" for
+"analyse"), and a preference for "and"-linked long sentences over
+commas/semicolons/parentheses. **Practical implication for this skill
+specifically:** since it runs on Claude, the em-dash discipline in
+`SKILL.md`'s "Before finalizing" checklist is, per this study, more
+directly justified for this skill's actual output than the general
+cross-model framing above suggested, not less.
+
 ---
 
 ### 19. Semicolon usage: contested direction of the signal
@@ -833,6 +879,9 @@ relied on.
   <https://www.mcgill.ca/oss/article/critical-thinking-student-contributors-technology/why-did-llms-steal-our-em-dashes>
 - Sam Woolfe, "Has AI Spoiled the Use of the Em Dash and Semicolon?"
   <https://www.samwoolfe.com/2026/03/ai-use-of-em-dash-semicolon.html>
+- "How to Spot AI Writing," *The Economist*, July 30, 2026 (paywalled;
+  corroborated via Daring Fireball and independent secondary coverage).
+  <https://www.economist.com/culture/2026/07/30/how-to-spot-ai-writing>
 - Wordsmith HK, "How to easily tell if content is written by AI."
   <http://wordsmith.hk/wordwise-blog/2024/5/29/how-to-easily-tell-if-content-is-written-by-ai>
 - Deborah MT, "Title Case is your accidental AI tell."
