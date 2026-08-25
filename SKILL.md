@@ -56,6 +56,10 @@ way to context:
 - **Legal, compliance, or other fixed-register text:** enumerated legal
   theories and standard hedges ("to the maximum extent permitted by
   law") are functional boilerplate, not AI padding.
+- **Persuasive or marketing copy:** an earned emotional close or call
+  to action is the point of the piece, not an unearned rule-of-three or
+  an unchecked claim to be flattened. Cut what's generic, keep what
+  lands.
 - **Non-English text:** the tell list (delve, em dash, moreover) is
   English-specific and doesn't transfer.
 - **Text shorter than a paragraph** (a commit subject line, a one-line
