@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "humanize-writing-skill",
+  "owner": {
+    "name": "Ashwin Sathian",
+    "url": "https://ashwinsathian.com/"
+  },
+  "description": "Self-hosted marketplace for the humanizing-writing Claude Code skill, no Anthropic review or account required.",
+  "plugins": [
+    {
+      "name": "humanizing-writing",
+      "source": ".",
+      "description": "Shapes any written output to avoid recognizable AI-writing tells, grounded in cited stylometry research and a teardown of existing humanizer skills, not a banned-word list.",
+      "version": "1.1.1",
+      "author": {
+        "name": "Ashwin Sathian",
+        "url": "https://ashwinsathian.com/"
+      },
+      "homepage": "https://github.com/AshwinSathian/humanize-writing-skill",
+      "repository": "https://github.com/AshwinSathian/humanize-writing-skill",
+      "license": "MIT",
+      "keywords": ["writing", "editing", "prose", "style", "ai-detection"]
+    }
+  ]
+}

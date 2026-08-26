@@ -41,19 +41,28 @@ ln -s "$(pwd)/humanize-writing-skill" ~/.claude/skills/humanizing-writing
 The symlink means editing the cloned repo updates the live skill directly:
 pull to update, no reinstall step.
 
-**As a plugin.** The repo also ships a `.claude-plugin/plugin.json`
-manifest (`claude plugin validate .` passes in strict mode). Try it without
-installing anything:
+**As a plugin, from this repo's own marketplace (one-line install, no
+review or account needed).** The repo ships both a
+`.claude-plugin/plugin.json` manifest and a `.claude-plugin/marketplace.json`,
+so it's a self-contained plugin marketplace of one. Verified working
+end-to-end (add, install, uninstall) before shipping this:
+
+```bash
+/plugin marketplace add AshwinSathian/humanize-writing-skill
+/plugin install humanizing-writing@humanize-writing-skill
+```
+
+This is not submitted to Anthropic's official community marketplace
+(`@claude-community`), which requires going through a submission review
+via Anthropic's Console. This repo's own marketplace gets you the same
+one-line install today, with no review, no account, and no cost, at the
+price of one extra `marketplace add` command.
+
+**Try it without installing anything:**
 
 ```bash
 claude --plugin-dir /path/to/humanize-writing-skill
 ```
-
-**Not yet available:** `/plugin install humanizing-writing@claude-community`
-is the eventual one-line install path once this is submitted to and
-approved for Claude Code's community plugin marketplace, but that hasn't
-happened yet. Right now, the symlink, `--plugin-dir`, or `skills.sh`
-methods here are the only ways to install this.
 
 **Via skills.sh:**
 
@@ -65,12 +74,17 @@ npx skills add AshwinSathian/humanize-writing-skill
 skills do you have available?" or give it a short, obviously AI-toned
 paragraph and ask it to write something similar. A working install
 should visibly avoid the tells in `SKILL.md`'s quick-reference table. If
-it doesn't, check the symlink target resolves (`ls -la
-~/.claude/skills/humanizing-writing`) or that `--plugin-dir` points at
-this repo's root, not a subdirectory.
+it doesn't: for the symlink method, confirm it resolves
+(`ls -la ~/.claude/skills/humanizing-writing`); for `--plugin-dir`,
+confirm the flag points at this repo's root, not a subdirectory; for the
+marketplace method, run `/plugin list` and confirm
+`humanizing-writing@humanize-writing-skill` shows as enabled.
 
-**Uninstalling.** Remove the symlink (`rm ~/.claude/skills/humanizing-writing`)
-or drop the `--plugin-dir` flag; there's no other state to clean up. To
+**Uninstalling.** Symlink: remove it
+(`rm ~/.claude/skills/humanizing-writing`). `--plugin-dir`: drop the
+flag. Marketplace install: `/plugin uninstall humanizing-writing@humanize-writing-skill`,
+and `/plugin marketplace remove humanize-writing-skill` if you added the
+marketplace only for this. None of these leave other state behind. To
 disable it for one request without uninstalling, tell Claude directly.
 Per `SKILL.md`'s own "Scope" section, an explicit user instruction
 overrides the skill's defaults.
@@ -79,6 +93,7 @@ overrides the skill's defaults.
 
 ```
 .claude-plugin/plugin.json     # plugin manifest (validated, claude plugin validate . --strict)
+.claude-plugin/marketplace.json # self-hosted marketplace, one plugin: this one
 SKILL.md                       # the skill itself, lean and always-loadable
 CHANGELOG.md                   # what changed each version, and why
 reference/research.md          # research synthesis: what the literature actually says

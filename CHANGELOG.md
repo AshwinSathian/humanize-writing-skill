@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.1.1
+
+Audited the repo against Anthropic's actual plugin submission
+requirements (manifest schema, directory structure, validation, security
+surface) ahead of a community-marketplace submission attempt. Nothing
+needed fixing there. The manifest was already fully compliant, `claude
+plugin validate . --strict` already passed clean, and the plugin has
+zero executable surface (no hooks, MCP/LSP servers, or scripts).
+
+The submission itself turned out to require going through Anthropic's
+Console, which gates access behind purchasing usage credits. Rather than
+pay for that, added `.claude-plugin/marketplace.json`, making this repo
+its own self-hosted plugin marketplace: `/plugin marketplace add
+AshwinSathian/humanize-writing-skill` then `/plugin install
+humanizing-writing@humanize-writing-skill` installs it directly from
+GitHub, no Anthropic review, account, or cost involved. Verified
+end-to-end locally (add, install, uninstall) before shipping it.
+
 ## 1.1.0
 
 Two adversarial review rounds against the shipped 1.0.0 skill, both
