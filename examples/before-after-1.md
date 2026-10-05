@@ -19,35 +19,36 @@ newer has arrived.
 
 ## After (humanized rewrite)
 
-Paper maps haven't gone away, and it isn't nostalgia keeping them around.
-A folded map doesn't need a battery or a signal, and unlike a phone screen
-it shows you the whole valley at once, not a scrolling fragment of it.
-Search-and-rescue teams still carry them as backup, not because they
-distrust GPS but because a dead phone in the backcountry is a real
-scenario, not a hypothetical one. Reading a paper map also forces you to
-actually parse the terrain (contour lines, water, ridgelines) instead of
-just following a blue dot, so you're more likely to notice when a trail
-has quietly diverged from where you meant to be. None of this makes
-phones worse for everyday use. It just means the map in your glovebox is
-doing a job GPS can't fully replace.
+Paper maps are still in use because they work where phones fail. A folded
+map needs no battery and no signal, and it shows the whole valley at once,
+where a phone screen shows only the area around you. Search-and-rescue
+teams, backcountry guides, and military units carry one as a backup.
 
 ## What changed, and why
 
-- **Cut the vapid opener** ("In today's fast-paced world") and the
-  "Despite the challenges... testament to" closing formula. Both generic
-  scaffolding that fit any topic and said nothing about this one.
-- **Replaced "it's not just X, it's Y"** with a direct statement: the
-  rewrite says what's true instead of staging a fake correction.
-- **Replaced vague attribution** ("studies show") with a specific,
-  observable mechanism, stated directly in the writer's own voice, not
-  "studies show" and not a swapped-in "guides say" (which would just be
-  the same unnamed-authority tell wearing different words). Specificity
-  has to come from something true; when you don't have a real source,
-  explain the actual mechanism instead of attributing it to anyone.
-- **Cut the stock transitions** ("Moreover," "Additionally") and let
-  sentences connect on their own logic instead.
-- **Varied sentence rhythm**: short declarative sentences mixed with one
-  longer one, instead of a uniform block of similar-length sentences.
-- **Removed the rule-of-three padding** ("search and rescue teams,
-  backcountry guides, and military units") in favor of one concrete,
-  developed example.
+The rewrite is four sentences shorter than the original because the
+original had about three sentences of content.
+
+- The opener ("In today's fast-paced world") and the closing formula
+  ("Despite the challenges... testament to") are gone. Both fit any topic
+  and say nothing about this one.
+- "It's not just a matter of nostalgia, it's a matter of reliability"
+  became the reason itself: they work where phones fail. Nobody in the
+  passage had said it was nostalgia.
+- "Studies show that paper maps can improve spatial memory" is cut. The
+  draft named no study, so the rewrite has two honest options: cite the
+  study if the writer has one, or drop the claim. Swapping in a different
+  unnamed authority ("guides say") or a plausible-sounding mechanism
+  would be inventing support.
+- "Moreover" and "Additionally" are gone. The sentences follow from each
+  other without them.
+- The three groups of professionals stay. The original names three, and
+  nothing in it suggests the list was padded.
+
+Version 1.x of this rewrite removed the same tells and added three
+negated contrasts of its own ("it isn't nostalgia keeping them around",
+"not because they distrust GPS but because...", "a real scenario, not a
+hypothetical one"). It also replaced "studies show" with an explanation
+of why map-reading would help, which nothing in the original supported.
+Checklist items 1 and 4 in `SKILL.md` exist because of those two
+mistakes.

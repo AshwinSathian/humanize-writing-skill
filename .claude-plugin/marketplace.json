@@ -10,8 +10,8 @@
     {
       "name": "humanizing-writing",
       "source": ".",
-      "description": "Shapes any written output to avoid recognizable AI-writing tells, grounded in cited stylometry research and a teardown of existing humanizer skills, not a banned-word list.",
-      "version": "1.1.1",
+      "description": "Guides Claude to write prose that does not read as machine-written, for human readers. Rules on claims, sentence shape, and endings, grounded in cited 2026 research. Not a detector-evasion tool.",
+      "version": "2.0.0",
       "author": {
         "name": "Ashwin Sathian",
         "url": "https://ashwinsathian.com/"
@@ -19,7 +19,7 @@
       "homepage": "https://github.com/AshwinSathian/humanize-writing-skill",
       "repository": "https://github.com/AshwinSathian/humanize-writing-skill",
       "license": "MIT",
-      "keywords": ["writing", "editing", "prose", "style", "ai-detection"]
+      "keywords": ["writing", "editing", "prose", "style"]
     }
   ]
 }

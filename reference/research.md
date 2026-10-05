@@ -7,6 +7,11 @@ catalog of specific AI-writing tells. Raw reports with full citations live
 in `reference/research/`. This file is the condensed, load-bearing synthesis
 that `SKILL.md` and the adversarial review both work from.
 
+**Read `reference/research/2026-update.md` alongside this file.** This
+synthesis was written for 1.x in August 2026. The update records the
+newer sources behind 2.0.0 and the claims below that they weakened.
+Passages corrected for 2.0.0 are marked "2.0.0:" in place.
+
 ## Contents
 
 1. Summary
@@ -52,7 +57,7 @@ observation. Ranked by consensus strength (very strong → contested).
 |---|---|---|
 | **"Delve"** and the excess-vocabulary cluster (boast, showcase, underscore, intricate, meticulous, commendable, pivotal, realm, garner, foster, align with) | Specific words spiked in frequency immediately after ChatGPT's release and stayed elevated | RLHF: human raters during fine-tuning scored responses containing these words more favorably; a COLING 2025 paper (Yalpi et al.) systematically ruled out training-data overrepresentation and architecture as causes, isolating RLHF as the likely mechanism (`academic.md` §6.3) |
 | **"It's not X, it's Y" / negative parallelism** | Raising and knocking down a straw contrast instead of stating the point directly | Mimics the rhetorical shape of insight without requiring evidence for either half. *The Atlantic* found ~6% of a large sample of human messages now use it too; the tell has started leaking into human writing via imitation, and the construction may process *less* clearly for readers than intended (negated terms process first) |
-| **Em dash overuse** | Markedly higher em-dash frequency than human baselines (GPT-4.1 measured at 3.28x) | **Mechanism genuinely contested**: one analysis attributes it to a training-data era shift (older, public-domain books skewing em-dash-heavy); another attributes it to RLHF rewarding the em dash's clarity/pacing function. The tell's *existence* is not in dispute; its cause is. Working editors (Dreyer) also caution the raw signal is weaker than social media suggests: volume and function matter more than presence. **A large-scale August 2026 cross-model study (The Economist, comparing GPT, Claude, Gemini, and Grok on 1.2M words of rewritten journalism against a 1950–2024 human baseline) found the tell has already narrowed to one model: only Claude still exceeds human em-dash frequency; ChatGPT now uses markedly fewer than humans do.** Since this skill runs on Claude, that's the most directly actionable data point of the four models tested, and it argues for keeping the dash-discipline guidance, not loosening it, even as the once-cross-model story narrows (`reference/research/tells-catalog.md` #18) |
+| **Em dash overuse** | Markedly higher em-dash frequency than human baselines (GPT-4.1 measured at 3.28x) | **Mechanism genuinely contested**: one analysis attributes it to a training-data era shift (older, public-domain books skewing em-dash-heavy); another attributes it to RLHF rewarding the em dash's clarity/pacing function. The tell's *existence* is not in dispute; its cause is. Working editors (Dreyer) also caution the raw signal is weaker than social media suggests: volume and function matter more than presence. **A large-scale cross-model study (The Economist, 30 July 2026, comparing GPT, Claude, Gemini, and Grok on 1.2M words of rewritten journalism against human journalism and novels from 1950 to 2022) found the tell has already narrowed to one model: only Claude still exceeds human em-dash frequency; ChatGPT now uses markedly fewer than humans do.** Since this skill runs on Claude, that's the most directly actionable data point of the four models tested, and it argues for keeping the dash-discipline guidance, not loosening it, even as the once-cross-model story narrows (`reference/research/tells-catalog.md` #18) |
 
 ### Strong
 
@@ -71,7 +76,7 @@ observation. Ranked by consensus strength (very strong → contested).
 - Sycophantic chat-style openers ("Certainly!," "Great question!") and formulaic sign-offs ("I hope this helps!"): vendor-corroborated only, but consistent with RLHF's assistant-register defaults.
 - Rhetorical question immediately self-answered ("What changed? The math did.").
 - "Despite these challenges" + silver-lining closing formula.
-- Synonym cycling / excessive lexical variation (avoiding natural repetition of a fixed referent) has a plausible decoding-parameter explanation (repetition-penalty settings), distinct from the purely stylistic tells.
+- Synonym cycling / excessive lexical variation (avoiding natural repetition of a fixed referent) has a plausible decoding-parameter explanation (repetition-penalty settings), distinct from the purely stylistic tells. 2.0.0: Wikipedia has since moved this to its list of historical indicators.
 - Curly/smart quotation marks: a provenance artifact of copy-pasting from a chat interface, not really a stylistic choice.
 - Perfect, uniform grammar with no contractions or fragments: Reuters Institute and Pangram both document AI text minimizing colloquial language and contractions relative to comparable human text.
 - Emoji/Unicode used as structural devices (section dividers, decorative arrows).
@@ -116,9 +121,20 @@ pattern one level up, at the level of narrative/plot structure, suggesting
 this is a general property of how these models generate, not just a
 sentence-level statistical artifact.
 
-**Design implication:** the skill weights structural guidance (vary rhythm,
-commit to specific claims, avoid templated structure) above a banned-word
-list. A word list is included only as a compact, clearly-labeled quick
+**2.0.0: the sentence-length claim above is weaker than this section
+says.** It rests on one 2024 study of Mistral, Falcon, and LLaMA. A 2026
+study of 284 features across 27 models found most proposed indicators
+context-dependent, and the Economist's 2026 comparison found current
+models writing sentences that are too long and too rarely interrupted,
+not uniformly medium. The 1.x rule this section produced ("vary sentence
+rhythm on purpose") led the skill's own output toward fragments and
+one-line closers, which are current tells. See
+`reference/research/2026-update.md` §2. The preference for structure
+over a word list stands; the specific rhythm rule does not.
+
+**Design implication:** the skill weights structural guidance (commit to
+specific claims, let length and structure follow the content) above a
+banned-word list. A word list is included only as a compact, clearly-labeled quick
 reference, never as the skill's primary mechanism, because the sources
 above show it is both the most brittle part of this problem and the part
 most likely to be mistaken for the whole solution.
@@ -140,7 +156,9 @@ converge on independent, positive guidance for what to do instead
   stands as) are the same failure mode independently named 80 years apart.
 - **Vary sentence rhythm deliberately.** Mix short, punchy sentences with
   longer ones; don't let paragraphs settle into a uniform shape. This is
-  the craft-side mirror of the "burstiness" finding in §3.
+  the craft-side mirror of the "burstiness" finding in §3. 2.0.0:
+  replaced in `SKILL.md` by "let sentence length follow the content". A
+  short sentence written for punch is itself a current tell.
 - **Reach for concrete sensory/physical detail over abstraction.** Gay
   Talese's Sinatra profile (via Mario Garcia's Poynter piece) is the
   worked example: specific, unrepeatable physical detail ("nubby and raw"
@@ -150,7 +168,9 @@ converge on independent, positive guidance for what to do instead
   little, pretty — these are the leeches that infest the pond of prose" is
   a still-underused complement to word-banning: it targets the *softening*
   reflex, which shows up as hedge fillers ("it's worth noting") and
-  generic hedging (§2's contested tell) alike.
+  generic hedging (§2's contested tell) alike. 2.0.0: dropped from
+  `SKILL.md`. No source here reports these four words as more common in
+  model text; the rule is now "hedge once, where the doubt is real".
 - **Let punctuation do real work, not filler work.** Dreyer's and Purohit's
   point about the em dash generalizes: a device (dash, semicolon, rule of
   three) used because it's earned by the specific sentence reads
@@ -212,3 +232,5 @@ notes:
 - `reference/research/editorial.md`: Wikipedia's Signs of AI Writing, Orwell, Strunk & White, Hemingway App, The Atlantic, Dreyer, Purohit, Forbes, Poynter, Ted Chiang
 - `reference/research/tells-catalog.md`: 27 ranked tells, ~25 corroborating sources across 5 credibility tiers
 - `reference/oss-skills-review.md`: teardown of 13 existing published humanizer skills/prompts
+- `reference/research/2026-update.md`: 18 further sources read for 2.0.0
+- `reference/claude-tics.md`: current Claude habits, dated, with evidence tiers

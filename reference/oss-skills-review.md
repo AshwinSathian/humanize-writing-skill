@@ -5,6 +5,10 @@ published "humanize writing" skills/prompts in full detail with live
 GitHub metadata. This file draws the design implications for
 `humanizing-writing`.
 
+The table and sections 2 to 4 describe these skills as surveyed in
+August 2026. Section 5 records what had changed by October 2026 and what
+2.0.0 took from it.
+
 ## 1. Surveyed skills
 
 | Skill | Stars | Core mechanism | Notable for |
@@ -45,9 +49,37 @@ GitHub metadata. This file draws the design implications for
 ## 4. What we do differently, and why
 
 1. **Structural guidance is primary; the word list is a compact, clearly-labeled quick reference, never the mechanism.** Per `reference/research.md` §3, this is directly supported by the academic literature (sentence-length/structural uniformity is a larger, more model-independent signal than any specific word), not just a reaction to competitors' weaknesses. The OSS survey confirms banned-word-list-as-primary-mechanism is the field's dominant and most brittle failure mode, worth deliberately avoiding.
-2. **No invented numeric thresholds.** Every threshold or ratio this skill states must trace to a cited source in `reference/research.md`/`reference/research/`. Where the research itself is contested (e.g., semicolon direction, hedging direction), the skill says so rather than picking a side to sound authoritative.
+2. **No invented numeric thresholds.** Every threshold or ratio this skill states must trace to a cited source in `reference/research.md`/`reference/research/`. (1.x broke this rule once: its checklist asked "more than one or two dashes per paragraph?" with no source. 2.0.0 removed the number.) Where the research itself is contested (e.g., semicolon direction, hedging direction), the skill says so rather than picking a side to sound authoritative.
 3. **No blanket word bans on ordinary correct vocabulary.** The skill targets patterns and overuse, not individual words in isolation, directly responding to `shaswatco`'s failure mode.
 4. **Explicit fabrication guard.** Any instinct toward "add specificity" is paired with a rule against inventing facts, numbers, or sources not actually known to be true, responding to the fabrication risk the OSS survey found addressed in only 3 of 13 repos.
 5. **Transparency, not concealment.** The skill's self-review pass is framed as an internal check, not an instruction to hide that guidance was followed. Never a "never mention this" instruction.
 6. **Honest about scope.** This skill is about writing that reads as considered and human to a reader. It does not claim to defeat trained AI-detection classifiers reading model-internal fingerprints (per `harshaneel`'s and `haidrrrry`'s honest scoping, and per `reference/research.md` §5's resolution in favor of good writing over detector-evasion).
 7. **Voice and genre awareness, adopted from the field's strongest entries.** `blader/humanizer`'s voice-matching (override stylistic defaults with a user-supplied sample) and `matsuikentaro1`'s genre-aware whitelisting (the same phrase is a tell in one register and normal in another) were identified above (§2) as the strongest features found anywhere in the survey, but the original version of this skill didn't adopt either. Adversarial red-team testing across API docs, legal text, marketing copy, fiction, non-English text, and edits to someone else's prose confirmed the gap was real, not theoretical: applied without scoping, this skill's own rules regressed output in exactly those genres. `SKILL.md`'s "Scope" section closes it.
+
+## 5. October 2026 re-survey, and what 2.0.0 took from it
+
+| Skill | State in October 2026 | Does well | Does poorly |
+|---|---|---|---|
+| [blader/humanizer](https://github.com/blader/humanizer) | About 54,000 stars, version 3.1.0. Rebuilt around one explanation of why model text sounds as it does; 26 patterns ordered by strength | The single explanation lets a pattern not on the list still be recognised. States that detectors still flag most of its output. Reports a blind preference test (16 of 16) | A rewrite tool only: it runs after the draft exists. About 4,200 words loaded per use. Genre handling is one paragraph |
+| [conorbronsdon/avoid-ai-writing](https://github.com/conorbronsdon/avoid-ai-writing) | Version 3.37.0. Three priority tiers, three modes, an editing contract | Reports which checks ran, what was left, and why editing stopped. Protects code, quotes, and tables | The word list is still the bulk of it. English only by its own statement |
+| [hardikpandya/stop-slop](https://github.com/hardikpandya/stop-slop) | Four files, about 390 lines | Names rhetorical moves ("cut quotables", "false agency") instead of phrases | Bans em dashes outright. Requires 35 of 50 on a self-scored rubric with no source for the number. No genre exceptions |
+| [petergyang/no-ai-slop](https://github.com/petergyang/no-ai-slop) | New in July 2026; about 1,000 stars in its first day | Minimum-change editing. Keeps a writer's "I think", fragments, and digressions. Names colon reveals and fake-profound kickers | Caps em dashes at "1-2 max" with no source. Rewrite tool only |
+
+**What 2.0.0 adopted.** From blader: the single explanation as the
+overview, and its five strongest patterns, none of which 1.x covered
+("not X but Y" was in the 1.x table but not in its rules). From
+stop-slop and no-ai-slop: the closer and the colon reveal as named
+patterns. From no-ai-slop: keeping a real hedge. From conorbronsdon:
+reporting validation losses, not only wins
+(`reference/validation-note.md`).
+
+**What 2.0.0 declined.** Rewrite, detect, and edit modes, because this
+skill applies while writing and a mode switch adds length that loads on
+every use. Numeric caps on punctuation and self-scored rubrics, because
+none of the four gives a source for its numbers. "False agency" as a
+rule, because inanimate subjects are normal in technical writing ("the
+function returns", "the index stores").
+
+**Where this skill is still weaker.** It has no blind test at the scale
+blader reports, its validation judges are Claude models, and it is
+written for and tested on Claude only.

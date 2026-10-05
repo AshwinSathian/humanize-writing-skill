@@ -1,5 +1,79 @@
 # Changelog
 
+## 2.0.0
+
+The rules were rewritten against 2026 sources, and the rewrite was
+tested blind before release. Existing installs will see different output:
+that is the reason for the major version.
+
+**Why.** The tells this skill targeted have moved. A July 2026 study by
+*The Economist* of four major models found the signal now sits in long
+words, long "and"-chained sentences, and thin punctuation, with the em
+dash narrowed to Claude alone. Wikipedia's AI-vocabulary list for mid-2025
+onward is four words, one of which was on its 2023 list. Anthropic's own
+prompting guide names "mannered prose" (metaphor in place of direct
+statement) as a habit of its current model. Version 1.x covered none of
+this, and an audit of its own examples found that its rewrites had
+swapped 2023 tells for 2026 ones: negated contrasts, one-line closers,
+fragments for effect. They had also added facts the originals did not
+contain. Details and sources: `reference/research/2026-update.md`.
+
+**Rules that changed.**
+
+- "Vary sentence rhythm on purpose" is replaced by "let sentence length
+  follow the content". The old rule produced short sentences written for
+  effect.
+- "Cut hedge-intensifiers (rather, very, little, pretty)" is replaced by
+  "hedge each uncertain claim once". The old rule came from a 1959 style
+  guide and no source reported those words as a model habit.
+- The dash rule no longer carries a number ("one or two per paragraph"),
+  which had no source.
+- New rules: say each thing once; replace a figure of speech with the
+  fact it stands for; prefer the verb to its noun form and the common
+  word to the long one; stop when the content stops (no closing line
+  that repeats the paragraph, no announcing a point, no denying a view
+  the reader does not hold).
+- "Never invent" is now its own rule and covers plausible-sounding
+  incidents, mechanisms the writer does not know, and anything a rewrite
+  adds to its source. Blind testing caught both 1.1.1 and an early 2.0.0
+  draft inventing a past incident for an internal blog post.
+- The tells table is cut from nine rows of mostly 2023 vocabulary to six
+  patterns that no rule already names.
+- Rules and Scope are written as plain sentences. They were bold-lead
+  bullets, a format the repo's own catalog lists as a tell.
+
+**Scope.** All 1.1.0 carve-outs remain. Added: summaries (an abstract or
+TL;DR exists to restate), speeches, poetry, and brand voice. The
+non-English entry no longer says the tells do not transfer; a 2026 study
+found model-preferred vocabulary recurring across 34 languages.
+
+**Trigger.** The description now fires on prose of a paragraph or more
+and on requests to humanize text, and says what the skill is not for
+(proofreading a person's own writing, evading AI detectors). In 1.x it
+fired on any written text, including one-line commit subjects where
+Scope then told it to do almost nothing.
+
+**Detectors.** `SKILL.md` and the README now say plainly that the skill
+does not change AI-detector scores, with the research behind that in
+`reference/research/2026-update.md` §3. The `ai-detection` keyword is
+removed from the plugin manifest.
+
+**Validation.** Replaced the 1.x method (a judge who knew which passage
+was which, scoring against the skill's own list) with shuffled blind
+pairs judged by two models, plus `scripts/measure.py` for descriptive
+metrics. In the released round both judges preferred 2.0.0 to no skill
+in 5 of 6 pairs, and to 1.1.1 in 5 of 6 and 4 of 6. An earlier 2.0.0
+draft did no better than 1.1.1 and was revised. Losses, limits, and all
+the raw pairs are in `reference/validation-note.md` and
+`reference/validation-2.0.0/`.
+
+**Also.** Four worked examples (two rewritten, two new in 2026 styles),
+each noting what the 1.x rewrite got wrong. `reference/claude-tics.md`
+records habits reported for current Claude versions with an evidence
+grade for each. `reference/oss-skills-review.md` has an October 2026
+re-survey of the most-used alternatives and what was taken from them.
+`SKILL.md` is about a quarter longer than in 1.1.1.
+
 ## 1.1.1
 
 Audited the repo against Anthropic's actual plugin submission

@@ -1,0 +1,74 @@
+{
+ "pair01": {
+  "model": "sonnet",
+  "task": "p1",
+  "A": "v1",
+  "B": "v2"
+ },
+ "pair02": {
+  "model": "opus",
+  "task": "p1",
+  "A": "v1",
+  "B": "v2"
+ },
+ "pair03": {
+  "model": "sonnet",
+  "task": "p2",
+  "A": "v1",
+  "B": "v2"
+ },
+ "pair04": {
+  "model": "opus",
+  "task": "p3",
+  "A": "v2",
+  "B": "base"
+ },
+ "pair05": {
+  "model": "sonnet",
+  "task": "p3",
+  "A": "v2",
+  "B": "v1"
+ },
+ "pair06": {
+  "model": "opus",
+  "task": "p2",
+  "A": "v1",
+  "B": "v2"
+ },
+ "pair07": {
+  "model": "sonnet",
+  "task": "p1",
+  "A": "v2",
+  "B": "base"
+ },
+ "pair08": {
+  "model": "sonnet",
+  "task": "p2",
+  "A": "base",
+  "B": "v2"
+ },
+ "pair09": {
+  "model": "opus",
+  "task": "p1",
+  "A": "base",
+  "B": "v2"
+ },
+ "pair10": {
+  "model": "opus",
+  "task": "p3",
+  "A": "v2",
+  "B": "v1"
+ },
+ "pair11": {
+  "model": "opus",
+  "task": "p2",
+  "A": "v2",
+  "B": "base"
+ },
+ "pair12": {
+  "model": "sonnet",
+  "task": "p3",
+  "A": "v2",
+  "B": "base"
+ }
+}

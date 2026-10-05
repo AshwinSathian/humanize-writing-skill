@@ -1,0 +1,87 @@
+{
+  "pair01": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {"A": [], "B": []},
+    "why": "Close call. B is the more textbook of the two, with the stock pivot \"The costs are real.\" and a definition-then-list rhythm, while A varies its sentences (\"The planner can also ignore an index.\") and ends on a usable habit: \"drop the ones nothing uses\". A's \"None of this is free.\" is the same kind of pivot, so the margin is small."
+  },
+  "pair02": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {"A": [], "B": []},
+    "why": "A commits to a concrete picture and number (\"the way you find a name in a phone book: open to the middle, throw away half, repeat\", \"about 24 steps\") and has a natural aside in \"They don't always help, either.\" B says the same things in flatter, hedged form (\"that number of levels grows very slowly as the table grows\", \"ten times the rows means ten times the work\")."
+  },
+  "pair03": {
+    "more_machine": "B",
+    "prefer": "B",
+    "invented": {
+      "A": [
+        "A release 'two weeks ago' that shipped the new checkout flow together with a tax library upgrade",
+        "Error rates rose after that release and the cause could not be isolated",
+        "The whole deploy was reverted, costing 'most of an afternoon and a rebuilt release branch'"
+      ],
+      "B": []
+    },
+    "why": "B is the more generic, template-shaped piece (\"In practice, long-running features can merge...\", \"Product can schedule a launch for Tuesday morning\"), but A builds its whole argument on a fabricated incident: \"Two weeks ago we shipped the new checkout flow together with the tax library upgrade\" and \"That cost us most of an afternoon\". The writer was given no team history, so A is unpublishable as written, despite also carrying the candor tic \"and we should be honest about it\"."
+  },
+  "pair04": {
+    "more_machine": "B",
+    "prefer": "B",
+    "invented": {"A": [], "B": []},
+    "why": "B uses the bold-label bullet pattern (\"**New endpoint:**\", \"**Signature check:**\") that marks unedited model output, but it is the more useful description: \"A status change could therefore sit unnoticed for up to 30 seconds\" is a fair deduction that explains the change. A pads with a section that says nothing new (\"It remains as a fallback alongside the webhook, at the lower frequency above.\"), which is nearly as machine-like, so the more_machine call is narrow."
+  },
+  "pair05": {
+    "more_machine": "A",
+    "prefer": "B",
+    "invented": {"A": [], "B": []},
+    "why": "A restates the obvious (\"so requests that do not carry a valid signature are not acted on\") and reaches for a flourish that goes past the supplied facts: \"the only thing standing between the public internet and the `notifier` trigger\". B is tighter and scannable, and its equivalent line is plainer: \"the only thing authenticating requests to the new endpoint\"."
+  },
+  "pair06": {
+    "more_machine": "A",
+    "prefer": "B",
+    "invented": {"A": [], "B": []},
+    "why": "A is full of polished-model mannerisms: the staged triple \"no revert, no rebuild, and nobody hunting for the last good commit while the incident channel fills up\", the candor announcement \"There is a cost, and I'd rather name it now\", and the summing-up line \"I think that trade is worth making.\" B is plainer, marks its example as hypothetical (\"Suppose a new checkout flow starts throwing errors\"), and ends with a specific proposal (\"a single flag read from config, with no vendor or new service\")."
+  },
+  "pair07": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {"A": [], "B": []},
+    "why": "B opens by restating the prompt (\"A database index speeds up reads because it lets the engine skip most of the table\") and leans on packaged transitions: \"The speedup comes at a price, and writes pay it.\" and \"There is a planning cost too.\" A starts with a concrete query and gives a sharper unused-index example (\"`WHERE lower(email) = ...` cannot use a plain index on `email`\"), though its \"The costs are real.\" is also a stock line."
+  },
+  "pair08": {
+    "more_machine": "A",
+    "prefer": "B",
+    "invented": {"A": [], "B": []},
+    "why": "A carries several stock phrases: \"Both are slow and stressful, and both usually happen at the worst possible time\", the signpost \"This changes how we work in a few concrete ways\", \"Flags are not free\", and a neat three-item benefits list ending \"And we can run experiments\". B is leaner and more specific (\"turning off a flag is faster than building and deploying a revert\", \"dead paths nobody dares delete\")."
+  },
+  "pair09": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {"A": [], "B": []},
+    "why": "B is the flatter, more evenly hedged explanation (\"that number of levels grows very slowly as the table grows\", \"You pay for this on writes and in storage\"). A gives a number (\"about four or five page reads\") and closes with an instruction (\"Drop the ones it ignores.\"). A's \"At a thousand rows you will never notice. At fifty million you will.\" is a slightly staged contrast, so the gap is modest."
+  },
+  "pair10": {
+    "more_machine": "A",
+    "prefer": "B",
+    "invented": {"A": [], "B": []},
+    "why": "Both are over-sectioned for 150 words, but A's sections are hollow: \"`poll_payments` is not removed. It remains as a fallback alongside the webhook, at the lower frequency above.\" and \"The two things to check are...\" just re-list the bullets. B's equivalent sections carry reasons (\"so a status change still reaches us if a webhook delivery never arrives\", \"since that endpoint accepts requests from outside\")."
+  },
+  "pair11": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {
+      "A": [],
+      "B": [
+        "Asserts as fact that the team's releases are stressful and that this coupling is behind most of it",
+        "Asserts that the team's revert and redeploy 'takes long enough that users feel it'"
+      ]
+    },
+    "why": "B states unsupported things about the team as fact (\"That coupling is behind most of what makes our releases stressful\", \"takes long enough that users feel it\") and uses the stock concession \"Flags do have a cost.\" plus \"We can keep that under control with one rule\". A keeps its example explicitly hypothetical (\"Suppose a new checkout flow starts throwing errors\") and proposes something concrete (\"a single flag read from config\"). B's inventions are soft claims, not a specific incident."
+  },
+  "pair12": {
+    "more_machine": "A",
+    "prefer": "B",
+    "invented": {"A": [], "B": []},
+    "why": "A pads with a tautology (\"so requests that do not carry a valid signature are not acted on\") and a dramatic closer that goes past the given facts (\"the only thing standing between the public internet and the `notifier` trigger\"). B stays inside the five facts in plain sentences, with one useful consequence: \"so status changes are no longer tied to the polling interval\". A's reviewer pointer is the one thing B lacks."
+  }
+}

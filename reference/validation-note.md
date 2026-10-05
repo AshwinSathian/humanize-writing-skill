@@ -1,4 +1,167 @@
-# Validation Sample: Skill-Loaded vs. Baseline
+# Validation
+
+This file has two parts. The first covers 2.0.0 (October 2026). The
+second is the 1.x validation, kept as it was written, with a note on
+what is wrong with it.
+
+## 2.0.0: blind comparison against no skill and against 1.1.1
+
+### Method
+
+Three writing tasks (`reference/validation-2.0.0/prompts.md`): an
+explanation of database indexes, an internal blog section arguing for
+feature flags, and a pull request description written from five supplied
+facts. Each was written by fresh subagents on two models (Sonnet and
+Opus) under three conditions: no skill, the 1.1.1 `SKILL.md`, and the
+2.0.0 `SKILL.md`. That gives 18 passages and 12 pairs, each pairing a
+2.0.0 passage with the no-skill or 1.1.1 passage for the same task and
+model.
+
+The pairs were shuffled and labeled A and B by a seeded script. Two
+judges (one Opus subagent, one Sonnet subagent) saw only the pairs file.
+For each pair they said which passage read more like unedited model
+output, which they would rather publish, and whether either stated
+anything as fact that the task had not supplied. The pairs, the key, and
+both judges' full answers are in `reference/validation-2.0.0/`.
+
+### Result
+
+| Comparison (6 pairs each) | Judge | Read as more machine-written | Preferred |
+|---|---|---|---|
+| 2.0.0 against no skill | Opus | no skill 5, 2.0.0 1 | 2.0.0 5, no skill 1 |
+| 2.0.0 against no skill | Sonnet | no skill 5, 2.0.0 1 | 2.0.0 5, no skill 1 |
+| 2.0.0 against 1.1.1 | Opus | 1.1.1 3, 2.0.0 2, tie 1 | 2.0.0 5, 1.1.1 1 |
+| 2.0.0 against 1.1.1 | Sonnet | 1.1.1 4, 2.0.0 2 | 2.0.0 4, 1.1.1 2 |
+
+Both judges flagged invented facts in the 1.1.1 feature-flag passage
+(Sonnet): a release "two weeks ago" that shipped "the new checkout flow
+together with the tax library upgrade", an afternoon lost to the revert.
+The writer had been given no facts about the team. Both judges also
+flagged the no-skill Opus passage for stating the team's history as fact
+("takes long enough that users feel it"). Neither judge flagged an
+invented fact in any 2.0.0 passage. The 2.0.0 Opus passage for the same
+task cites the Knight Capital loss of 2012, which is a real event.
+
+### Where 2.0.0 lost
+
+- **Database indexes, Opus, against 1.1.1.** The Opus judge preferred
+  1.1.1, which explained a B-tree lookup with a phone-book analogy and a
+  worked figure, and called the 2.0.0 passage "uniformly flat textbook
+  summary". The Sonnet judge preferred 2.0.0 on the same pair and called
+  the analogy stock. `SKILL.md` now says to keep an analogy that
+  explains how something works; this pair suggests the rule does not
+  always produce one.
+- **Pull request description, Sonnet, against no skill.** Both judges
+  preferred the no-skill passage. The 2.0.0 passage was a "Summary" and
+  "Changes" skeleton whose bullets repeated the summary.
+- **Pull request description, Sonnet, against 1.1.1.** The judges split.
+- "Flags have a cost." appears as a paragraph opener in 2.0.0 passages
+  although `SKILL.md` lists "The cost is real." as an announcement to
+  avoid.
+
+### This was the third attempt, and the first two were worse
+
+The numbers above are for the 2.0.0 text as released. Two earlier drafts
+of the 2.0.0 rules were tested the same way against the same no-skill
+and 1.1.1 passages.
+
+- **First draft.** The Sonnet passage for the feature-flag task invented
+  an incident ("Last quarter's checkout redesign... the rollback took
+  about forty minutes"). The draft had folded "never invent" into the
+  end of another rule. It was restored as its own rule and widened
+  (`reference/validation-2.0.0/first-draft-fabrication-sample.md`).
+- **Second draft.** Judged blind, it did no better than 1.1.1: the Opus
+  judge called it more machine-like in 5 of 6 pairs and preferred 1.1.1
+  in 4. It lost every pull-request pair. The judges' reasons were
+  restatement ("so requests that do not carry a valid signature are not
+  acted on"), sections that repeated the bullet list, a dramatic closing
+  claim that went past the supplied facts, and flat prose where 1.1.1
+  had used an analogy. The earlier-round files in
+  `reference/validation-2.0.0/` hold this round.
+- **Changes made for the released text.** A "say each thing once" rule.
+  A rule that a rewrite or a fact-bound task adds no claim. An exception
+  for explanatory analogy. The negated-contrast rule narrowed to cases
+  where the reader does not hold the view. Plus the 20 findings of an
+  adversarial review of the draft
+  (`reference/validation-2.0.0/adversarial-review.md`), which found,
+  among other things, that the rewritten examples had added facts their
+  originals did not contain.
+
+### Measured features
+
+`scripts/measure.py` over the three passages per condition, concatenated:
+
+| | Sonnet none | Sonnet 1.1.1 | Sonnet 2.0.0 | Opus none | Opus 1.1.1 | Opus 2.0.0 |
+|---|---|---|---|---|---|---|
+| Mean sentence length (words) | 17.1 | 17.0 | 18.7 | 18.2 | 16.3 | 17.5 |
+| Share of sentences of 30+ words | 0.06 | 0.15 | 0.07 | 0.09 | 0.10 | 0.12 |
+| Share of sentences of 5 or fewer words | 0.03 | 0.09 | 0.07 | 0.16 | 0.13 | 0.12 |
+| Paragraphs ending on a sentence of 8 or fewer words | 0 | 2 | 2 | 2 | 5 | 2 |
+| Trailing "-ing" clauses per 1,000 words | 5.3 | 1.8 | 1.8 | 3.4 | 1.6 | 1.7 |
+| Noun-suffix words per 1,000 words | 14.2 | 8.9 | 10.7 | 5.2 | 3.2 | 6.7 |
+| Em dashes per 1,000 words | 0 | 0 | 0 | 0 | 0 | 0 |
+| Negated contrasts (regex) per 1,000 words | 0 | 0 | 0 | 0 | 0 | 0 |
+
+The script separates the conditions much less than the judges did. On
+these tasks neither model used an em dash or a pattern-matchable negated
+contrast in any condition, including with no skill, so the two most
+discussed tells did not appear at all. The one clear difference is the
+short paragraph ending, which is the one-line closer: five in the Opus
+1.1.1 passages against two with no skill and two with 2.0.0. What the
+judges reacted to (restatement, stock transitions such as "The speedup
+comes at a price, and writes pay it", invented history) is not something
+this script counts.
+
+### Scope cases
+
+Nine tasks run by one Sonnet subagent with the 2.0.0 `SKILL.md`
+(`reference/validation-2.0.0/scope/`): the seven cases from the 1.x
+round, a retirement toast, and a request to use a mandated buzzword
+house style. The outputs were read by the Claude session that wrote the
+skill, not by a blind judge.
+
+| Case | Result |
+|---|---|
+| API reference entries | Parallel structure kept across all three |
+| One-line code comment | One plain line, nothing added |
+| Limitation-of-liability clause | Standard hedges and the enumeration of legal theories kept |
+| Fiction opening | Invented detail and a fragment kept |
+| Typo fix in a user's own paragraph | Only the typo changed; hedges, dash, and run-on left |
+| French paragraph | Idiomatic French, no English tell list applied |
+| Marketing hero copy | Specific, no invented figures or customers, ends on a call to action. A run against an earlier draft of the rules had dropped the close; the Scope wording was changed and this run kept it |
+| Retirement toast | Emotional close kept, no invented anecdotes. It thanks her twice |
+| Mandated buzzwords | Used as required and not changed back |
+
+### Limits
+
+- Twelve pairs and two judges is a small sample. A different seed or
+  task could move any row of the result table by one or two pairs.
+- The judges are Claude models. They may share blind spots with the
+  writers, and Russell et al. (2025) found practiced human readers to be
+  better at this than most automated judges.
+- The released rules were revised after seeing how earlier drafts did on
+  these same three tasks. The result is therefore partly fitted to them,
+  and no held-out task was run afterward.
+- The no-skill and 1.1.1 passages were generated once and reused across
+  rounds. Only the 2.0.0 passages were regenerated.
+- All three tasks are technical writing in English, on two Claude
+  models. Nothing here says how the skill behaves on other models.
+- No AI detector was run. The skill makes no claim about detector
+  scores.
+- The scope cases were not judged blind.
+
+## 1.x validation (August 2026), kept for the record
+
+The rest of this file is the validation note as shipped with 1.1.x. Read
+it with three corrections in mind. The judge knew which passage was
+which and scored against the skill's own tell list. Several of the
+"skill-loaded" samples it praises contain patterns that 2.0.0 treats as
+tells: "Variable names get clearer. Functions get shorter.", "Speed
+compounds:", "That's the main value, not politeness or box-checking."
+And its verdict that the skill "measurably changes output" was true
+without showing that the change was an improvement.
+
+### Validation Sample: Skill-Loaded vs. Baseline
 
 Four evaluation rounds. The first three are topic/model coverage
 (three different topics, three different models: default/Sonnet, Haiku,

@@ -18,37 +18,35 @@ interconnected digital landscape.
 
 ## After (humanized rewrite)
 
-Rate limiting exists because one misbehaving client can take down an API
-for everyone else. A retry loop with no backoff, a scraper hitting the
-same endpoint a thousand times a second, a bug that turns one user action
-into ten thousand requests. Any of these can exhaust a shared database
-connection pool in seconds, and once that pool is exhausted, every other
-client is degraded too, not just the offender. A rate limit turns that
-failure mode into a 429 response for one client instead of an outage for
-everyone. Good rate limiting isn't just "reject requests over N per
-minute": it returns a clear error with a `Retry-After` header, publishes
-the actual limits so clients can plan around them, and degrades gracefully
-rather than failing hard the instant a threshold is crossed. It adds a bit
-of complexity to the API surface. That complexity is cheaper than the
-outage it prevents.
+Rate limiting exists because one misbehaving client can overwhelm
+resources that every client shares, and the failure then spreads to all
+of them. With a limit in place, that client's extra requests are rejected
+(HTTP 429) and the others keep working. A well-designed limit returns a
+clear error, publishes its limits, and degrades gradually. It also makes
+the API more complex.
 
 ## What changed, and why
 
-- **Cut "plays a crucial role"** and replaced it with the actual causal
-  mechanism (why one bad client can take everything else down), a
-  specific, checkable claim instead of a generic significance statement.
-- **Removed "it's not just X, it's Y"** and the closing "testament to...
-  cannot be overstated" formula. Both filled space without adding
-  information.
-- **Replaced the rule-of-three abstract list** ("fair usage, protect
-  infrastructure, foster a predictable system") with one worked, concrete
-  scenario (retry loop, scraper, buggy client) that shows the mechanism
-  instead of asserting it.
-- **Cut stock transitions** ("Additionally," "Furthermore"). The
-  sentences now connect because one fact leads to the next, not because a
-  connective word announces a relationship.
-- **Used the plain verb**, as in "exists because," "can take down," "turns
-  that failure mode into," rather than "plays a role in maintaining."
-- **Varied sentence length deliberately**, including one short sentence
-  ("That complexity is cheaper than the outage it prevents.") as a
-  closing beat, instead of a uniform stack of similarly-weighted sentences.
+- "Plays a crucial role in maintaining the stability and reliability" is
+  replaced by the mechanism the original gives two sentences later: one
+  client overwhelming shared resources.
+- "It's not just a defensive measure, it's a foundational component" and
+  the closing "testament to... cannot be overstated" are cut. Neither
+  carried information.
+- The first list ("ensure fair usage, protect backend infrastructure, and
+  foster a more predictable system") is cut. It says the same thing as
+  the mechanism, three ways.
+- The second list stays at three items. The original names three
+  properties of a good rate limit and each is a different property.
+- "Additionally" and "Furthermore" are gone.
+- The verbs are plain: "exists because", "are rejected", "keep working".
+- 429 is the standard HTTP status for a rate-limited request, so adding
+  it is not invention. Which resource runs out, and how fast, the
+  original does not say, and the rewrite does not guess. A writer who
+  knows the system should name it.
+
+Version 1.x of this rewrite added a retry loop, a scraper, a database
+connection pool exhausted "in seconds", and a `Retry-After` header. All
+are plausible and none was in the original. It also ended on "That
+complexity is cheaper than the outage it prevents", a closing line
+that repeats the paragraph as a saying.

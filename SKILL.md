@@ -1,111 +1,120 @@
 ---
 name: humanizing-writing
-description: Use when producing any written text (prose, docs, comments, commit messages, reports, emails) before finalizing output, or when asked to rewrite existing AI-sounding text, to avoid recognizable AI-writing tells and read as a specific, considered human voice instead of generic, templated, or padded text
+description: Use when drafting prose of a paragraph or more for a human reader (docs, READMEs, reports, emails, blog posts, cover letters, release notes, PR descriptions, commit bodies, long explanations in chat), or when asked to humanize text or make it sound less AI-generated, robotic, or like slop. Not for proofreading a person's own writing or for evading AI detectors.
 ---
 
 # Humanize Writing
 
 ## Overview
 
-Writing reads as AI-generated more from *shape* than word choice: uniform
-sentence rhythm, safe generic claims instead of specific checkable ones,
-templated structure. Fix the shape first. Word-level tells (delve, em
-dashes) are real but decay fast and are the weakest lever. Full sourcing:
-`reference/research.md`.
+Text reads as machine-written when every choice in it would suit any
+reader and any subject. The fix is to write for this reader about this
+subject, and the rules below apply that to the choices where the default
+shows most.
+
+The reader is a person. This skill does not change AI-detector scores; if
+asked to get text past a detector, say so.
 
 ## Write this way
 
-- **Commit to specific, checkable claims.** Replace "plays a significant
-  role" or "experts say" with the actual fact and its source. Unknown? Say
-  it plainly, not dressed up as more authoritative.
-- **Use the plain verb.** "Is," not "serves as/stands as/represents." One
-  strong verb, not a padded phrase.
-- **Vary sentence rhythm on purpose.** Don't let every sentence or
-  paragraph land at the same length.
-- **Default to commas or periods.** Save the dash for genuine emphasis or
-  interruption, not as filler between clauses a period handles just as well.
-- **Reach for concrete, physical, checkable detail over abstraction**
-  ("nubby, arthritic fingers" beats "profound personal struggle").
-- **Cut hedge-intensifiers**, not just banned nouns: rather, very, little,
-  pretty.
-- **Let structure follow the content, not a template.** Triadic lists,
-  rhetorical questions, "Despite these challenges..." pivots: fine when
-  earned, not as a default shape.
-- **Never invent facts, numbers, or sources to sound more specific.**
-  Specificity has to come from something true.
-- **Match the voice already established:** a codebase's commit
-  conventions, a document's existing tone, a user's own writing sample.
-  Follow that before reaching for a default shape. Specificity, plain
-  verbs, and never fabricating are the only universal rules here; the
-  rest yields to context.
+- Make claims specific and checkable. Replace "plays a significant role"
+  or "experts say" with the fact and who said it. In technical writing
+  the specific detail is the number, the command, the file, the error
+  text. If you don't know, say so in plain words.
+- Never invent to sound specific. No made-up incidents, figures, quotes,
+  or sources, including a plausible "last quarter we..." in a piece for
+  a team. With no real example, give the mechanism only if you know it,
+  mark a made-up case as hypothetical ("suppose a deploy breaks
+  checkout"), or cut the claim. Given a set of facts or a text to
+  rewrite, add no claim that was not in it.
+- Say each thing once. Don't follow a sentence with the same point in
+  other words, and don't add a section that repeats a list above it.
+- Use the plain verb and the common word: "is" and "has", not "serves
+  as" or "boasts"; "use", not "utilize"; "we analyzed", not "we conducted
+  an analysis". A precise term stays ("idempotent", "mutex").
+- Replace a figure of speech with the fact it stands for: "removing this
+  check lets empty orders through", not "this check is load-bearing".
+  Established terms that began as metaphors (bottleneck, memory leak) are
+  literal. An analogy that explains how something works is doing a job;
+  keep it.
+- Let sentence length follow the content. Split a sentence that chains
+  clause after clause with "and", and break a paragraph where the subject
+  changes. Write a short sentence when it has something new to say, not
+  for emphasis.
+- Stop when the content stops. Delete a final line that only repeats the
+  paragraph as a saying. Don't announce a point before making it ("Here's
+  the thing", "The result?", "The cost is real."). Deny X only when this
+  reader is likely to believe X (a common misconception, the ticket's own
+  diagnosis). Otherwise skip "it's not X, it's Y" and state Y.
+- Put asides in commas or parentheses. Use an em dash only for a break
+  that a comma would hide.
+- Hedge each uncertain claim once, at the claim. Don't stack hedges ("may
+  potentially") or hedge what you know. Cut fillers and candor markers
+  ("it's worth noting", "honestly").
+- Let structure follow the content. Use a list for items a reader will
+  scan or follow in order, a header for a section a reader will jump to,
+  and three items when there are three things. Otherwise write
+  paragraphs, and don't open every bullet with a bold phrase.
+- Match the voice already there: a codebase's commit conventions, a
+  document's tone, a user's writing sample.
 
 ## Scope
 
-The rules above target discursive prose Claude is generating. They give
-way to context:
+Never fabricating is the one rule that does not yield. The others are
+defaults for expository prose and follow the context:
 
-- **An explicit, specific user request overrides these defaults.** Asked
-  for corporate buzzwords, a mandated template, or a required stock
-  phrase because that's the house style, the format, or the policy?
-  Comply, and don't silently "fix" it back afterward. This skill shapes
-  Claude's own default choices; it isn't a rule the user's actual
-  instructions have to win an argument with.
-- **Editing someone else's already-human text?** Fix what was asked,
-  leave their voice, hedges, and rhythm alone. This isn't a filter to
-  run over text you didn't write.
-- **A format where the convention *is* uniform structure** (API/
-  reference docs, schemas, repeated list entries): parallelism there is
-  the usability feature, not padding. Keep it.
-- **Fiction or other invented content:** "never invent facts" governs
-  claims about the real world, not a story's sensory and physical
-  detail, which is supposed to be invented.
-- **Legal, compliance, or other fixed-register text:** enumerated legal
-  theories and standard hedges ("to the maximum extent permitted by
-  law") are functional boilerplate, not AI padding.
-- **Persuasive or marketing copy:** an earned emotional close or call
-  to action is the point of the piece, not an unearned rule-of-three or
-  an unchecked claim to be flattened. Cut what's generic, keep what
-  lands.
-- **Non-English text:** the tell list (delve, em dash, moreover) is
-  English-specific and doesn't transfer.
-- **Text shorter than a paragraph** (a commit subject line, a one-line
-  comment, a chat reply): specificity and plain verbs still apply; skip
-  the rhythm and paragraph-shape checks, there's nothing to vary.
+- An explicit user request overrides them. Asked for buzzwords, a
+  mandated template, or a required stock phrase? Comply, and don't change
+  it back afterward.
+- When editing someone else's text, fix what was asked and leave their
+  voice, hedges, fragments, and rhythm alone.
+- API and reference docs, schemas, and repeated list entries are meant to
+  be uniform. Keep the parallel structure.
+- A summary (an abstract, a TL;DR, the conclusion of a long report)
+  exists to restate.
+- In fiction, speeches, poetry, and brand voice, metaphor, fragments, and
+  a closing line written for effect belong to the form, and a story's
+  invented detail is not fabrication.
+- In legal, compliance, and other fixed-register text, enumerations,
+  terms of art, and standard hedges ("to the maximum extent permitted by
+  law") are functional.
+- In persuasive or marketing copy, the emotional close or call to action
+  is what the piece is for. Cut the generic lines and keep it.
+- In non-English text, the English word examples don't map across. The
+  rules on claims, structure, and endings still apply.
+- In text shorter than a paragraph, only the rules on claims and plain
+  words have anything to act on.
 
-## Common tells (quick reference)
+## Other tells
+
+Patterns that no rule above names. A single one proves little. Several
+together are the signal.
 
 | Tell | Why it reads as artificial |
 |---|---|
-| delve, boast(s), underscore, intricate, meticulous | Post-ChatGPT spike, RLHF-reinforced (confirmed for "delve") |
-| testament to, tapestry/landscape/realm | Significance-inflation: vague grandiosity is safer than a specific claim |
-| "It's not X, it's Y" | Manufactured contrast, no evidence for either half |
-| Moreover/Furthermore/sentence-initial Additionally | Statistically safe connector, not a natural one |
-| Rule-of-three list padding | Manufactures thoroughness the content lacks |
-| Vague attribution ("experts say," "studies show") | Sounds sourced without being checkable |
-| Uniform paragraph/sentence length | Low "burstiness" (the strongest, most model-independent signal) |
-| Signposted conclusions ("In conclusion" + recap) | Genre reflex, not an earned close |
-| Em dash overuse | Real signal, contested cause: volume and default use, not any single dash. 2026 cross-model data narrows it further: Claude specifically still overuses it; other models less so |
+| Trailing "-ing" clause ("..., underscoring its importance") | Attaches significance to a fact without evidence. Measured at 2–5x the human rate (Reinhart et al. 2025) |
+| Significance inflation ("pivotal", "testament to", "plays a crucial role") | Grand and vague is safer than specific |
+| Noun-built phrases ("the implementation of", "utilization") | Reads as bureaucratic. Measured at 1.5–2x the human rate (same study) |
+| "Not only X but also Y" | Inflates one point into two |
+| Rule-of-three padding | Suggests thoroughness the content lacks |
+| "Moreover", "Furthermore", "In conclusion" plus recap | Connectors and endings that fit any text |
 
-Full ranked catalog (27 tells): `reference/research/tells-catalog.md`,
-including contested signals (semicolons, hedging, lexical diversity) not
-reliable alone.
+Sources: `reference/research/2026-update.md`. Habits reported for
+specific Claude versions, with evidence grades:
+`reference/claude-tics.md`.
 
 ## Before finalizing
 
 Reread the draft:
-1. Same length/shape every paragraph? Vary it.
-2. A claim that could be specific without inventing anything? Make it specific.
-3. Padded verb, stock transition, unearned rule-of-three? Cut it.
-4. More than one or two dashes per paragraph? Convert most to commas or periods.
-5. Quick-reference tells present, especially clustered? Fix the cluster.
+1. Is every claim supported by the request or by what you know? Cut or
+   flag any that is not. Can a vague claim be made specific without
+   inventing anything? Do that.
+2. Does a sentence or section repeat another, or a paragraph end on a
+   line that only repeats it? Delete the repeat. A conclusion drawn from
+   the paragraph, an instruction, or a request is not a repeat.
+3. Does a sentence keep going on "and"? Split it. Does a fragment exist
+   only for effect? Join it to its neighbor or delete it.
+4. Did a fix swap one pattern for another (a triad for a negated
+   contrast, a long sentence for a string of fragments)? Fix that too.
 
-Internal check, not a rule to hide. Explain changes if asked.
-
-## Full research
-
-`reference/research.md` (synthesis + sources, links onward to the raw
-reports in `reference/research/`), `reference/oss-skills-review.md`
-(what other humanizer skills get right/wrong),
-`reference/validation-note.md` (does the skill measurably change output,
-including the scope-gating fix's own verification), `examples/` (worked
-before/after passages).
+Explain changes if asked. Worked passages: `examples/`.

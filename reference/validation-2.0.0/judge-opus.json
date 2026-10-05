@@ -1,0 +1,74 @@
+{
+  "pair01": {
+    "more_machine": "A",
+    "prefer": "B",
+    "invented": {"A": [], "B": []},
+    "why": "A leans on stock pivots, \"None of this is free.\" and \"So the habit to build is to index for the queries you actually run\", plus the tacked-on contrast \"not scanning a table\". B is plainer and more exact (\"a table with eight indexes does roughly nine writes per insert\"), though it omits the low-selectivity caveat A covers."
+  },
+  "pair02": {
+    "more_machine": "A",
+    "prefer": "B",
+    "invented": {"A": [], "B": []},
+    "why": "A is uniformly flat textbook summary (\"its cost grows with the table: ten times the rows means ten times the work\"). B explains the mechanism with a worked figure and a reason, \"open to the middle, throw away half, repeat\" and \"because following pointers one row at a time is slower than reading straight through\", which teaches the stated audience more."
+  },
+  "pair03": {
+    "more_machine": "A",
+    "prefer": "B",
+    "invented": {"A": [], "B": []},
+    "why": "A uses the bolded-label bullet template (\"**New endpoint:**\", \"**Signature check:**\") and restates the endpoint twice; it also adds unsupplied reasoning (\"could therefore sit unnoticed for up to 30 seconds\", \"whether or not anything had changed\"), which is inference rather than invention. B is tighter and its \"Please look hardest at the signature verification\" is useful to a reviewer."
+  },
+  "pair04": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {"A": [], "B": []},
+    "why": "B opens by restating the prompt (\"A database index speeds up reads because it lets the engine skip most of the table\") and uses signposted pivots, \"The speedup comes at a price, and writes pay it\" and \"There is a planning cost too\". B is also looser on accuracy (\"Every INSERT, UPDATE, or DELETE must also update each index\"), where A correctly limits it to \"an `UPDATE` to an indexed column\"."
+  },
+  "pair05": {
+    "more_machine": "A",
+    "prefer": "B",
+    "invented": {"A": [], "B": []},
+    "why": "A's staged two-beat \"At a thousand rows you will never notice. At fifty million you will.\" is a familiar model flourish, and \"Drop the ones it ignores\" is a clipped closer. B is duller but includes the selectivity point (\"An index helps only when the query selects a small share of the rows\") that an untuned developer most needs; the margin is small."
+  },
+  "pair06": {
+    "more_machine": "A",
+    "prefer": "B",
+    "invented": {"A": [], "B": []},
+    "why": "A spreads about 150 words across four headings (\"Before\", \"What changed\", \"Why the cron job stays\", \"Reviewing\") and uses \"deserves the closest read\", which reads as template-filling; it also adds unsupplied assumptions such as \"that the provider calls when a payment's status changes\" and \"`notifier` acted on whatever each poll returned\". B says the same in less space and stays closer to the given facts."
+  },
+  "pair07": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {"A": [], "B": []},
+    "why": "B is the default \"## Summary\" / \"## Changes\" skeleton with bullets that repeat the summary almost word for word. A reads as someone writing it out (\"The `poll_payments` job is not removed\", \"in case a webhook is missed\"), though both run short of 150 words and A's \"no longer tied to the polling interval\" is a mild inference."
+  },
+  "pair08": {
+    "more_machine": "tie",
+    "prefer": "A",
+    "invented": {"A": [], "B": ["The signature check \"is the only thing authenticating requests to the new endpoint\" (not among the supplied facts)"]},
+    "why": "Both use the same \"## Summary\" / \"## Changes\" skeleton with nearly identical bullets, so I cannot separate them on machine feel. B's \"Notes\" section is helpful in form but asserts \"it is the only thing authenticating requests to the new endpoint\", which breaks the ONLY-these-facts constraint, so A is the safer one to publish."
+  },
+  "pair09": {
+    "more_machine": "A",
+    "prefer": "B",
+    "invented": {"A": [], "B": []},
+    "why": "A has the tells: \"Both are slow and stressful, and both usually happen at the worst possible time\", \"This changes how we work in a few concrete ways\", \"Flags are not free\". B is more specific and makes a real choice at the end (\"a plain config-based implementation for one upcoming feature would let us judge the value before choosing a vendor\"), though its \"no revert, no new build, and no waiting on the pipeline\" triplet is also a tell."
+  },
+  "pair10": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {"A": [], "B": ["That the coupling \"is behind most of what makes our releases stressful\"", "That a revert and full redeploy \"takes long enough that users feel it\""]},
+    "why": "B is generic and asserts unsupplied team history as fact (\"most of what makes our releases stressful\", \"takes long enough that users feel it\"). A grounds the cost in a real, verifiable public case (\"Knight Capital lost $440 million in 45 minutes in 2012\") and makes a sharper point with \"which staging can't reproduce\"."
+  },
+  "pair11": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {"A": [], "B": []},
+    "why": "B performs candour with signposts, \"There is a cost, and I'd rather name it now\" and \"I think that trade is worth making\", and a rhetorical triplet ending \"nobody hunting for the last good commit while the incident channel fills up\". A is plainer and backs its warning with the Knight Capital example; B's \"dead code with a switch attached\" is a good line, so the gap is modest."
+  },
+  "pair12": {
+    "more_machine": "B",
+    "prefer": "B",
+    "invented": {"A": ["A release \"two weeks ago\" that shipped \"the new checkout flow together with the tax library upgrade\"", "That error rates rose and the team could not tell which change caused it", "That the revert \"cost us most of an afternoon and a rebuilt release branch\""], "B": []},
+    "why": "B reads as the generic model draft (\"That makes each release a larger bet than it needs to be\", \"Flags have a cost, and we should plan for it\"). A sounds more like a person but only by fabricating an incident, \"Two weeks ago we shipped the new checkout flow together with the tax library upgrade\", when the writer had no facts about the team, so I could not publish it."
+  }
+}

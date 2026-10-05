@@ -554,12 +554,14 @@ Economist*, July 30, 2026
 paywalled, corroborated via Daring Fireball's linked summary and
 independent coverage from Fast Company and others). *Tier 2.* A
 1.2-million-word, 55,940-sentence comparison of GPT, Claude, Gemini,
-and Grok rewrites of Economist journalism against a 1950–2024 human
-baseline found the tell has already narrowed to one model: only Claude
+and Grok rewrites of Economist journalism against human journalism and
+novels from 1950 to 2022 found the tell has already narrowed to one model: only Claude
 still exceeds human em-dash frequency; ChatGPT uses markedly fewer em
 dashes than humans do. The same study corroborates entry #10 (negative
 parallelism) and identifies new candidate tells worth tracking but not
-yet added to this catalog pending independent corroboration:
+yet added to this catalog pending independent corroboration (2.0.0:
+corroboration for nominalization and sentence length is recorded in
+`2026-update.md` §1, and both are now in `SKILL.md`):
 Latinate/rare vocabulary, nominalization ("conduct an analysis" for
 "analyse"), and a preference for "and"-linked long sentences over
 commas/semicolons/parentheses. **Practical implication for this skill
