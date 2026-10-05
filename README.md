@@ -1,8 +1,43 @@
 # humanizing-writing
 
-A Claude Code skill that changes how Claude writes (prose, docs, comments,
-commit messages, reports) so the output reads as a specific, considered
-human voice instead of generic, templated, AI-shaped text.
+[![Release](https://img.shields.io/github/v/release/AshwinSathian/humanize-writing-skill)](https://github.com/AshwinSathian/humanize-writing-skill/releases) [![License: MIT](https://img.shields.io/github/license/AshwinSathian/humanize-writing-skill)](LICENSE) [![skills.sh](https://img.shields.io/badge/skills.sh-listed-black)](https://skills.sh/ashwinsathian/humanize-writing-skill)
+
+[Project page](https://ashwinsathian.com/projects/humanize-writing-skill) · [Why word lists fail](https://ashwinsathian.com/writing/why-humanize-my-writing-tools-dont-work) (August 2026) · [What changed in 2.0.0, and why](https://ashwinsathian.com/writing/the-ai-tells-moved-my-tool-for-avoiding-them-hadnt) (October 2026)
+
+A Claude Code skill that guides how Claude writes prose (docs, reports,
+emails, posts, PR descriptions) so it does not read as machine-written.
+It applies while Claude is writing, and also when you ask Claude to
+humanize a draft.
+
+## Example
+
+One of four worked examples in `examples/` (full annotations there):
+
+**Before:**
+> Rate limiting plays a crucial role in maintaining the stability and
+> reliability of modern APIs. It's not just a defensive measure — it's a
+> foundational component of good API design... Despite the added
+> complexity it introduces, rate limiting remains a testament to
+> thoughtful, resilient system design.
+
+**After:**
+> Rate limiting exists because one misbehaving client can overwhelm
+> resources that every client shares, and the failure then spreads to all
+> of them. With a limit in place, that client's extra requests are
+> rejected (HTTP 429) and the others keep working... It also makes the
+> API more complex.
+
+The rewrite states the mechanism the original buried, and adds no fact
+the original did not have. `examples/` also has two 2026-style drafts
+(one all fragments and "load-bearing", one a single 61-word sentence)
+and a note in each file on what the 1.x rewrite got wrong.
+
+In a blind comparison, two model judges each preferred text written with
+this skill to text written without it in 5 of 6 pairs. The sample is
+small and the judges are Claude models; the pairs, the losses, and the
+limits are in `reference/validation-note.md`.
+
+## How it was built
 
 It's built from three research passes (academic detection literature,
 editorial/practitioner style guides, and a cross-referenced catalog of 27
@@ -127,29 +162,6 @@ scripts/measure.py             # descriptive prose metrics for comparing passage
 skill triggers. The `reference/` directory carries the depth: full source
 citations, credibility notes, and the reasoning behind every design
 decision, so nothing in `SKILL.md` has to be taken on faith.
-
-## Example
-
-One of four worked examples in `examples/` (full annotations there):
-
-**Before:**
-> Rate limiting plays a crucial role in maintaining the stability and
-> reliability of modern APIs. It's not just a defensive measure — it's a
-> foundational component of good API design... Despite the added
-> complexity it introduces, rate limiting remains a testament to
-> thoughtful, resilient system design.
-
-**After:**
-> Rate limiting exists because one misbehaving client can overwhelm
-> resources that every client shares, and the failure then spreads to all
-> of them. With a limit in place, that client's extra requests are
-> rejected (HTTP 429) and the others keep working... It also makes the
-> API more complex.
-
-The rewrite states the mechanism the original buried, and adds no fact
-the original did not have. `examples/` also has two 2026-style drafts
-(one all fragments and "load-bearing", one a single 61-word sentence)
-and a note in each file on what the 1.x rewrite got wrong.
 
 ## Research
 
