@@ -1,0 +1,698 @@
+:root {
+  --paper: #f2f4f3;
+  --sheet: #ffffff;
+  --ink: #16181d;
+  --muted: #555b66;
+  --rule: #d3d8d5;
+  --blue: #2347c5; /* editor's blue pencil: notes, links, kept text */
+  --red: #c42d26; /* red pencil: deletions */
+  --red-wash: #c42d2614;
+  --blue-wash: #2347c512;
+  --sans: var(--font-sans), system-ui, sans-serif;
+  --serif: var(--font-serif), Georgia, serif;
+  --mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #121418;
+    --sheet: #1a1d23;
+    --ink: #e9ebe7;
+    --muted: #a0a7b1;
+    --rule: #2d323a;
+    --blue: #9db2ff;
+    --red: #ff8f85;
+    --red-wash: #ff8f851f;
+    --blue-wash: #9db2ff1a;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 2rem;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 7vw, 4.75rem);
+  font-variation-settings: 'wdth' 82;
+  line-height: 0.98;
+}
+
+h2 {
+  font-size: clamp(1.65rem, 3.4vw, 2.4rem);
+  font-variation-settings: 'wdth' 88;
+}
+
+h3 {
+  font-size: 1.125rem;
+  letter-spacing: -0.005em;
+  line-height: 1.3;
+}
+
+p,
+ul,
+ol,
+dl,
+table,
+pre {
+  margin: 0;
+}
+
+p + p,
+.prose > * + * {
+  margin-top: 1em;
+}
+
+.prose > h2 {
+  margin-top: 2.25em;
+}
+
+.prose > h3 {
+  margin-top: 1.75em;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.2em;
+}
+
+.prose li + li {
+  margin-top: 0.4em;
+}
+
+a {
+  color: var(--blue);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+code,
+pre,
+kbd {
+  font-family: var(--mono);
+  font-size: 0.88em;
+}
+
+.sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.5rem 0.9rem;
+  z-index: 10;
+}
+
+.skip:focus {
+  top: 1rem;
+}
+
+/* ---------- frame ---------- */
+
+.wrap {
+  max-width: 71rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.1rem, 4vw, 2.5rem);
+}
+
+.masthead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  padding-block: 1.4rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.wordmark {
+  font-weight: 700;
+  font-variation-settings: 'wdth' 85;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 1.125rem;
+}
+
+.masthead nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.4rem;
+  list-style: none;
+  padding: 0;
+}
+
+.masthead nav a {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.masthead nav a:hover,
+.masthead nav a[aria-current='page'] {
+  text-decoration: underline;
+  text-decoration-color: var(--blue);
+  text-decoration-thickness: 2px;
+}
+
+footer.colophon-foot {
+  margin-top: 6rem;
+  border-top: 1px solid var(--rule);
+  padding-block: 2rem 3rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+footer.colophon-foot ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1.4rem;
+  list-style: none;
+  padding: 0;
+}
+
+/* A row is body text plus a margin column. The margin holds what an
+   editor would write there: where the claim beside it comes from. */
+.row {
+  display: grid;
+  gap: 1rem 3rem;
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+  border-top: 1px solid var(--rule);
+}
+
+.row > .body {
+  max-width: 41rem;
+  min-width: 0;
+}
+
+.row > .body > * + * {
+  margin-top: 1em;
+}
+
+.row > .body > h2 + * {
+  margin-top: 1.1rem;
+}
+
+.row > .body > .eras,
+.row > .body > .rules,
+.row > .body > .installs,
+.row > .body > .eras + p,
+.row > .body > .rules + p,
+.row > .body > .installs + p {
+  margin-top: 1.75rem;
+}
+
+.margin {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--blue);
+  font-size: 0.98rem;
+  line-height: 1.45;
+  display: grid;
+  gap: 0.7rem;
+  align-content: start;
+}
+
+.margin a {
+  color: inherit;
+}
+
+@media (min-width: 62rem) {
+  .row {
+    grid-template-columns: minmax(0, 41rem) minmax(0, 17rem);
+    justify-content: space-between;
+  }
+  .margin {
+    padding-top: 3.6rem;
+  }
+}
+
+/* ---------- hero ---------- */
+
+.hero {
+  padding-block: clamp(2.5rem, 7vw, 5rem) clamp(2rem, 5vw, 3.5rem);
+}
+
+.hero h1 {
+  max-width: 13em;
+}
+
+.lede {
+  margin-top: 1.5rem;
+  max-width: 38rem;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.page-head {
+  padding-block: clamp(2.5rem, 6vw, 4rem) 0.5rem;
+}
+
+.page-head h1 {
+  font-size: clamp(2.1rem, 5.5vw, 3.6rem);
+  max-width: 16em;
+}
+
+.page-head .lede {
+  margin-bottom: 2.5rem;
+}
+
+/* ---------- command ---------- */
+
+.cmd {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--ink);
+  background: var(--sheet);
+  max-width: 41rem;
+}
+
+.cmd pre {
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  padding: 0.85rem 1rem;
+  line-height: 1.7;
+  white-space: pre;
+}
+
+.cmd button {
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  min-width: 5.2rem;
+  border: 0;
+  border-left: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+  cursor: pointer;
+}
+
+.cmd button:hover {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: var(--sheet);
+}
+
+.hero .cmd {
+  margin-top: 2rem;
+}
+
+.under-cmd {
+  margin-top: 0.7rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.installs {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.6rem;
+  margin-top: 1.5rem;
+}
+
+.installs h3 {
+  margin-bottom: 0.5rem;
+}
+
+/* ---------- manuscript ---------- */
+
+.manuscript {
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+}
+
+.views {
+  border: 0;
+  padding: 0;
+  margin: 0 0 -1px;
+  display: flex;
+  gap: 0;
+}
+
+.views label {
+  position: relative;
+  padding: 0.55rem 1.05rem;
+  border: 1px solid var(--rule);
+  border-bottom-color: var(--ink);
+  background: transparent;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--muted);
+}
+
+.views label + label {
+  margin-left: -1px;
+}
+
+.views input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.views label:has(input:checked) {
+  background: var(--sheet);
+  color: var(--ink);
+  border-color: var(--ink);
+  border-bottom-color: var(--sheet);
+  z-index: 1;
+}
+
+.views label:has(input:focus-visible) {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.sheet {
+  background: var(--sheet);
+  border: 1px solid var(--ink);
+  padding: clamp(1.25rem, 4vw, 2.75rem);
+}
+
+.panel {
+  display: none;
+  gap: 1.5rem 3rem;
+}
+
+.manuscript:has(#view-before:checked) .panel[data-view='before'],
+.manuscript:has(#view-marked:checked) .panel[data-view='marked'],
+.manuscript:has(#view-after:checked) .panel[data-view='after'] {
+  display: grid;
+}
+
+@media (min-width: 62rem) {
+  .panel {
+    grid-template-columns: minmax(0, 36rem) minmax(0, 17rem);
+    justify-content: space-between;
+  }
+}
+
+.specimen {
+  font-family: var(--serif);
+  font-size: clamp(1.125rem, 1.6vw, 1.3rem);
+  line-height: 1.7;
+  max-width: 36rem;
+}
+
+.specimen del {
+  color: var(--red);
+  text-decoration-thickness: 1.5px;
+  background: var(--red-wash);
+}
+
+.specimen del > span {
+  color: var(--muted);
+}
+
+.specimen mark {
+  background: var(--blue-wash);
+  color: inherit;
+  box-shadow: inset 0 -2px 0 var(--blue);
+}
+
+.specimen sup {
+  font-family: var(--sans);
+  font-size: 0.62em;
+  font-weight: 700;
+  line-height: 0;
+  padding-left: 0.15em;
+  color: var(--red);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.specimen mark + sup {
+  color: var(--blue);
+}
+
+.notes {
+  list-style: none;
+  padding: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.4;
+  display: grid;
+  gap: 0.75rem;
+  align-content: start;
+}
+
+.notes li {
+  display: grid;
+  grid-template-columns: 1.5rem 1fr;
+  color: var(--red);
+}
+
+.notes li[data-kept] {
+  color: var(--blue);
+}
+
+.notes b {
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 0.8rem;
+  line-height: 1.75;
+}
+
+.tally {
+  margin-top: 1.25rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+/* ---------- tables and lists ---------- */
+
+.facts {
+  display: grid;
+  border-top: 1px solid var(--ink);
+}
+
+.facts > div {
+  display: grid;
+  gap: 0.1rem 1.5rem;
+  padding-block: 0.7rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.facts dt {
+  font-weight: 600;
+}
+
+.facts dd {
+  margin: 0;
+}
+
+@media (min-width: 40rem) {
+  .facts > div {
+    grid-template-columns: 11rem 1fr;
+  }
+}
+
+.scroll {
+  overflow-x: auto;
+  margin-top: 1.5rem;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.97rem;
+  font-variant-numeric: tabular-nums;
+}
+
+th,
+td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.6rem 1rem 0.6rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+thead th {
+  border-bottom: 1px solid var(--ink);
+  font-weight: 600;
+}
+
+tbody th {
+  font-weight: 600;
+}
+
+.wide table {
+  min-width: 52rem;
+}
+
+.eras {
+  display: grid;
+  gap: 1.5rem 2.5rem;
+  margin-top: 1.75rem;
+}
+
+@media (min-width: 40rem) {
+  .eras {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.eras h3 {
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--ink);
+  margin-bottom: 0.6rem;
+}
+
+.eras ul {
+  list-style: none;
+  padding: 0;
+}
+
+.eras li {
+  padding-block: 0.3rem;
+}
+
+.eras .old li {
+  color: var(--muted);
+  text-decoration: line-through;
+  text-decoration-color: var(--red);
+}
+
+.rules {
+  display: grid;
+  gap: 1.3rem;
+  margin-top: 1.5rem;
+}
+
+.rules dt {
+  font-weight: 700;
+}
+
+.rules dd {
+  margin: 0.15rem 0 0;
+}
+
+.tell {
+  padding-block: 1.3rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.tell h3 {
+  font-size: 1.2rem;
+}
+
+.tell .eg {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.08rem;
+  margin-top: 0.3rem;
+}
+
+.tell p {
+  margin-top: 0.5rem;
+}
+
+.tell .meta {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.qa {
+  padding-block: 1.6rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.qa h2,
+.qa h3 {
+  font-size: 1.3rem;
+  font-variation-settings: 'wdth' 92;
+  line-height: 1.2;
+  margin-bottom: 0.6rem;
+}
+
+.example {
+  padding-block: 3rem;
+  border-top: 1px solid var(--rule);
+}
+
+.example .pair {
+  display: grid;
+  gap: 1.5rem 3rem;
+  margin-block: 1.5rem;
+}
+
+@media (min-width: 52rem) {
+  .example .pair {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.example .pair h3 {
+  margin-bottom: 0.6rem;
+}
+
+.example .before {
+  color: var(--muted);
+}
+
+.example .after {
+  align-self: start;
+  background: var(--sheet);
+  border: 1px solid var(--ink);
+  padding: 1.25rem 1.5rem;
+}
+
+.example .specimen {
+  font-size: 1.1rem;
+}
+
+.cta-line {
+  margin-top: 1.5rem;
+  font-weight: 600;
+}

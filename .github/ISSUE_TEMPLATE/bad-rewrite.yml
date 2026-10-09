@@ -1,0 +1,35 @@
+name: The skill mangled something
+description: A rewrite or draft that came out worse, or a rule that fired where it should not have
+labels: [false-positive]
+body:
+  - type: textarea
+    id: before
+    attributes:
+      label: Before
+      description: The text or the prompt you gave Claude. Remove anything private.
+    validations:
+      required: true
+  - type: textarea
+    id: after
+    attributes:
+      label: After
+      description: What Claude wrote with the skill loaded.
+    validations:
+      required: true
+  - type: textarea
+    id: wrong
+    attributes:
+      label: What is wrong with it
+      description: For example, it cut a closing line the piece needed, flattened an analogy, or added a fact.
+    validations:
+      required: true
+  - type: input
+    id: genre
+    attributes:
+      label: Kind of writing
+      placeholder: API reference, marketing page, cover letter, fiction
+  - type: input
+    id: model
+    attributes:
+      label: Model and skill version
+      placeholder: Claude Opus 5, skill 2.1.0
