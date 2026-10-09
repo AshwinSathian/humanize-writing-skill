@@ -216,8 +216,8 @@ export default function Research() {
               </li>
               <li>
                 The rule names made-up incidents, figures, quotes, and sources. It doesn&rsquo;t name a claim about
-                how the reader&rsquo;s team works today. The wording hasn&rsquo;t been changed yet, because a change
-                made after seeing this passage would need a task the rules weren&rsquo;t fitted to.
+                how the reader&rsquo;s team works today. A change to the wording was then tested on new tasks and
+                not adopted; that test is the next section.
               </li>
               <li>
                 On database indexes against 1.1.1, the Haiku judge preferred 1.1.1 for its running example and the
@@ -246,6 +246,66 @@ export default function Research() {
         </aside>
       </section>
 
+      <section className="row" aria-labelledby="held-out">
+        <div className="body">
+          <h2 id="held-out">A rule change we tested and didn&rsquo;t make</h2>
+          <p>
+            The obvious response to the Haiku slip was to add a sentence to the rule against inventing, so that it
+            named claims about how the reader&rsquo;s team works today. Would that have been a fix, or a reaction to
+            one passage? We wrote the test down before running it: four tasks never used before, three writer models,
+            three judges, and a bar the new wording had to clear.
+          </p>
+          <div className="scroll">
+            <table>
+              <caption className="sr">Held-out test of a candidate rule wording against 2.1.0</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Held-out test, 10 October 2026</th>
+                  <th scope="col">2.1.0</th>
+                  <th scope="col">Candidate</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Passages flagged for invention by two or more judges, of 9</th>
+                  <td>2</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <th scope="row">Pairs preferred by the Haiku, Opus, and Sonnet judges, of 12</th>
+                  <td>4, 5, 6</td>
+                  <td>8, 7, 6</td>
+                </tr>
+                <tr>
+                  <th scope="row">Control passages that hedged or dropped a supplied fact, of 3</th>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            The bar was a drop of two flagged passages. The candidate managed one, which a second draw could reverse,
+            so the rule was left alone and the skill stays at 2.1.0.
+          </p>
+          <p>
+            The test was still worth running. It showed the slip wasn&rsquo;t a one-off &mdash; on tasks the rules
+            were never tuned on, 2 of 9 passages said something about the team that nobody had told the writer. And on
+            the control task, where the prompt itself said to add no other facts about the team, two of three models
+            added one anyway, under both versions. If an instruction in the task doesn&rsquo;t stop it, one more
+            sentence in the rule probably wouldn&rsquo;t either. So when Claude drafts something addressed to your own
+            team, check what it says about that team.
+          </p>
+        </div>
+        <aside className="margin" aria-label="Sources">
+          <a href={blob('reference/held-out-invention-test/preregistration.md')}>
+            The test as written down beforehand
+          </a>
+          <a href={blob('reference/held-out-invention-test/result.md')}>The result, with the flagged passages quoted</a>
+          <a href={blob('reference/held-out-invention-test/candidate-rule.md')}>The wording that was tried</a>
+        </aside>
+      </section>
+
       <section className="row" aria-labelledby="limits">
         <div className="body prose">
           <h2 id="limits">Limits</h2>
@@ -266,6 +326,10 @@ export default function Research() {
             <li>
               The Haiku round is six pairs, one passage per task and condition, on the same three tasks. One of its
               judges is the model that wrote the passages.
+            </li>
+            <li>
+              The held-out test has nine passages per version on tasks written to invite claims about a team, so its
+              2 in 9 isn&rsquo;t a rate for ordinary writing.
             </li>
             <li>No AI detector was run. The skill makes no claim about detector scores.</li>
             <li>

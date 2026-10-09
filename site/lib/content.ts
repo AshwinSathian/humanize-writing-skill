@@ -46,8 +46,8 @@ export const faqs: Faq[] = [
   },
   {
     q: 'Does it invent facts to make writing sound specific?',
-    a: "It's told not to, in the one rule that has no exceptions, and it mostly holds. The rule was earned the hard way: version 1.x of the skill's own examples added a database connection pool and a Retry-After header that the originals never mentioned, and an early 2.0.0 draft produced an invented incident from \"last quarter\". After the rule was widened, no judge flagged an invented fact in a 2.0.0 passage from Sonnet or Opus. Haiku did slip once — a passage for a team it knew nothing about began a sentence with \"Right now a half-finished feature either sits on a long-lived branch or reaches every user at once\", and two of three judges flagged it. So check any claim about your own team or system before you publish.",
-    more: { href: '/research#haiku', label: 'The Haiku round' },
+    a: "It's told not to, in the one rule that has no exceptions, and it mostly holds. The rule was earned the hard way: version 1.x of the skill's own examples added a database connection pool and a Retry-After header that the originals never mentioned, and an early 2.0.0 draft produced an invented incident from \"last quarter\". After the rule was widened, no judge flagged an invented fact in a 2.0.0 passage from Sonnet or Opus. It does slip, though. In a later test on four new tasks, 2 of 9 passages written with the skill said something about the reader's team that nobody had supplied, such as \"We currently write postmortems for the incidents that hurt, and skip the ones that were over quickly\". A reworded rule brought that to 1 of 9, short of the bar set before the test, so the rule was left as it is. Check any claim about your own team or system before you publish.",
+    more: { href: '/research#held-out', label: 'The test, and why the rule did not change' },
   },
   {
     q: 'Does it work for languages other than English?',

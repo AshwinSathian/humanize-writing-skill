@@ -8,7 +8,7 @@ const homeFaqs = faqs.slice(1, 3).concat(faqs[5])
 
 // scripts/measure.py over the <p> text of /, /tells, /research, /compare,
 // /faq in the built site. Re-run and update after editing copy.
-const measured = { sentence: '15.9', short: '1 in 8', dashes: '3.3', transitions: 'none' }
+const measured = { sentence: '16.2', short: '1 in 8', dashes: '3.1', transitions: 'none' }
 
 export default function Home() {
   return (
@@ -214,7 +214,9 @@ export default function Home() {
             description, because the skill&rsquo;s version was a &ldquo;Summary&rdquo; and &ldquo;Changes&rdquo;
             skeleton whose bullets repeated the summary. In the Haiku round, two of three judges flagged the
             skill&rsquo;s feature-flag passage for stating the team&rsquo;s current practice as fact &mdash; the kind of
-            thing the rule against inventing is there to stop.
+            thing the rule against inventing is there to stop. A follow-up on four new tasks found the same slip in 2
+            of 9 passages, and a reworded rule didn&rsquo;t clear the bar we&rsquo;d set for it, so the rule stands
+            and the advice is to check what a draft says about your own team.
           </p>
           <p>
             Eighteen pairs is a small sample, and the judges are Claude models. No AI detector was run.

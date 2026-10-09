@@ -111,3 +111,10 @@ No second candidate wording will be tried against these four tasks.
   were written to invite claims about the team, which is the condition
   the rule is for, and it also makes C larger than it would be on
   ordinary tasks.
+
+## Result (added after the test)
+
+C was 2 and K was 1. Condition 1 failed, conditions 2 and 3 held, and
+the rule stays as it is. Counts, quotes, and what the test did and did
+not show: `result.md`. Nothing above this heading was changed after the
+test ran; `git log -p` on this file shows that.

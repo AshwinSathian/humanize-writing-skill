@@ -18,6 +18,18 @@ been left as it is until a change can be tested on a task the rules
 were not fitted to. Method, files, and limits:
 `reference/validation-note.md` and `reference/validation-2.1.0-haiku/`.
 
+**A rule change tested and not made, 10 October 2026.** A candidate
+wording extended the rule against inventing to cover present-tense
+claims about the reader's team. The test was pre-registered before any
+passage was written: four tasks never used before, three writer models,
+three judges, and a fixed decision rule. Under 2.1.0, 2 of 9 passages
+were flagged for invention by two or more judges; under the candidate,
+1 of 9. The rule required a drop of two, so the candidate was not
+adopted. The judges preferred the candidate slightly more often and
+found no over-correction. On a control task that told writers to add no
+facts about the team, two of three models added one under each version.
+Files and the full result: `reference/held-out-invention-test/`.
+
 **Site and README.** `site/` holds the source of
 <https://humanize.ashwinsathian.com>. The README now leads with the
 install commands and the example. Plugin and marketplace manifests

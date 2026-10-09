@@ -1,9 +1,49 @@
 # Validation
 
-This file has three parts. The first is a round on Claude Haiku, run
-on 10 October 2026 against the 2.1.0 text. The second covers 2.0.0
-(October 2026) on Sonnet and Opus. The third is the 1.x validation, kept
-as it was written, with a note on what is wrong with it.
+This file has four parts. The first is a pre-registered test of one
+proposed rule change, run on 10 October 2026 and not adopted. The second
+is a round on Claude Haiku, run the same day against the 2.1.0 text. The
+third covers 2.0.0 (October 2026) on Sonnet and Opus. The fourth is the
+1.x validation, kept as it was written, with a note on what is wrong
+with it.
+
+## A rule change that was tested and not made (10 October 2026)
+
+The Haiku round below found a 2.1.0 passage that stated a team's current
+practice as fact. The rule against inventing names incidents, figures,
+quotes, and sources, and a past-tense example; it does not name a
+present-tense claim about the reader's team. A candidate wording added
+one sentence to cover that.
+
+The test was fixed before it ran
+(`reference/held-out-invention-test/preregistration.md`): four tasks
+never used before, a decision rule, and a control task that supplied
+team facts to check that the candidate did not make writers hedge or
+drop them. Haiku, Sonnet, and Opus each wrote all four tasks under 2.1.0
+and under the candidate (24 passages, 12 blind pairs, three judges).
+
+| | 2.1.0 | Candidate |
+|---|---|---|
+| Passages flagged for invention by two or more judges, of 9 | 2 | 1 |
+| Pairs preferred, Haiku judge | 4 | 8 |
+| Pairs preferred, Opus judge | 5 | 7 |
+| Pairs preferred, Sonnet judge | 6 | 6 |
+| Control passages flagged for over-correction, of 3 | 0 | 0 |
+
+The rule required the candidate to cut the flagged count by at least
+two. It cut it by one, which a second draw could reverse, so the
+candidate was not adopted and `SKILL.md` is unchanged.
+
+Two things came out of it that matter more than the verdict. The slip
+reproduced: on held-out tasks, 2 of 9 passages written under 2.1.0
+invented something about the team. And on the control task, where the
+prompt itself said to add no other facts about the team, two of three
+models added one anyway under each version. An instruction in the task
+did not stop it, which is a reason to doubt that a sentence in the rule
+would. Anyone using the skill for a piece addressed to their own team
+should check what the draft says about that team.
+
+Counts, quotes, and limits: `reference/held-out-invention-test/result.md`.
 
 ## 2.1.0 on Claude Haiku: blind comparison against no skill and against 1.1.1
 

@@ -1,0 +1,74 @@
+{
+ "pair01": {
+  "model": "haiku",
+  "task": "h2",
+  "A": "a",
+  "B": "b"
+ },
+ "pair02": {
+  "model": "opus",
+  "task": "h2",
+  "A": "b",
+  "B": "a"
+ },
+ "pair03": {
+  "model": "opus",
+  "task": "h1",
+  "A": "b",
+  "B": "a"
+ },
+ "pair04": {
+  "model": "haiku",
+  "task": "h4",
+  "A": "a",
+  "B": "b"
+ },
+ "pair05": {
+  "model": "haiku",
+  "task": "h3",
+  "A": "b",
+  "B": "a"
+ },
+ "pair06": {
+  "model": "sonnet",
+  "task": "h3",
+  "A": "b",
+  "B": "a"
+ },
+ "pair07": {
+  "model": "haiku",
+  "task": "h1",
+  "A": "b",
+  "B": "a"
+ },
+ "pair08": {
+  "model": "sonnet",
+  "task": "h1",
+  "A": "b",
+  "B": "a"
+ },
+ "pair09": {
+  "model": "opus",
+  "task": "h3",
+  "A": "b",
+  "B": "a"
+ },
+ "pair10": {
+  "model": "opus",
+  "task": "h4",
+  "A": "b",
+  "B": "a"
+ },
+ "pair11": {
+  "model": "sonnet",
+  "task": "h2",
+  "A": "a",
+  "B": "b"
+ },
+ "pair12": {
+  "model": "sonnet",
+  "task": "h4",
+  "A": "a",
+  "B": "b"
+ }
+}

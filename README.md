@@ -110,7 +110,13 @@ no-skill passage with both judges: the 2.0.0 one was a "Summary" and
 "Changes" skeleton whose bullets repeated the summary. In the Haiku
 round, two of three judges flagged the skill's feature-flag passage for
 stating the team's current practice as fact, which the rule against
-inventing should have stopped.
+inventing should have stopped. A follow-up test on four new tasks
+found the same slip in 2 of 9 passages. A reworded rule brought that to
+1 of 9, which was short of the bar set before the test ran, so the rule
+was left alone
+([`reference/held-out-invention-test/`](reference/held-out-invention-test/result.md)).
+If Claude drafts something addressed to your own team, check what it
+says about that team.
 
 The samples are small, the judges are Claude models, and the rules were
 revised after earlier drafts did badly on the same three tasks. The
@@ -226,6 +232,7 @@ reference/research/            # raw, fully-cited research reports (academic, ed
 reference/validation-note.md   # blind comparisons against no skill and against 1.1.1 on Haiku, Sonnet, and Opus, with the losses
 reference/validation-2.0.0/    # the blind pairs, the key, both judges' answers, the adversarial review
 reference/validation-2.1.0-haiku/ # the Haiku round: passages, pairs, key, three judges' answers, prompts, scripts
+reference/held-out-invention-test/ # a pre-registered test of one rule change, with the result (not adopted)
 examples/                      # worked before/after passages with annotated fixes
 voices/                        # an example voice profile: one author's habits as numbers and descriptions, no quoted text
 scripts/measure.py             # descriptive prose metrics for comparing passages (stdlib, no verdicts)

@@ -1,0 +1,113 @@
+{
+  "pair01": {
+    "more_machine": "A",
+    "prefer": "B",
+    "invented": {
+      "A": ["Refers to \"what we decided about the payment retry logic\" as if the team has payment retry logic and made a decision about it (borderline: it is used as an example, but not marked hypothetical)"],
+      "B": []
+    },
+    "dropped_or_hedged": {"A": [], "B": []},
+    "why": "A leans on scaffolding such as \"Here is why I think it helps\" and \"Three lines is enough\", and runs well past 150 words. B is tighter and gives the team something to act on: \"by 10:00\", \"starting Monday\", and a stated test for the trial (\"whether blockers were caught sooner and whether anything got missed\"). B's \"Nobody has to sit through a round of status reports to hear about one problem\" sounds like a colleague, and A's \"payment retry logic\" example names a system the task never mentioned."
+  },
+  "pair02": {
+    "more_machine": "tie",
+    "prefer": "B",
+    "invented": {"A": [], "B": []},
+    "dropped_or_hedged": {"A": [], "B": []},
+    "why": "The two are built on the same skeleton (\"My reasons:\", \"What we would lose is the daily face time\") and neither reads clearly more generated than the other. I prefer B because it answers the loss with a concrete remedy, \"I'd keep one call a week for that\", where A only says \"I don't want to wave that away\". A also claims a written blocker \"reaches only the people who can help\", which is not true of a post in a shared channel."
+  },
+  "pair03": {
+    "more_machine": "A",
+    "prefer": "B",
+    "invented": {
+      "A": [],
+      "B": ["\"A week later they remember about half of it\" is a figure with no source (borderline: a general claim, not a claim about this team's record)"]
+    },
+    "dropped_or_hedged": {"A": [], "B": []},
+    "why": "A has more of the tidy, balanced phrasing I associate with model output: \"they are where the information is cheapest\", \"tells us about it at a lower price\", \"It needs four things:\", and the neat closer \"those are the ones we most want to hear about\". B is more specific about what is lost (\"which dashboard showed the problem first, which alert fired late or not at all, and which step in the runbook was wrong\") and ends with an ask the team can accept or reject, \"try this for the next three incidents\". A's Saturday checkout case is clearly marked with \"Suppose\", so I did not count it as invented; B's \"about half\" is the one unsupported number."
+  },
+  "pair04": {
+    "more_machine": "tie",
+    "prefer": "A",
+    "invented": {
+      "A": [],
+      "B": ["\"that wait is the main reason CI feels slow\" is a claim about this team's CI that the task did not supply"]
+    },
+    "dropped_or_hedged": {"A": [], "B": []},
+    "why": "Both use all three supplied facts without hedging, and both read as competent plain explanation with no strong tell either way. A stays inside the brief and marks its number as conditional (\"If the work splits evenly across four shards\", \"we should measure test timings before we choose a shard count\"). B asserts \"the main reason CI feels slow\", which the task ruled out, and has no heading for a blog section. Both run over 150 words, A more so."
+  },
+  "pair05": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {"A": [], "B": []},
+    "dropped_or_hedged": {"A": [], "B": []},
+    "why": "B has a few stock turns, \"The fix is a fixed rhythm:\" and \"a long stretch of accumulated drift\", and a more generic three-bullet list. A is more useful to an engineer: \"one pull request per group of related packages\", \"Let the test suite be the gate. If it passes and the change is small, merge it\", and the caveat that libraries \"should declare version ranges in the package manifest\". Neither states anything about the team that it could not know."
+  },
+  "pair06": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {"A": [], "B": []},
+    "dropped_or_hedged": {"A": [], "B": []},
+    "why": "The passages are near twins, down to the `^2.3.0` example and \"Updating in one batch means\". B has the emptier connective sentence, \"So the second half of the policy matters as much as the first\", though A has its own \"The remedy is a routine update, not an occasional emergency one\". I prefer A because it adds things a reader can do: install from the lockfile in CI (`npm ci`) and \"If an update breaks something, pin the old version, open a ticket, and move on\". A is noticeably over the 200-word target, which is its main cost."
+  },
+  "pair07": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {"A": [], "B": []},
+    "dropped_or_hedged": {"A": [], "B": []},
+    "why": "Both end on an aphorism, but B has more of them: \"read at 3 a.m.\", \"The last question matters most. A restart fixes the symptom for today\", the three-item list \"the missing alert, the config nobody tested, or the deploy step\", and \"A postmortem with no tickets has not finished its job\". A gives more usable instruction: \"timestamps taken from logs rather than memory\", \"under two pages\", and tickets \"instead of leaving them as sentences at the bottom of a document\". A's own closer, \"Writing one is quick. Skipping it costs the next on-call engineer far more\", is its weakest line."
+  },
+  "pair08": {
+    "more_machine": "A",
+    "prefer": "A",
+    "invented": {
+      "A": [],
+      "B": ["\"We currently write postmortems for the incidents that hurt, and skip the ones that were over quickly\" states how this team works now, which the task did not supply"]
+    },
+    "dropped_or_hedged": {"A": [], "B": []},
+    "why": "A is the more mechanical of the two: \"The first benefit is\", \"The second benefit is\", \"The third is\", then \"To keep the cost low\", and it runs well over 200 words. B is the better piece of writing, with \"which dashboard helped and which one misled us\" and a concrete proposal (\"within a week of resolution\", \"one folder anyone on the team can search\"). But B's whole argument hangs on \"We currently write postmortems for the incidents that hurt\" followed by \"That filter is the problem\", a claim about the team's present practice that I cannot verify, so as written I would publish A."
+  },
+  "pair09": {
+    "more_machine": "tie",
+    "prefer": "A",
+    "invented": {"A": [], "B": []},
+    "dropped_or_hedged": {"A": [], "B": []},
+    "why": "These share headings, the `^2.3.0` example, and an almost identical numbered list, so I cannot separate them on how generated they sound. A makes one extra argument that matters, that a new release, \"including a compromised one, does not reach our builds until we choose to take it\", and it admits the cadence is a guess: \"we should adjust once we see how much review it takes\". B is shorter and closer to 200 words, and its point that \"a dependency only changes in a pull request\" is good, but it adds less."
+  },
+  "pair10": {
+    "more_machine": "tie",
+    "prefer": "A",
+    "invented": {
+      "A": [],
+      "B": ["\"Most pull requests run it more than once, because a push after review starts the suite again\" is a claim about how often this team's pull requests re-run CI, which the task did not supply"]
+    },
+    "dropped_or_hedged": {"A": [], "B": []},
+    "why": "The two are close to the same text, including \"950 minutes\" and \"close to 16 hours\", which is arithmetic on the supplied figures and not invention. The difference is one sentence: A keeps the re-run conditional (\"Any pull request that needs a second push after review or a failed test adds another 38 minutes\"), while B states \"Most pull requests run it more than once\" as fact. Both label the four-runner figure \"As an illustration\" and say they have not measured the split, and both are over 150 words."
+  },
+  "pair11": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {
+      "A": ["The example question \"who was working on the billing change last week?\" implies a billing change the task never mentioned (borderline: it reads as an illustration but is not marked as one)"],
+      "B": []
+    },
+    "dropped_or_hedged": {"A": [], "B": []},
+    "why": "B has the clearer tells: \"The idea is simple.\", \"decide together\", and it contradicts itself on length, \"a trial of a few weeks\" and then \"three weeks\". A is more specific (\"by 10:00 each morning\") and more candid about the trade: \"a standup works well for the person speaking and poorly for everyone else, who mostly wait for their turn\" and \"What we'd lose is the chance to talk\". A's \"billing change\" example is the one thing I would cut or generalise before posting."
+  },
+  "pair12": {
+    "more_machine": "tie",
+    "prefer": "A",
+    "invented": {
+      "A": ["\"any change pushed after review comments starts the wait again\" asserts how this team's CI is triggered (borderline)"],
+      "B": [
+        "\"Those tests pass today only because they run in order\" and \"give each runner its own database\" speak as if the suite is known to have order-dependent tests and a database",
+        "\"If a run fails, the fix and the second run cost another 38 minutes or more\" asserts the cost of re-runs for this team (borderline: follows from the supplied 38 minutes)"
+      ]
+    },
+    "dropped_or_hedged": {
+      "A": [],
+      "B": ["Restates the supplied 38 minutes as \"most of an hour\" for every author, which inflates the figure"]
+    },
+    "why": "Both keep all three supplied facts and read much alike, so I call the machine question a tie. A is more careful about what it knows: \"I haven't measured the real split\" and shared-state tests are something parallel runs \"can expose\". B's plan is more concrete (\"start with two runners, check that the results match the serial run\", \"split by time, not by file count\"), but it stretches 38 minutes into \"most of an hour\" and writes about the team's tests and database as known facts, which the brief told writers not to do."
+  }
+}

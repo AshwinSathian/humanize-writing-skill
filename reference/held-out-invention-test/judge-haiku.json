@@ -1,0 +1,86 @@
+{
+  "pair01": {
+    "more_machine": "A",
+    "prefer": "B",
+    "invented": {"A": [], "B": []},
+    "dropped_or_hedged": {"A": [], "B": []},
+    "why": "A reads stiffer and more padded: \"I would like us to try\" and \"Here is why I think it helps\" plus the tidy aside \"the people who speak last often have the least time left\". B is more concrete and natural (\"by 10:00\", \"starting Monday\", \"Reply in the thread with any objections before Monday\") and invents nothing; the task supplied no facts, so nothing is dropped."
+  },
+  "pair02": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {"A": [], "B": []},
+    "dropped_or_hedged": {"A": [], "B": []},
+    "why": "B's reasons are a parallel triad (\"cuts into the morning... awkward for anyone in a different time zone or on a different schedule\") that reads templated. A names the trade-off in a human voice (\"I don't want to wave that away\") and gives a clear decision rule (\"If nobody objects by Friday, I'll start us off on Monday\"). B adds a new proposal (\"keep one call a week\") that the task did not ask for."
+  },
+  "pair03": {
+    "more_machine": "A",
+    "prefer": "B",
+    "invented": {"A": [], "B": []},
+    "dropped_or_hedged": {"A": [], "B": []},
+    "why": "A leans on tidy framing (\"The argument for the small ones is that they are where the information is cheapest\", \"Postmortems should name systems and decisions, not people to blame\"). B is more concrete about what gets lost (\"which dashboard showed the problem first, which alert fired late or not at all\") and ends with a specific trial (\"try this for the next three incidents\"). Neither states a team fact; A's hypothetical Saturday outage is clearly framed as a supposition."
+  },
+  "pair04": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {"A": [], "B": ["\"that wait is the main reason CI feels slow\" is an unsupplied claim about the team's experience"]},
+    "dropped_or_hedged": {"A": [], "B": []},
+    "why": "B has the more formulaic rhetoric, e.g. \"That last condition is the real work\" and \"This is the change I would make first.\" A uses all three supplied facts, and its hedge is tied to the real uncertainty (\"The real gain depends on how evenly the shards divide, so we should measure test timings\"). B's \"main reason CI feels slow\" asserts a cause the task never gave."
+  },
+  "pair05": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {"A": [], "B": []},
+    "dropped_or_hedged": {"A": [], "B": []},
+    "why": "B is more formulaic: \"The fix is a fixed rhythm\", \"a long stretch of accumulated drift\", \"the pile\". A adds a substantive caveat that B lacks (\"Libraries that other teams install are a separate case... they should declare version ranges in the package manifest\"). Neither states an unsupplied team fact."
+  },
+  "pair06": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {"A": [], "B": []},
+    "dropped_or_hedged": {"A": [], "B": []},
+    "why": "B's closer is slick rhetoric (\"a regression has a small set of suspects, and the rest of the month stays free of surprise changes\"). A is more practical, naming concrete install commands (\"npm ci\") and a rollback step (\"pin the old version, open a ticket, and move on\"). Both state only hypothetical failures."
+  },
+  "pair07": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {"A": ["\"our tracker\" presumes a tracker the task did not mention (minor)"], "B": []},
+    "dropped_or_hedged": {"A": [], "B": []},
+    "why": "B is rhetorically polished, with \"The last question matters most\" and \"A postmortem with no tickets has not finished its job.\" A is more specific and usable (\"Put the timeline first, with timestamps taken from logs rather than memory\", \"Keep each postmortem under two pages\"), though its closer \"Writing one is quick. Skipping it costs...\" is also stock."
+  },
+  "pair08": {
+    "more_machine": "A",
+    "prefer": "A",
+    "invented": {"A": [], "B": ["\"We currently write postmortems for the incidents that hurt, and skip the ones that were over quickly\" is an unsupplied claim about the team's present practice"]},
+    "dropped_or_hedged": {"A": [], "B": []},
+    "why": "A's three numbered benefits (\"The first benefit... The second... The third\") are a classic model structure. B is the stronger rhetoric, but it asserts how the team currently works, which the task never supplied. A stays within what a writer could know and proposes rather than describes."
+  },
+  "pair09": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {"A": [], "B": []},
+    "dropped_or_hedged": {"A": [], "B": []},
+    "why": "Both use the same heading scaffold, but B's line \"a dependency only changes in a pull request, where it gets reviewed and tested like any other change and can be reverted on its own\" is more formulaic. A is more candid about its own choice (\"I'd suggest weekly, and we should adjust once we see how much review it takes\"). Neither asserts team facts."
+  },
+  "pair10": {
+    "more_machine": "tie",
+    "prefer": "A",
+    "invented": {"A": ["\"I haven't measured how evenly our suite divides\" asserts the team's past work (minor)"], "B": ["\"Most pull requests run it more than once\" is an unsupplied figure about team behaviour", "\"I have not measured how evenly ours would divide\" asserts the team's past work (minor)"]},
+    "dropped_or_hedged": {"A": [], "B": []},
+    "why": "Both use all three supplied facts and both compute 950 minutes from 25 PRs times 38 minutes. B's \"Most pull requests run it more than once, because a push after review starts the suite again\" is an invented claim about how the team works. A keeps to the conditional (\"Any pull request that needs a second push... adds another 38 minutes\") and treats its estimate as one (\"treat that as an estimate\")."
+  },
+  "pair11": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {"A": [], "B": []},
+    "dropped_or_hedged": {"A": [], "B": []},
+    "why": "B opens with the stock \"The idea is simple\" and uses the framing \"A live standup asks everyone to stop at the same moment\". A is plainer and more specific (\"by 10:00 each morning\", \"a blocker that needs discussion should become a short call that day\"). Both are otherwise fine, and neither states an unsupplied fact."
+  },
+  "pair12": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {"A": ["\"I haven't measured the real split\" asserts the team's past work (minor)"], "B": ["\"Those tests pass today only because they run in order\" is an unsupplied claim about the current suite"]},
+    "dropped_or_hedged": {"A": [], "B": []},
+    "why": "B's \"every author spends most of an hour between pushing a change and learning whether it passed\" and its tidy run of clauses read more polished. B also asserts that the current tests \"pass today only because they run in order\", which the task never gave. A uses all three facts and proposes a concrete trial (\"start with a trial on one branch and compare the run times\")."
+  }
+}
