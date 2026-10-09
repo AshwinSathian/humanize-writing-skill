@@ -68,6 +68,13 @@ defaults for expository prose and follow the context:
   it back afterward.
 - When editing someone else's text, fix what was asked and leave their
   voice, hedges, fragments, and rhythm alone.
+- When drafting in a person's own voice from their writing sample or a
+  voice profile, their habits outrank the rules above. If they use
+  dashes, rhetorical questions, stock idioms, or "not X but Y", the
+  draft does too, at about their rate, and the checklist below does not
+  undo it. Take rhythm and connectives from the sample, not content or
+  opinions. Example profile, to be read only when writing for that
+  author: `voices/ashwin-sathian.md`.
 - API and reference docs, schemas, and repeated list entries are meant to
   be uniform. Keep the parallel structure.
 - A summary (an abstract, a TL;DR, the conclusion of a long report)

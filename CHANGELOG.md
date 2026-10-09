@@ -1,5 +1,43 @@
 # Changelog
 
+## 2.1.0
+
+Adds one Scope rule and one example file. The other rules are unchanged.
+
+**Voice.** When drafting in a person's own voice from their writing
+sample or a voice profile, that person's habits now outrank the style
+rules, except the rule against fabricating. Before this, the skill
+removed dashes, negated contrasts, one-line endings, and stock idioms
+even when they were the author's own. `voices/ashwin-sathian.md` is an
+example profile for the skill's author: sentence-length and pronoun
+counts from about 55,000 words of his writing, and descriptions of his
+habits. It contains no quoted text and is meant only for drafts under
+his name.
+
+**Test.** Fresh model instances wrote a tutorial section and a film
+note under 2.0.0, under 2.0.0 with the profile, and under 2.0.0 with an
+added instruction to write "80% of the way to ASD-STE100". One model
+judge, shown the pieces unlabelled beside real passages by the author,
+ranked the profile drafts closest to him on both tasks and the STE
+drafts farthest. The profile drafts moved toward his use of "we" and
+of questions, and after one revision of the profile matched his rate of
+contractions. They did not match his sentence length (15 words on
+average against his 17 to 18, with far fewer long sentences) or his
+dashes (none against five to six per 1,000 words). An early profile
+draft also invented a first-person experience. The profile now warns
+against that by name.
+
+That is two tasks, one judge, and one writer model, and the second
+profile round was checked by counts and not re-judged. The pieces and
+the judge's packet are not published because the packet contains the
+author's unpublished writing.
+
+**Not adopted.** A Simplified Technical English filter was considered
+after a suggestion by Andrej Karpathy in October 2026 and left out. In
+the test above it cut average sentence length to 11 or 12 words with
+little variation, and Wikipedia's "Signs of AI writing" page now lists
+shorter sentences of 8 to 20 words as a habit of mid-2026 models.
+
 ## 2.0.0
 
 The rules were rewritten against 2026 sources, and the rewrite was

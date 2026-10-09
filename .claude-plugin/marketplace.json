@@ -11,7 +11,7 @@
       "name": "humanizing-writing",
       "source": ".",
       "description": "Guides Claude to write prose that does not read as machine-written, for human readers. Rules on claims, sentence shape, and endings, grounded in cited 2026 research. Not a detector-evasion tool.",
-      "version": "2.0.0",
+      "version": "2.1.0",
       "author": {
         "name": "Ashwin Sathian",
         "url": "https://ashwinsathian.com/"

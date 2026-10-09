@@ -155,6 +155,7 @@ reference/research/            # raw, fully-cited research reports (academic, ed
 reference/validation-note.md   # blind comparison against no skill and against 1.1.1, with the losses
 reference/validation-2.0.0/    # the blind pairs, the key, both judges' answers, the adversarial review
 examples/                      # worked before/after passages with annotated fixes
+voices/                        # an example voice profile: one author's habits as numbers and descriptions, no quoted text
 scripts/measure.py             # descriptive prose metrics for comparing passages (stdlib, no verdicts)
 ```
 
