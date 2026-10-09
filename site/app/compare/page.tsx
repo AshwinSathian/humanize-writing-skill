@@ -17,8 +17,8 @@ export default function Compare() {
         <h1>How it compares with other humanizer skills</h1>
         <p className="lede">
           The four most-used alternatives are rewrite tools that you run over a finished draft. humanizing-writing
-          applies while Claude is writing, loads about 1,150 words per use, and says where its rules stop. It also has a
-          smaller test behind it than blader/humanizer does. The table is from a survey in October 2026.
+          applies while Claude is writing, loads about 1,150 words per use, and says where its rules stop. Its test is
+          also weaker than the one blader/humanizer reports. The table is from a survey in October 2026.
         </p>
       </header>
 

@@ -15,7 +15,7 @@ export const faqs: Faq[] = [
   },
   {
     q: 'How is it different from blader/humanizer and other humanizer skills?',
-    a: "Two things, mainly. The widely used ones (blader/humanizer, avoid-ai-writing, stop-slop, no-ai-slop) are rewrite tools you run over a finished draft, and this one applies while Claude is writing. It also has a Scope section that says where the rules stop: API reference, legal text, fiction, marketing copy, someone else's writing, your own voice. And it's weaker than blader's in one clear way — blader reports a blind preference test of 16 out of 16, and ours is 12 pairs judged by two Claude models.",
+    a: "Two things, mainly. The widely used ones (blader/humanizer, avoid-ai-writing, stop-slop, no-ai-slop) are rewrite tools you run over a finished draft, and this one applies while Claude is writing. It also has a Scope section that says where the rules stop: API reference, legal text, fiction, marketing copy, someone else's writing, your own voice. And it's weaker than blader's in one clear way — blader reports a blind preference test of 16 out of 16, and ours is 18 pairs over two rounds, judged by Claude models.",
     more: { href: '/compare', label: 'Full comparison' },
   },
   {
@@ -24,7 +24,7 @@ export const faqs: Faq[] = [
   },
   {
     q: 'Does it work with Codex, Cursor, or models other than Claude?',
-    a: "We don't know. The file is a standard SKILL.md, so an agent that reads that format can load it. But it was written against the habits of Claude models, and every test in the repository ran on Claude Sonnet and Claude Opus. Nothing here says how it behaves on another model.",
+    a: "We don't know. The file is a standard SKILL.md, so an agent that reads that format can load it. But it was written against the habits of Claude models, and every test in the repository ran on Claude Haiku, Sonnet, or Opus. Nothing here says how it behaves on another vendor's model.",
   },
   {
     q: 'Does it ban "delve", em dashes, or other words?',
@@ -41,12 +41,13 @@ export const faqs: Faq[] = [
   },
   {
     q: 'How was it tested, and how far should I trust the result?',
-    a: "Three writing tasks, two Claude models, and three conditions (no skill, version 1.1.1, version 2.0.0), with two model judges comparing shuffled, unlabelled pairs. Each judge preferred the 2.0.0 text to the no-skill text in 5 of 6 pairs. That's a small sample and the judges are Claude models. The rules were also revised after earlier drafts did badly on the same three tasks, so the result is partly fitted to them. The pairs, the key, and the losses are in the repository.",
+    a: "Twice, both times blind. Fresh Claude instances wrote three pieces with no skill, with version 1.1.1, and with the current rules, and model judges compared shuffled, unlabelled pairs. With Sonnet and Opus writing, each of two judges preferred the skill's text to the no-skill text in 5 of 6 pairs. With Haiku writing, three judges each preferred it in 3 of 3. Those are small samples and the judges are Claude models. The rules were also revised after earlier drafts did badly on the same three tasks, so the result is partly fitted to them. The pairs, the keys, and the losses are in the repository.",
     more: { href: '/research', label: 'Method, results, limits' },
   },
   {
     q: 'Does it invent facts to make writing sound specific?',
-    a: "No — that's the one rule with no exceptions. It was earned the hard way: version 1.x of the skill's own examples added a database connection pool and a Retry-After header that the originals never mentioned, and an early 2.0.0 draft produced an invented incident from \"last quarter\". Both are on record in the repository, and the rule against invention was widened because of them.",
+    a: "It's told not to, in the one rule that has no exceptions, and it mostly holds. The rule was earned the hard way: version 1.x of the skill's own examples added a database connection pool and a Retry-After header that the originals never mentioned, and an early 2.0.0 draft produced an invented incident from \"last quarter\". After the rule was widened, no judge flagged an invented fact in a 2.0.0 passage from Sonnet or Opus. Haiku did slip once — a passage for a team it knew nothing about began a sentence with \"Right now a half-finished feature either sits on a long-lived branch or reaches every user at once\", and two of three judges flagged it. So check any claim about your own team or system before you publish.",
+    more: { href: '/research#haiku', label: 'The Haiku round' },
   },
   {
     q: 'Does it work for languages other than English?',
@@ -255,7 +256,7 @@ export const compareRows: CompareRow[] = [
     runs: 'While Claude writes, and on request over a draft',
     mechanism: 'Eleven rules on claims, sentence shape, and endings. About 1,150 words loaded per use',
     scope: 'Ten named cases, from API reference to fiction to your own voice',
-    test: '12 blind pairs, two Claude judges. Losses published',
+    test: '18 blind pairs over two rounds, on Haiku, Sonnet, and Opus. Claude judges. Losses published',
     better: '',
   },
   {

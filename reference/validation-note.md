@@ -1,8 +1,119 @@
 # Validation
 
-This file has two parts. The first covers 2.0.0 (October 2026). The
-second is the 1.x validation, kept as it was written, with a note on
-what is wrong with it.
+This file has three parts. The first is a round on Claude Haiku, run
+on 10 October 2026 against the 2.1.0 text. The second covers 2.0.0
+(October 2026) on Sonnet and Opus. The third is the 1.x validation, kept
+as it was written, with a note on what is wrong with it.
+
+## 2.1.0 on Claude Haiku: blind comparison against no skill and against 1.1.1
+
+The 2.0.0 round below used Sonnet and Opus as writers. This round asks
+whether the result holds on the smallest current Claude model.
+
+### Method
+
+The same three tasks (`reference/validation-2.0.0/prompts.md`), each
+written once by a fresh Haiku subagent under three conditions: no skill,
+the 1.1.1 `SKILL.md`, and the 2.1.0 `SKILL.md`. That gives 9 passages
+and 6 pairs, each pairing the 2.1.0 passage with the no-skill or 1.1.1
+passage for the same task. A seeded script shuffled the pairs and the
+A and B sides. Three judges (Opus, Sonnet, and Haiku subagents) saw only
+the pairs file and answered the same three questions as in the 2.0.0
+round.
+
+Everything is in `reference/validation-2.1.0-haiku/`: the passages, the
+pairs, the key, all three judges' answers, the prompts as sent, and the
+two scripts that build the pairs and count the answers.
+
+Three things differ from the 2.0.0 round. The skill under test is 2.1.0,
+whose rules are those of 2.0.0 plus one Scope entry about voice. The
+writers read the skill from a file where the earlier writers had it
+pasted into the prompt. And every writer was told not to invoke any
+skill and to write in ordinary prose, because the machine that ran the
+test has this skill installed and runs a hook that shortens replies
+(`reference/validation-2.1.0-haiku/prompts.md`).
+
+### Result
+
+| Comparison (3 pairs each) | Judge | Read as more machine-written | Preferred |
+|---|---|---|---|
+| 2.1.0 against no skill | Opus | no skill 3 | 2.1.0 3 |
+| 2.1.0 against no skill | Sonnet | no skill 3 | 2.1.0 3 |
+| 2.1.0 against no skill | Haiku | no skill 3 | 2.1.0 3 |
+| 2.1.0 against 1.1.1 | Opus | 1.1.1 2, tie 1 | 2.1.0 3 |
+| 2.1.0 against 1.1.1 | Sonnet | 1.1.1 3 | 2.1.0 2, tie 1 |
+| 2.1.0 against 1.1.1 | Haiku | 1.1.1 2, tie 1 | 2.1.0 2, 1.1.1 1 |
+
+All three judges flagged the no-skill pull request description for
+claims the five supplied facts did not contain ("status changes can lag
+by up to half a minute", "catches any event that never arrives"). Two
+flagged the 1.1.1 description for the same thing ("nothing is lost for
+good").
+
+### Where 2.1.0 fell short
+
+- **It stated the team's practice as fact.** The 2.1.0 feature-flag
+  passage says "Right now a half-finished feature either sits on a
+  long-lived branch or reaches every user at once." The writer had been
+  told nothing about the team. The Sonnet and Haiku judges both flagged
+  it, and the Opus judge did not. No 2.0.0 passage was flagged for
+  invention in the Sonnet and Opus round, so this is the first recorded
+  miss of the rule against inventing in a 2.x passage. The rule names
+  "made-up incidents, figures, quotes, or sources" and a plausible "last
+  quarter we..."; it does not name a claim about how the reader's team
+  works today. `SKILL.md` has not been changed in response, because a
+  change made after seeing this passage would need a held-out task to
+  test it.
+- **Database indexes, against 1.1.1.** The Haiku judge preferred 1.1.1
+  for its running example and its point about logarithmic cost. The
+  Sonnet judge called the pair a tie. The Opus judge preferred 2.1.0
+  and called it close.
+- **Pull request description, against 1.1.1.** All three judges
+  preferred 2.1.0, but the Opus judge called it "a flat restatement of
+  the bullets" and preferred it "by a narrow margin" because the 1.1.1
+  passage made promises the facts did not support. The 2.1.0
+  description is 107 words against a brief of about 150.
+- **An opinion in a facts-only task.** The same description adds "The
+  signature check is the part to review most closely". Two judges noted
+  it. None counted it as invention.
+- The Opus judge called two of its three preferences over the no-skill
+  passage narrow, and said the no-skill feature-flag passage had the
+  better ending (a pilot with something to measure).
+
+### Measured features
+
+`scripts/measure.py` over the three passages per condition, concatenated:
+
+| | Haiku none | Haiku 1.1.1 | Haiku 2.1.0 |
+|---|---|---|---|
+| Words | 636 | 613 | 549 |
+| Mean sentence length (words) | 16.7 | 17.0 | 17.2 |
+| Share of sentences of 30+ words | 0.03 | 0.14 | 0.09 |
+| Share of sentences of 5 or fewer words | 0.11 | 0.03 | 0.03 |
+| Paragraphs ending on a sentence of 8 or fewer words | 0 | 2 | 1 |
+| Trailing "-ing" clauses per 1,000 words | 1.6 | 0 | 0 |
+| Noun-suffix words per 1,000 words | 9.4 | 13.1 | 10.9 |
+| Em dashes per 1,000 words | 0 | 0 | 0 |
+| Negated contrasts (regex) per 1,000 words | 0 | 0 | 0 |
+
+As in the 2.0.0 round, the script separates the conditions far less
+than the judges did, and no Haiku passage in any condition used an em
+dash or a pattern-matchable negated contrast. What the judges quoted
+was framing: "Every production release is a bet", "The benefits extend
+past safety", "An index is therefore a trade", "First... Second...
+Third", "The costs are real".
+
+### Limits
+
+- Six pairs, one passage per task and condition. One different draw
+  could move any row by a pair.
+- These are the three tasks the 2.0.0 rules were revised against. No
+  held-out task was run.
+- The judges are Claude models, and one of them is the model that wrote
+  the passages.
+- The no-skill and 1.1.1 passages were written fresh for this round, so
+  the numbers are not comparable pair for pair with the 2.0.0 table.
+- English technical writing only. No AI detector was run.
 
 ## 2.0.0: blind comparison against no skill and against 1.1.1
 

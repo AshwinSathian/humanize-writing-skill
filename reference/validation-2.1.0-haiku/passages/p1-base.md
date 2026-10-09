@@ -1,0 +1,7 @@
+A database index is a separate data structure that lets the engine find rows without reading the whole table. Most indexes are B-trees: sorted, balanced trees whose leaves point to rows. When a query filters on an indexed column, the engine walks a few levels of the tree to reach the matching keys and then fetches only those rows. Without an index, the same query triggers a full table scan, reading every row to check the condition. On a table with ten million rows, that difference is often the gap between milliseconds and several seconds.
+
+Indexes also help with sorting and joins. If an index already holds values in the order a query asks for, the engine can skip the sort step. A join on an indexed column can look up matching rows directly instead of comparing every pair.
+
+The cost is paid on writes and storage. Every INSERT, UPDATE, or DELETE that touches an indexed column must also update each index on that table, so a row change on a table with six indexes becomes roughly seven writes. Indexes take disk space, sometimes as much as the table itself, and they compete for memory with the data pages the database wants to keep cached. The query planner also has more options to evaluate, which adds planning work.
+
+An index is therefore a trade. Columns that appear often in WHERE, JOIN, and ORDER BY clauses usually earn their keep, especially on read-heavy tables. Indexing every column does not. Check the query plan with EXPLAIN before adding one, and drop indexes that no query uses.

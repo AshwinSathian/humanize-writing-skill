@@ -1,0 +1,51 @@
+{
+  "pair01": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {"A": [], "B": []},
+    "why": "B announces its own structure (\"That split helps us in three concrete ways\") and then marches through \"First... Second... Third\", followed by the stock pivot \"The costs are real\", which is the default shape of model output. A makes the same case through one worked case clearly marked as hypothetical (\"Suppose a deploy changes how checkout totals are calculated... before anyone sees a wrong price\") and stays near the word count. B's closing pilot proposal is a real strength for an argument piece, so the preference is not lopsided; its \"next checkout change\" presumes a checkout flow but is not stated as a fact."
+  },
+  "pair02": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {
+      "A": [],
+      "B": [
+        "\"downstream processing acted on whatever each poll returned\" (behaviour of the old system not in the facts)",
+        "\"unsigned or tampered requests do not reach the handler\" (rejection behaviour not in the facts)",
+        "\"catches any event that never arrives\" (a guarantee about the fallback not in the facts)"
+      ]
+    },
+    "why": "B attaches a justifying tail to nearly every sentence (\"That works, but it means...\", \"so notifications go out as soon as the provider reports a change\", \"at a much lower request volume than before\"), which is the smooth over-explaining a model does, and it runs to roughly 190 words against a 150-word brief. The task said to use only the listed facts; A sticks to them, adding only reviewer guidance (\"The signature check is the part to review most closely\"), which is an opinion and not a claim about the system. A is on the thin side at about 115 words, but it is the one that follows the brief."
+  },
+  "pair03": {
+    "more_machine": "tie",
+    "prefer": "A",
+    "invented": {
+      "A": [],
+      "B": [
+        "\"Notifications no longer depend on the polling loop\" (not in the facts, and questionable given the poll remains as a fallback)",
+        "\"If a webhook is missed or delayed, the next poll still picks up the change, so nothing is lost for good\" (a guarantee not in the facts)"
+      ]
+    },
+    "why": "Neither stands out as raw model output: A is a flat restatement of the bullets (\"The `poll_payments` job stays in place. It now runs every 15 minutes as a fallback.\"), while B has looser, more spoken phrasing (\"instead of us asking over and over\") but ends each paragraph with an added consequence sentence. B reads better and lands on the word count, but under a facts-only brief its \"nothing is lost for good\" and \"no longer depend on the polling loop\" are promises the facts do not support. That makes A the safer one to publish, by a narrow margin."
+  },
+  "pair04": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {"A": [], "B": []},
+    "why": "B closes with a summarising moral and stock idiom (\"An index is therefore a trade\", \"usually earn their keep\", \"Indexing every column does not\") and reaches for a vague magnitude (\"the gap between milliseconds and several seconds\"). A anchors the explanation in an actual query (`SELECT * FROM orders WHERE customer_id = 42`), gives the mechanism in page reads, and adds the point this audience most needs and B omits: \"An index is not always used. A query that returns most of a table may still scan it\". All figures in both are general domain knowledge, not claims about a specific system."
+  },
+  "pair05": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {"A": [], "B": []},
+    "why": "B again wraps up with a moral (\"So an index is a trade\", \"usually earn their place\") and a tidy triple (\"filters, joins, and sort orders\"), which reads slightly more like default model prose than A's plain statements. It is close on quality: B's \"The work grows with the logarithm of the table size\" and \"run it again afterward\" are both useful. A wins narrowly for covering range conditions and `ORDER BY`, and for the practical warnings that \"An index the application no longer uses still gets maintained on every write\" and that the engine may still scan."
+  },
+  "pair06": {
+    "more_machine": "A",
+    "prefer": "B",
+    "invented": {"A": [], "B": []},
+    "why": "A opens with an extended metaphor and a short punchy follow-up (\"Every production release is a bet... Usually the bet pays off\") and moves between paragraphs with signpost sentences (\"The benefits extend past safety\", \"Flags carry a cost\"), all typical of unedited model prose. B explains the mechanism directly and makes the argument with a concrete hypothetical (\"the new calculation can run for 5% of orders while the old path runs for the rest\"). A's measurable pilot (\"track how often we flip a switch instead of rolling back\") is the better ending for an argument, so the preference for B is narrow."
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "pair01": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {"A": ["Right now a half-finished feature either sits on a long-lived branch or reaches every user at once (claim about the team's current practice)"], "B": ["We could pilot this on the next checkout change (assumes an upcoming checkout change)"]},
+    "why": "B is built on a tidy 'First... Second... Third' triplet with 'The costs are real', which is a stock template. A is more concrete, with the 'Suppose a deploy changes how checkout totals are calculated... 5% of orders' example, and it ends on a specific rule instead of a summary."
+  },
+  "pair02": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {"A": [], "B": ["status changes can lag by up to half a minute", "every check costs a request whether or not anything has changed", "downstream processing acted on whatever each poll returned", "much lower request volume than before"]},
+    "why": "B pads the five supplied facts with inferred motivation and benefits ('so unsigned or tampered requests do not reach the handler', 'at a much lower request volume'), the usual explanatory filler. A stays with the supplied facts, though 'The signature check is the part to review most closely' is a small editorial addition."
+  },
+  "pair03": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {"A": [], "B": ["Notifications no longer depend on the polling loop", "nothing is lost for good"]},
+    "why": "B closes paragraphs with reassuring wrap-ups ('so nothing is lost for good', 'Notifications no longer depend on the polling loop') and adds consequences the facts did not state. A is plain and complete, though a little choppy and with its own 'review most closely' emphasis. B's 'instead of us asking over and over' is natural, so this is close."
+  },
+  "pair04": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {"A": [], "B": []},
+    "why": "B uses stock framings ('The cost is paid on writes and storage', 'An index is therefore a trade', 'Indexing every column does not'). A is more specific, with the `created_at` range example and the point that 'A query that returns most of a table may still scan it'. B's 'six indexes becomes roughly seven writes' is a good concrete touch."
+  },
+  "pair05": {
+    "more_machine": "B",
+    "prefer": "tie",
+    "invented": {"A": [], "B": []},
+    "why": "B carries more rhetorical packaging ('So an index is a trade', 'A column you never query by only slows your writes', 'the plan is the only reliable evidence'). Its log-n point and the case of a mis-chosen index being slower are good content. A is accurate and specific, with the 'returns most of a table' caveat, and a little list-like. I would publish either."
+  },
+  "pair06": {
+    "more_machine": "A",
+    "prefer": "B",
+    "invented": {"A": [], "B": ["Right now a half-finished feature either sits on a long-lived branch or reaches every user at once (claim about the team's current practice)"]},
+    "why": "A opens with a polished hook ('Every production release is a bet'), then 'The benefits extend past safety' and 'Flags carry a cost', a smooth essay template with generic content. B defines the term, gives a specific checkout-totals scenario and states the cost plainly, which reads more like a working engineer."
+  }
+}

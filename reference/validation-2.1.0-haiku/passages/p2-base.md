@@ -1,0 +1,5 @@
+Every production release is a bet that the code will behave the way we tested it. Usually the bet pays off. When it doesn't, our fastest exit is a rollback, which also pulls back the good work shipped alongside the bad. Feature flags give us a better option. We deploy new behavior behind a switch that starts off, then enable it for internal accounts, a small slice of users, or one region. If something breaks, we turn it off in seconds without redeploying.
+
+The benefits extend past safety. Flags let us merge unfinished work to main without exposing it, which keeps branches short and cuts the merge pain of long-lived feature branches. They also let product and engineering agree on a rollout that moves in measured steps rather than one launch day.
+
+Flags carry a cost. Each one is a branch someone has to understand, and stale flags pile up fast. So we adopt them with a rule: every flag gets an owner, a planned removal date, and a ticket to delete it once the rollout is complete. I propose we pilot this on the next two releases, track how often we flip a switch instead of rolling back, and decide from there.

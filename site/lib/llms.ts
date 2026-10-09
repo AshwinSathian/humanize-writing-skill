@@ -21,7 +21,8 @@ const summary = `# ${site.name}
 - Source: ${site.repo}
 - Install: \`${install.skills}\`
 - It applies while Claude is writing. It is not a detector-evasion tool and does not change AI-detector scores.
-- Tested on Claude Sonnet and Claude Opus, in English. In a blind comparison of 12 pairs, two Claude judges each preferred text written with version 2.0.0 to text written with no skill in 5 of 6 pairs.`
+- Tested on Claude Haiku, Sonnet, and Opus, in English, in two blind rounds (18 pairs). With Sonnet and Opus writing (version 2.0.0), two Claude judges each preferred the skill's text to no-skill text in 5 of 6 pairs. With Haiku writing (version 2.1.0), three Claude judges each preferred it in 3 of 3.
+- Known miss: in the Haiku round two of three judges flagged one passage for stating a team's current practice as fact.`
 
 export const llmsTxt = () => `${summary}
 

@@ -90,20 +90,32 @@ the break, and "delve" is fine where you mean it.
 ## Tested blind
 
 Fresh Claude instances wrote three pieces with no skill, with version
-1.1.1, and with version 2.0.0. Two model judges read shuffled pairs
-with no labels and said which they would rather publish.
+1.1.1, and with the current rules. Model judges read shuffled pairs
+with no labels and said which they would rather publish. Sonnet and
+Opus wrote the first round (2.0.0, 12 pairs). Haiku wrote the second
+(2.1.0, 6 pairs), which added a Haiku judge.
 
-| 2.0.0 preferred over | Opus judge | Sonnet judge |
-|---|---|---|
-| No skill | 5 of 6 | 5 of 6 |
-| Version 1.1.1 | 5 of 6 | 4 of 6 |
+| Skill preferred over no skill | Opus judge | Sonnet judge | Haiku judge |
+|---|---|---|---|
+| Sonnet and Opus writing | 5 of 6 | 5 of 6 | not run |
+| Haiku writing | 3 of 3 | 3 of 3 | 3 of 3 |
 
-It lost the pull request description to the no-skill passage with both
-judges: the 2.0.0 one was a "Summary" and "Changes" skeleton whose
-bullets repeated the summary. The sample is small, the judges are
-Claude models, and the rules were revised after earlier drafts did
-badly on the same tasks. The pairs, the key, the losses, and the limits
-are in `reference/validation-note.md`.
+| Skill preferred over 1.1.1 | Opus judge | Sonnet judge | Haiku judge |
+|---|---|---|---|
+| Sonnet and Opus writing | 5 of 6 | 4 of 6 | not run |
+| Haiku writing | 3 of 3 | 2 of 3, one tie | 2 of 3 |
+
+In the first round it lost the pull request description to the
+no-skill passage with both judges: the 2.0.0 one was a "Summary" and
+"Changes" skeleton whose bullets repeated the summary. In the Haiku
+round, two of three judges flagged the skill's feature-flag passage for
+stating the team's current practice as fact, which the rule against
+inventing should have stopped.
+
+The samples are small, the judges are Claude models, and the rules were
+revised after earlier drafts did badly on the same three tasks. The
+pairs, the keys, the losses, and the limits are in
+`reference/validation-note.md`.
 
 ## Why this one
 
@@ -127,7 +139,7 @@ detail.
 | When it runs | While Claude writes, and on request over a draft | Over a finished draft |
 | Loaded per use | About 1,150 words | About 4,200 words (blader/humanizer) |
 | Genre handling | Ten named cases in a Scope section | One paragraph, or none |
-| Testing | 12 blind pairs, two Claude judges | blader/humanizer reports 16 of 16 in a blind preference test |
+| Testing | 18 blind pairs over two rounds, Claude judges | blader/humanizer reports 16 of 16 in a blind preference test |
 
 The last row is where this skill is weaker, and
 [blader/humanizer](https://github.com/blader/humanizer) is the better
@@ -211,8 +223,9 @@ reference/research/2026-update.md # newer sources behind 2.0.0, and the 1.x clai
 reference/claude-tics.md       # habits of current Claude models, dated, with evidence tiers
 reference/oss-skills-review.md # teardown of 13 existing public humanizer skills
 reference/research/            # raw, fully-cited research reports (academic, editorial, tells catalog, OSS survey)
-reference/validation-note.md   # blind comparison against no skill and against 1.1.1, with the losses
+reference/validation-note.md   # blind comparisons against no skill and against 1.1.1 on Haiku, Sonnet, and Opus, with the losses
 reference/validation-2.0.0/    # the blind pairs, the key, both judges' answers, the adversarial review
+reference/validation-2.1.0-haiku/ # the Haiku round: passages, pairs, key, three judges' answers, prompts, scripts
 examples/                      # worked before/after passages with annotated fixes
 voices/                        # an example voice profile: one author's habits as numbers and descriptions, no quoted text
 scripts/measure.py             # descriptive prose metrics for comparing passages (stdlib, no verdicts)

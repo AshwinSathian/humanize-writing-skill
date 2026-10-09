@@ -1,0 +1,38 @@
+{
+ "pair01": {
+  "model": "haiku",
+  "task": "p2",
+  "A": "v2",
+  "B": "v1"
+ },
+ "pair02": {
+  "model": "haiku",
+  "task": "p3",
+  "A": "v2",
+  "B": "base"
+ },
+ "pair03": {
+  "model": "haiku",
+  "task": "p3",
+  "A": "v2",
+  "B": "v1"
+ },
+ "pair04": {
+  "model": "haiku",
+  "task": "p1",
+  "A": "v2",
+  "B": "base"
+ },
+ "pair05": {
+  "model": "haiku",
+  "task": "p1",
+  "A": "v2",
+  "B": "v1"
+ },
+ "pair06": {
+  "model": "haiku",
+  "task": "p2",
+  "A": "base",
+  "B": "v2"
+ }
+}

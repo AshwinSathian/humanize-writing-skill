@@ -1,0 +1,56 @@
+{
+  "pair01": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {
+      "A": ["\"Right now a half-finished feature either sits on a long-lived branch or reaches every user at once\" asserts current team practice the task did not supply (minor)"],
+      "B": []
+    },
+    "why": "B is built as a tidy triad (\"First... Second... Third...\") and closes with formulaic lines such as \"The costs are real\" and \"That split helps us in three concrete ways\", which read as generated structure. A reads more like a person making an argument, and its checkout example is explicitly framed (\"Suppose a deploy changes...\"), so it stays clearly hypothetical and concrete for the engineering audience."
+  },
+  "pair02": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {
+      "A": [],
+      "B": ["\"downstream processing acted on whatever each poll returned\" describes internal behaviour the task did not supply (minor)"]
+    },
+    "why": "B pads the facts with framing such as \"That works, but it means status changes can lag by up to half a minute\" and \"every check costs a request whether or not anything has changed\", which is generated-sounding commentary on a PR description. A states exactly the five supplied facts in short sentences and adds one reviewer pointer (\"The signature check is the part to review most closely\"), which is what a PR description needs."
+  },
+  "pair03": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {
+      "A": [],
+      "B": []
+    },
+    "why": "B's \"instead of us asking over and over\" and \"so nothing is lost for good\" are stock LLM phrasings that add reassurance the facts do not state. A keeps to the supplied facts and is tighter, so it reads more like a real PR description."
+  },
+  "pair04": {
+    "more_machine": "B",
+    "prefer": "A",
+    "invented": {
+      "A": [],
+      "B": []
+    },
+    "why": "B ends on the stock summary \"An index is therefore a trade\" and \"Indexing every column does not.\", and opens with a generic definition, which reads templated. A gives a concrete query (\"SELECT * FROM orders WHERE customer_id = 42\") and a practical closing tip (check usage statistics for indexes nobody reads), which suits backend developers who have not tuned SQL. The ten-million-row figures are general domain knowledge, not invention."
+  },
+  "pair05": {
+    "more_machine": "tie",
+    "prefer": "B",
+    "invented": {
+      "A": [],
+      "B": []
+    },
+    "why": "Both passages share the same generic structure, so neither is clearly more machine-like. B's concrete running example (\"WHERE email = 'a@b.com'\") and its point that the logarithmic cost grows with table size give a newcomer a clearer mental model than A's opening, and its warning that a poorly chosen index can be slower than the scan it replaced is useful. The figures are general knowledge rather than claims about this system."
+  },
+  "pair06": {
+    "more_machine": "A",
+    "prefer": "B",
+    "invented": {
+      "A": ["\"Usually the bet pays off\" and \"our fastest exit is a rollback\" assert the team's release track record, which the task did not supply (minor)"],
+      "B": ["\"Right now a half-finished feature either sits on a long-lived branch or reaches every user at once\" asserts current team practice the task did not supply (minor)"]
+    },
+    "why": "A opens with the essayist's hook \"Every production release is a bet\" and closes on the rhetorical \"The benefits extend past safety\", which read as generated framing. B makes the same argument with a concrete, clearly marked hypothetical (\"Suppose a deploy changes how checkout totals are calculated... 5% of orders\"), so it is easier to act on for the engineering team."
+  }
+}

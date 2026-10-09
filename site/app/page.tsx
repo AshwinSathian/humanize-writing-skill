@@ -8,7 +8,7 @@ const homeFaqs = faqs.slice(1, 3).concat(faqs[5])
 
 // scripts/measure.py over the <p> text of /, /tells, /research, /compare,
 // /faq in the built site. Re-run and update after editing copy.
-const measured = { sentence: '15.5', short: '1 in 8', dashes: '3.2', transitions: 'none' }
+const measured = { sentence: '15.9', short: '1 in 8', dashes: '3.3', transitions: 'none' }
 
 export default function Home() {
   return (
@@ -49,7 +49,7 @@ export default function Home() {
             </div>
             <div>
               <dt>Tested on</dt>
-              <dd>Claude Sonnet and Claude Opus, in English.</dd>
+              <dd>Claude Haiku, Sonnet, and Opus, in English.</dd>
             </div>
             <div>
               <dt>What it won&rsquo;t do</dt>
@@ -166,41 +166,58 @@ export default function Home() {
           <h2 id="tested">Tested blind, with the losses on record</h2>
           <p>
             Fresh Claude instances wrote three pieces &mdash; an explanation of database indexes, a blog section arguing
-            for feature flags, a pull request description &mdash; with no skill, with version 1.1.1, and with version
-            2.0.0. Two model judges then read shuffled pairs with no labels and said which they&rsquo;d rather publish.
+            for feature flags, a pull request description &mdash; with no skill, with version 1.1.1, and with the
+            current rules. Model judges then read shuffled pairs with no labels and said which they&rsquo;d rather
+            publish. Sonnet and Opus wrote the first round, and Haiku wrote the second.
           </p>
           <div className="scroll">
             <table>
-              <caption className="sr">Pairs in which each judge preferred the 2.0.0 text, out of six</caption>
+              <caption className="sr">Pairs in which each judge preferred the text written with the skill</caption>
               <thead>
                 <tr>
-                  <th scope="col">2.0.0 preferred over</th>
+                  <th scope="col">Skill preferred over</th>
                   <th scope="col">Opus judge</th>
                   <th scope="col">Sonnet judge</th>
+                  <th scope="col">Haiku judge</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <th scope="row">No skill</th>
+                  <th scope="row">No skill, Sonnet and Opus writing</th>
                   <td>5 of 6</td>
                   <td>5 of 6</td>
+                  <td>not run</td>
                 </tr>
                 <tr>
-                  <th scope="row">Version 1.1.1</th>
+                  <th scope="row">No skill, Haiku writing</th>
+                  <td>3 of 3</td>
+                  <td>3 of 3</td>
+                  <td>3 of 3</td>
+                </tr>
+                <tr>
+                  <th scope="row">Version 1.1.1, Sonnet and Opus writing</th>
                   <td>5 of 6</td>
                   <td>4 of 6</td>
+                  <td>not run</td>
+                </tr>
+                <tr>
+                  <th scope="row">Version 1.1.1, Haiku writing</th>
+                  <td>3 of 3</td>
+                  <td>2 of 3, one tie</td>
+                  <td>2 of 3</td>
                 </tr>
               </tbody>
             </table>
           </div>
           <p>
-            And where did it lose? Both judges preferred the no-skill pull request description, because the 2.0.0 one
-            was a &ldquo;Summary&rdquo; and &ldquo;Changes&rdquo; skeleton whose bullets repeated the summary. One judge
-            also preferred the 1.1.1 explanation of indexes, which used a phone-book analogy where the 2.0.0 passage
-            was, in the judge&rsquo;s words, a &ldquo;uniformly flat textbook summary&rdquo;.
+            And where did it fall short? In the first round both judges preferred the no-skill pull request
+            description, because the skill&rsquo;s version was a &ldquo;Summary&rdquo; and &ldquo;Changes&rdquo;
+            skeleton whose bullets repeated the summary. In the Haiku round, two of three judges flagged the
+            skill&rsquo;s feature-flag passage for stating the team&rsquo;s current practice as fact &mdash; the kind of
+            thing the rule against inventing is there to stop.
           </p>
           <p>
-            Twelve pairs and two judges is a small sample, and the judges are Claude models. No AI detector was run.
+            Eighteen pairs is a small sample, and the judges are Claude models. No AI detector was run.
           </p>
           <p className="cta-line">
             <Link href="/research">Method, results, and limits</Link>

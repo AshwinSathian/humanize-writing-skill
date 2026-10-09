@@ -4,7 +4,7 @@ import { article, blob, breadcrumb, pageMeta, site } from '@/lib/site'
 
 const title = 'How the skill was tested, and where it lost'
 const description =
-  'The blind comparison behind humanizing-writing 2.0.0: three tasks, two Claude models, two model judges, twelve pairs. Results, the pairs it lost, and the limits of the test.'
+  'The blind comparisons behind humanizing-writing: three tasks, written by Claude Haiku, Sonnet, and Opus, judged without labels, eighteen pairs. Results, the pairs it lost, a known miss, and the limits of the test.'
 
 export const metadata = pageMeta(title, description, '/research')
 
@@ -14,15 +14,16 @@ export default function Research() {
       <header className="page-head">
         <h1>{title}</h1>
         <p className="lede">
-          In a blind comparison, two model judges each preferred text written with version 2.0.0 of the skill to text
-          written without it in 5 of 6 pairs. The sample is small and the judges are Claude models. The method, the
-          losses, and the limits are below, and the raw files are in the repository.
+          In two blind comparisons, model judges preferred text written with the skill to text written without it:
+          in 5 of 6 pairs each with Sonnet and Opus writing, and in 3 of 3 each with Haiku writing. The samples are
+          small and the judges are Claude models. The method, the losses, and the limits are below, and the raw files
+          are in the repository.
         </p>
       </header>
 
       <section className="row" aria-labelledby="method">
         <div className="body prose">
-          <h2 id="method">Method</h2>
+          <h2 id="method">Method, first round</h2>
           <p>
             There were three writing tasks: an explanation of database indexes, an internal blog section arguing for
             feature flags, and a pull request description written from five supplied facts. Fresh subagents on two
@@ -46,7 +47,7 @@ export default function Research() {
 
       <section className="row" aria-labelledby="results">
         <div className="body">
-          <h2 id="results">Results</h2>
+          <h2 id="results">Results, Sonnet and Opus writing</h2>
           <div className="scroll" style={{ marginTop: 0 }}>
             <table>
               <caption className="sr">Blind comparison results, six pairs per row</caption>
@@ -140,13 +141,118 @@ export default function Research() {
         </aside>
       </section>
 
+      <section className="row" aria-labelledby="haiku">
+        <div className="body">
+          <h2 id="haiku">The Haiku round</h2>
+          <p>
+            Does the result hold on the smallest current Claude model? On 10 October 2026 the same three tasks were
+            written by fresh Haiku subagents with no skill, with 1.1.1, and with 2.1.0 (the 2.0.0 rules plus one Scope
+            entry about voice). That gives nine passages and six pairs. A Haiku judge joined the Opus and Sonnet
+            judges.
+          </p>
+          <div className="scroll">
+            <table>
+              <caption className="sr">Haiku round results, three pairs per row</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Comparison</th>
+                  <th scope="col">Judge</th>
+                  <th scope="col">Read as more machine-written</th>
+                  <th scope="col">Preferred</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">2.1.0 against no skill</th>
+                  <td>Opus</td>
+                  <td>no skill 3</td>
+                  <td>2.1.0 3</td>
+                </tr>
+                <tr>
+                  <th scope="row">2.1.0 against no skill</th>
+                  <td>Sonnet</td>
+                  <td>no skill 3</td>
+                  <td>2.1.0 3</td>
+                </tr>
+                <tr>
+                  <th scope="row">2.1.0 against no skill</th>
+                  <td>Haiku</td>
+                  <td>no skill 3</td>
+                  <td>2.1.0 3</td>
+                </tr>
+                <tr>
+                  <th scope="row">2.1.0 against 1.1.1</th>
+                  <td>Opus</td>
+                  <td>1.1.1 2, tie 1</td>
+                  <td>2.1.0 3</td>
+                </tr>
+                <tr>
+                  <th scope="row">2.1.0 against 1.1.1</th>
+                  <td>Sonnet</td>
+                  <td>1.1.1 3</td>
+                  <td>2.1.0 2, tie 1</td>
+                </tr>
+                <tr>
+                  <th scope="row">2.1.0 against 1.1.1</th>
+                  <td>Haiku</td>
+                  <td>1.1.1 2, tie 1</td>
+                  <td>2.1.0 2, 1.1.1 1</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            All three judges flagged the no-skill pull request description for claims the five supplied facts
+            didn&rsquo;t contain, such as &ldquo;status changes can lag by up to half a minute&rdquo;.
+          </p>
+          <h3>Where 2.1.0 fell short</h3>
+          <div className="prose">
+            <ul>
+              <li>
+                It stated the team&rsquo;s practice as fact. The feature-flag passage says &ldquo;Right now a
+                half-finished feature either sits on a long-lived branch or reaches every user at once&rdquo;, and
+                the writer had been told nothing about the team. The Sonnet and Haiku judges flagged it. It&rsquo;s
+                the first recorded miss of the rule against inventing in a 2.x passage.
+              </li>
+              <li>
+                The rule names made-up incidents, figures, quotes, and sources. It doesn&rsquo;t name a claim about
+                how the reader&rsquo;s team works today. The wording hasn&rsquo;t been changed yet, because a change
+                made after seeing this passage would need a task the rules weren&rsquo;t fitted to.
+              </li>
+              <li>
+                On database indexes against 1.1.1, the Haiku judge preferred 1.1.1 for its running example and the
+                Sonnet judge called it a tie.
+              </li>
+              <li>
+                All three preferred the 2.1.0 pull request description to 1.1.1&rsquo;s, but the Opus judge called
+                it &ldquo;a flat restatement of the bullets&rdquo; and the margin narrow. It runs to 107 words
+                against a brief of about 150.
+              </li>
+            </ul>
+          </div>
+          <p>
+            Three things differ from the first round, so the two tables shouldn&rsquo;t be added together pair for
+            pair: the skill version, the fact that writers read the skill from a file, and two lines sent to every
+            writer (don&rsquo;t invoke any skill, write in ordinary prose) because the test machine has this skill
+            installed.
+          </p>
+        </div>
+        <aside className="margin" aria-label="Sources">
+          <a href={`${site.repo}/tree/main/reference/validation-2.1.0-haiku`}>
+            Passages, pairs, key, and all three judges&rsquo; answers
+          </a>
+          <a href={blob('reference/validation-2.1.0-haiku/prompts.md')}>The prompts as sent</a>
+          <a href={blob('reference/validation-note.md')}>validation-note.md</a>
+        </aside>
+      </section>
+
       <section className="row" aria-labelledby="limits">
         <div className="body prose">
           <h2 id="limits">Limits</h2>
           <ul>
             <li>
-              Twelve pairs and two judges is a small sample. A different seed or task could move any row of the table
-              by one or two pairs.
+              Twelve pairs and two judges in the first round is a small sample. A different seed or task could move
+              any row of the table by one or two pairs.
             </li>
             <li>
               The judges are Claude models and may share blind spots with the writers. Russell et al. (2025) found
@@ -156,7 +262,11 @@ export default function Research() {
               The released rules were revised after seeing how earlier drafts did on these same three tasks, so the
               result is partly fitted to them. No held-out task was run afterwards.
             </li>
-            <li>All three tasks are technical writing in English, on two Claude models.</li>
+            <li>All three tasks are technical writing in English, on three Claude models.</li>
+            <li>
+              The Haiku round is six pairs, one passage per task and condition, on the same three tasks. One of its
+              judges is the model that wrote the passages.
+            </li>
             <li>No AI detector was run. The skill makes no claim about detector scores.</li>
             <li>
               The 2.1.0 voice test was smaller still: two tasks, one judge, one writer model. Its pieces aren&rsquo;t

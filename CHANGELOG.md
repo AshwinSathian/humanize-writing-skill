@@ -1,5 +1,28 @@
 # Changelog
 
+## After 2.1.0 (no release, `SKILL.md` unchanged)
+
+**Haiku round, 10 October 2026.** The blind comparison was repeated
+with Claude Haiku as the writer and with a Haiku judge added to the Opus
+and Sonnet judges: three tasks, three conditions, six pairs. All three
+judges preferred the 2.1.0 passage to the no-skill passage in 3 of 3
+pairs. Against 1.1.1 the Opus judge preferred 2.1.0 in 3 of 3, the
+Sonnet judge in 2 with one tie, and the Haiku judge in 2 with one loss.
+
+Two judges flagged the 2.1.0 feature-flag passage for stating the
+team's current practice as fact ("Right now a half-finished feature
+either sits on a long-lived branch or reaches every user at once"). It
+is the first recorded miss of the rule against inventing in a 2.x
+passage. The rule's wording does not name that kind of claim. It has
+been left as it is until a change can be tested on a task the rules
+were not fitted to. Method, files, and limits:
+`reference/validation-note.md` and `reference/validation-2.1.0-haiku/`.
+
+**Site and README.** `site/` holds the source of
+<https://humanize.ashwinsathian.com>. The README now leads with the
+install commands and the example. Plugin and marketplace manifests
+point `homepage` at the site.
+
 ## 2.1.0
 
 Adds one Scope rule and one example file. The other rules are unchanged.
