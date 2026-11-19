@@ -1,0 +1,99 @@
+{
+  "pair01": {
+    "more_machine": "B",
+    "prefer": "A",
+    "leads": {"A": true, "B": true},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": [], "B": []},
+    "why": "Both state the change, flag, Firefox gap and backoff cap. B's \"It is unrelated to the SSE change\" repeats what the separate rename sentence already says, which reads as padding. A keeps the rename as a short separate note and is tighter."
+  },
+  "pair02": {
+    "more_machine": "A",
+    "prefer": "B",
+    "leads": {"A": true, "B": true},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": [], "B": []},
+    "why": "A splits the description into bolded \"Testing\" and \"Other changes\" sections with bullets, which is a template shape. B is plain PR prose (\"Testing:\", \"Also in this PR:\") with the same facts and the same footer."
+  },
+  "pair03": {
+    "more_machine": "A",
+    "prefer": "B",
+    "leads": {"A": false, "B": true},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": [], "B": []},
+    "why": "A opens with a \"Resolved:\" title and then describes the failure, so the action for support sits in the third paragraph. B opens with \"tell them to try the payment again\" and then gives the window and cause, which is what a support agent needs first. A's labelled \"What to tell affected customers:\" line also reads as form-filled."
+  },
+  "pair04": {
+    "more_machine": "B",
+    "prefer": "B",
+    "leads": {"A": true, "B": true},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": ["\"I have not committed to anything\" (not in the task facts)"], "B": ["\"I haven't replied\" to Vendor B (not in the task facts)", "\"I'll convert the Vendor C trial before it ends\" (a commitment the task did not give)"]},
+    "why": "Both lead with the Vendor C recommendation and the 28 November deadline. B states why the cheaper options are out in one line (\"Vendor B is the cheapest, but it fails Legal's requirement\") and gives the cost gap, which is what a manager needs to decide. B's invented commitments are a small cost against that."
+  },
+  "pair05": {
+    "more_machine": "B",
+    "prefer": "A",
+    "leads": {"A": true, "B": true},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": ["Self-hosting \"would keep data in the EU\" (not in the task facts)"], "B": ["Self-hosting \"would keep data in the EU\" (not in the task facts)"]},
+    "why": "Both give the recommendation, the 28 November deadline and the reasons each cheaper vendor fails. B's \"two hard requirements\" and \"The two cheaper options each miss one requirement\" phrasing is more formulaic. A is plainer and ends with a direct question."
+  },
+  "pair06": {
+    "more_machine": "A",
+    "prefer": "B",
+    "leads": {"A": true, "B": true},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": ["\"nothing on the export is waiting on design input\" (not in the task facts)", "\"the next window is after the freeze\" (presented as fact)"], "B": []},
+    "why": "A opens \"Probably not Friday\" and then says it can ship Friday if the fix lands, so the answer contradicts itself. B's \"Probably, but it depends on one bug fix landing on time\" gives the same answer clearly. A also asserts that nothing on the export waits on design, which the task did not supply."
+  },
+  "pair07": {
+    "more_machine": "A",
+    "prefer": "B",
+    "leads": {"A": true, "B": true},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": [], "B": []},
+    "why": "A's \"Here is how the three vendors compare\" and \"Only Vendor C meets both requirements\" are formulaic. B asks for a yes in its first two sentences and explains why the two cheaper options are not real alternatives. The cost gaps are stated correctly in both."
+  },
+  "pair08": {
+    "more_machine": "B",
+    "prefer": "A",
+    "leads": {"A": true, "B": true},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": ["\"I'd move the release to next week\" (a decision the task did not give)"], "B": ["\"I'll tell you by Thursday afternoon\" (a commitment not in the task)", "\"If it lands and passes, I'll deploy Thursday or first thing Friday\" (a plan not in the task)", "The date fix must \"pass QA that day\" (a process requirement not in the task)"]},
+    "why": "B opens \"Short answer:\" and then uses \"Where it stands:\" and \"The risks I see:\" headers with bullets, which is a chat-report template. A gives the answer and the condition in one plain sentence. B also invents several commitments and a QA-day requirement."
+  },
+  "pair09": {
+    "more_machine": "B",
+    "prefer": "A",
+    "leads": {"A": true, "B": false},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": [], "B": []},
+    "why": "A opens \"The incident is resolved. Card payments at checkout are working again.\" B spends its first two sentences on the failure and reaches \"resolved\" only in its fourth. B's bolded \"What caused it:\" / \"Customer impact:\" labels and \"Thanks,\" sign-off are more template-like."
+  },
+  "pair10": {
+    "more_machine": "B",
+    "prefer": "A",
+    "leads": {"A": true, "B": true},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": [], "B": ["\"most of them the polling code\" (the 140-line breakdown was not supplied)"]}
+    ,
+    "why": "Both cover every required fact. B adds a claim about what the removed lines contain that the task did not supply. A states the flag, backoff and Firefox gap plainly and asks reviewers for a specific check."
+  },
+  "pair11": {
+    "more_machine": "B",
+    "prefer": "A",
+    "leads": {"A": true, "B": true},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": [], "B": []},
+    "why": "A opens \"Yes, if the last bug fix lands on Thursday as expected\" and states the freeze constraint directly. B's \"Probably, but...\" and \"rather than ship wrong dates\" add hedging and a plan to verify Friday morning that the task did not give. Both are close, and A is cleaner."
+  },
+  "pair12": {
+    "more_machine": "B",
+    "prefer": "A",
+    "leads": {"A": true, "B": true},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": [], "B": []},
+    "why": "A leads with \"Checkout payments are working normally again\" and \"tell them to try the payment again\", which is what support acts on. B ends its cause paragraph with a \"What to tell affected customers:\" label and adds \"It should go through\", an outcome the task did not promise."
+  }
+}
