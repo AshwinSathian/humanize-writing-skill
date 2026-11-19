@@ -1,5 +1,45 @@
 # Changelog
 
+## 2.2.0 (19 November 2026)
+
+Adds one rule to "Write this way", after "Say each thing once":
+
+> Lead with what the reader came for. In a reply, message, PR
+> description, status update, or report, the first sentence or two give
+> the answer, the decision, or what you need from them, and the support
+> follows. Leave out what this reader will not use, even when it is true
+> and you have it.
+
+**Why.** The "No AI Slop" manifesto (AI Engineer Code Summit, November
+2026) defines slop by what it costs the reader: "less effort into
+producing something than we ask the consumer to spend understanding
+it." Every 2.1.0 rule worked on sentences and words, and none said
+where the main point goes. Sources and the rest of what the manifesto
+and the literature around it changed or did not change here:
+`reference/research/2026-11-no-slop.md`.
+
+**Test.** Pre-registered before any passage was written
+(`reference/held-out-reader-first-test/preregistration.md`): four tasks
+never used before, each a message whose reader wants one thing, each
+with facts the reader does not need. Three writer models, three judges,
+twelve pairs. With the rule, 12 of 12 passages opened with the answer
+or request, against 10 of 12 without it. All three judges preferred the
+candidate in 9, 9 and 10 of 12 pairs. Median length fell from 130 words
+to 112. No passage under either version left out a fact the reader
+needed.
+
+**What did not work.** The second sentence, about leaving out facts the
+reader will not use, changed nothing measurable: candidate passages
+carried the planted noise facts at almost the same rate (for example,
+the cron detail in a support-team update appeared in 3 of 3 passages
+under both versions). It stays because the test adopted the bullet as
+a whole, and it should go if a later test confirms it does nothing.
+Full counts and limits: `reference/held-out-reader-first-test/result.md`.
+
+**Also.** `reference/claude-tics.md` has three Opus 5.5 entries from
+Graphite's phrase counts ("this matters" at about 116 times the human
+rate), read secondhand and marked that way.
+
 ## After 2.1.0 (no release, `SKILL.md` unchanged)
 
 **Haiku round, 10 October 2026.** The blind comparison was repeated

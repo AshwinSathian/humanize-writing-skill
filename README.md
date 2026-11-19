@@ -58,7 +58,7 @@ and a note in each file on what the 1.x rewrite got wrong.
 ## What it tells Claude
 
 Text reads as machine-written when every choice in it would suit any
-reader and any subject. The eleven rules in `SKILL.md` point Claude at
+reader and any subject. The twelve rules in `SKILL.md` point Claude at
 this reader and this subject:
 
 - **Claims.** Specific and checkable: the number, the command, the

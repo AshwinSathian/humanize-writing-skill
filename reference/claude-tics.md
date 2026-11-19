@@ -1,7 +1,8 @@
 # Current Claude Habits
 
 Compiled October 2026 from reports about Claude Opus 5 and Claude Fable
-5.1. Nothing here was measured for this repository.
+5.1, with Claude Opus 5.5 entries added in November 2026. Nothing here
+was measured for this repository.
 This file dates faster than anything else in the repo. Re-check it after
 each Claude model release and delete entries that no longer show up.
 
@@ -34,6 +35,9 @@ Strongest first:
 | Stock figurative phrases | "load-bearing", "carries the argument" | Replace a figure of speech with the fact it stands for | Community report (explainx.ai and paddo.dev, summarizing Hacker News and r/ClaudeAI threads from August 2026) |
 | Announced candor | "worth stating plainly", "honestly", "frankly" | Hedge each uncertain claim once | Community report (same sources) |
 | Fragments for drama | "Not a detail. A design decision." | Let sentence length follow the content | Community report (same sources) |
+| Announcing that something matters instead of showing it (Opus 5.5) | "this matters", "why X matters", "matters most" | Stop when the content stops ("Don't announce a point before making it") | Measured, third party, read secondhand: Graphite's phrase count against 10,000 pre-ChatGPT Common Crawl articles reports "this matters" at about 116 times the human rate and "why _ matters" at 92 times. Read through Tejas Kumar's "Please Stop the Slop" (October 2026) and a progressiverobot.com summary; Graphite's report itself was not read, and the two secondary sources give different dates |
+| Significance by comparison (Opus 5.5) | "is more than a _, it", "rather than simply" | Deny X only when this reader is likely to believe X | Same Graphite count, same caveats: about 98 and 32 times the human rate |
+| Stock forward-looking transition (Opus 5.5) | "Looking ahead, the..." | Stop when the content stops | Same Graphite count, same caveats: about 40 times |
 | Semicolon or colon pivot | "X in theory; in practice, Y" | Stop when the content stops | Community report, single source (explainx.ai). Weakest entry here, and it runs against the measured finding that models use fewer semicolons than people |
 
 ## What Anthropic's guide says about formatting
@@ -62,5 +66,9 @@ fixing one by producing the other.
   <https://www.economist.com/culture/2026/07/30/how-to-spot-ai-writing>
 - "Claude Opus 5 Claudisms: Why It Says 'Load-Bearing'," explainx.ai.
   <https://explainx.ai/blog/claude-opus-5-load-bearing-claudisms-writing-tells-2026>
+- Tejas Kumar, "Please Stop the Slop," 10 October 2026, which reports
+  the Graphite figures and the sentence shapes in
+  `reference/research/2026-11-no-slop.md`.
+  <https://tej.as/blog/please-stop-the-slop>
 - "A Dial Worth Turning," paddo.dev.
   <https://paddo.dev/blog/a-dial-worth-turning/>

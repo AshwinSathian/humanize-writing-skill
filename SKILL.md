@@ -29,6 +29,11 @@ asked to get text past a detector, say so.
   rewrite, add no claim that was not in it.
 - Say each thing once. Don't follow a sentence with the same point in
   other words, and don't add a section that repeats a list above it.
+- Lead with what the reader came for. In a reply, message, PR
+  description, status update, or report, the first sentence or two give
+  the answer, the decision, or what you need from them, and the support
+  follows. Leave out what this reader will not use, even when it is true
+  and you have it.
 - Use the plain verb and the common word: "is" and "has", not "serves
   as" or "boasts"; "use", not "utilize"; "we analyzed", not "we conducted
   an analysis". A precise term stays ("idempotent", "mutex").
