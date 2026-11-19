@@ -404,8 +404,8 @@ export default function Research() {
           <h2 id="built">What the rules are built on</h2>
           <p>
             Three research passes (the academic detection literature, editorial style guides, and a catalogue of 27
-            specific tells), a teardown of 13 public humanizer skills, and a 2026 update that records which of the
-            earlier claims didn&rsquo;t hold up. It&rsquo;s all in the <a href={`${site.repo}/tree/main/reference`}>
+            specific tells), a teardown of 13 public humanizer skills, a 2026 update that records which of the
+            earlier claims didn&rsquo;t hold up, and a November 2026 note on what slop costs the reader. It&rsquo;s all in the <a href={`${site.repo}/tree/main/reference`}>
               reference folder
             </a>
             , along with a list of what could not be verified.
