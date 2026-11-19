@@ -1,0 +1,448 @@
+---
+import { Picture } from 'astro:assets'
+import Base from '../layouts/Base.astro'
+import Command from '../components/Command.astro'
+import Manuscript from '../components/Manuscript.astro'
+import { faqs, sources } from '../lib/content'
+import { blob, install, site, tree } from '../lib/site'
+import typescript from '../assets/archive/sir-james-cantlie-lecture-on-hong-kong.jpg'
+import pencils from '../assets/archive/red-and-blue-pencil.jpg'
+import dickens from '../assets/archive/manuscript-from-the-life-of-charles-dickens.jpg'
+import faber from '../assets/archive/aw-faber-blue-pencils-catalog-1940.jpg'
+import binder from '../assets/archive/manuscript.jpg'
+import lastWords from '../assets/archive/the-last-words-dickens-ever-wrote.jpg'
+
+const homeFaqs = [faqs[1], faqs[2], faqs[5], faqs[7]]
+
+// scripts/measure.py over the <p> text of /, /tells, /research, /compare and /faq in the built site.
+// Re-run `python3 -I tools/measure-site.py` after a build and update these after editing copy.
+const measured = { date: '19 November 2026', sentence: '14.6', short: '1 in 8', dashes: '2.1', transitions: 'none' }
+
+const released = new Date(`${site.released}T00:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })
+
+const nameSources = [
+  sources.economist,
+  sources.wikipedia,
+  sources.reinhart,
+  sources.russell,
+  sources.xu,
+  sources.shan,
+  sources.anthropic,
+  { label: 'the No AI Slop manifesto', href: 'https://gist.github.com/dexhorthy/4cc96f01be5b1208519e75dad250a948' },
+]
+const short = (label: string) => label.replace(/,.*$/, '').replace(/^The Economist.*/, 'The Economist').replace(/^Wikipedia.*/, 'Wikipedia’s “Signs of AI writing”').replace(/^Anthropic.*/, 'Anthropic’s guide to Claude Fable 5.1')
+
+const description =
+  'A free Claude Code skill that guides how Claude writes prose, so docs, emails and pull requests read as written by a person for this reader. Twelve rules from 2026 research, tested blind. It does not change AI-detector scores.'
+---
+
+<Base description={description}>
+  <section class="hero" aria-labelledby="title">
+    <h1 id="title">
+      <span>Edit Claude</span>
+      <span class="slot">
+        <Picture
+          src={typescript}
+          formats={['avif', 'webp']}
+          widths={[360, 720, 1080]}
+          sizes="(max-width: 48rem) 100vw, 26vw"
+          alt="A typed lecture page from about 1900, with words struck through and corrections written above them in ink"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </span>
+      <span>before it writes.</span>
+    </h1>
+    <div class="hero-foot">
+      <p class="support">
+        <strong>humanizing-writing</strong> is a free Claude Code skill: rules Claude follows while it drafts, so the
+        prose reads as written for its reader.
+      </p>
+      <div class="hero-actions">
+        <Command text={install.skills} label="the install command" />
+        <p class="also">
+          MIT, version {site.version}. <a href="#install">Two other ways to install</a>. It does not change AI-detector
+          scores.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="why">
+    <h2 id="why" class="visually-hidden">Why Claude’s prose needs editing</h2>
+    <div class="intro" data-reveal>
+      <p class="statement">
+        A model writes for any reader
+        <span class="thumb"><Picture src={pencils} formats={['avif', 'webp']} widths={[120, 240]} sizes="4rem" alt="Two red-and-blue editor’s pencils" /></span>, so each
+        choice fits nobody in particular. These rules make it write for <del>everyone</del> <ins>yours</ins>
+        <span class="thumb"><Picture src={dickens} formats={['avif', 'webp']} widths={[120, 240]} sizes="4rem" alt="A handwritten letter by Charles Dickens with a word inserted above the line" /></span>.
+      </p>
+      <p class="figure-note">
+        The skill is one SKILL.md of about 1,200 words. Claude Code loads it when it is about to write a paragraph or more
+        for a person, so there is no second pass to run.
+      </p>
+    </div>
+  </section>
+
+  <section aria-labelledby="edit">
+    <div class="edit-head" data-reveal>
+      <h2 id="edit">Watch one paragraph get edited</h2>
+      <p>
+        A paragraph in the style models wrote in 2023, taken through the skill’s four steps. Pick a stage, or use the
+        arrow keys once one is selected.
+      </p>
+    </div>
+    <Manuscript />
+  </section>
+
+  <section aria-labelledby="rules">
+    <div class="rules-head" data-reveal>
+      <h2 id="rules">Twelve rules, one that never bends</h2>
+      <p>
+        Text reads as machine-written when every choice in it would suit any reader and any subject. The rules point
+        Claude at this reader and this subject, in the places where the default shows most.
+      </p>
+    </div>
+
+    <div class="rule-row" data-reveal>
+      <div class="text">
+        <h3>Claims you can check</h3>
+        <p>The number, the command, the file, the error text. Say each thing once. If you don’t know, say so plainly.</p>
+        <p class="eg"><del>experts say it is overused</del> <ins>Reinhart et al. (PNAS, 2025) measured it at 2 to 5 times the human rate</ins></p>
+      </div>
+      <figure class="w-b">
+        <Picture src={pencils} formats={['avif', 'webp']} widths={[320, 640]} sizes="20rem" alt="Two red-and-blue editor’s pencils on a white sheet" style="aspect-ratio: 3 / 2; object-position: 50% 55%" />
+        <figcaption>The red end cuts, the blue end keeps.</figcaption>
+      </figure>
+    </div>
+
+    <div class="rule-row" data-reveal>
+      <div class="text">
+        <h3>What the reader came for, first</h3>
+        <p>
+          The answer, the decision, or what you need from them, in the first sentence or two. Added in 2.2.0 after a
+          pre-registered test.
+        </p>
+      </div>
+      <figure class="w-a">
+        <Picture src={typescript} formats={['avif', 'webp']} widths={[240, 480]} sizes="15rem" alt="A corrected typescript page, with a struck phrase and a new one written above it" style="aspect-ratio: 4 / 5; object-position: 50% 45%" />
+        <figcaption>A lecture typescript, corrected by hand, about 1900.</figcaption>
+      </figure>
+    </div>
+
+    <div class="rule-row" data-reveal>
+      <div class="text">
+        <h3>The plain word, and the fact for the figure of speech</h3>
+        <p>
+          “Is” and “has”, not “serves as” and “boasts”. Where a metaphor stands in for a fact, write the fact. A precise
+          term such as “idempotent” stays.
+        </p>
+        <p class="eg"><del>this check is load-bearing</del> <ins>removing this check lets empty orders through</ins></p>
+      </div>
+      <figure class="w-c">
+        <Picture src={dickens} formats={['avif', 'webp']} widths={[200, 400]} sizes="11.5rem" alt="A letter in Charles Dickens’s hand, with a word added above the line" style="aspect-ratio: 1 / 1; object-position: 30% 30%" />
+        <figcaption>Dickens, adding the word he meant.</figcaption>
+      </figure>
+    </div>
+
+    <div class="rule-row" data-reveal>
+      <div class="text">
+        <h3>Sentences as long as their content</h3>
+        <p>
+          Split a sentence that chains clause after clause with “and”. A short sentence is for something new, not for
+          effect. Asides go in commas or parentheses, and a doubtful claim gets one hedge, at the claim.
+        </p>
+      </div>
+      <figure class="w-a">
+        <Picture src={faber} formats={['avif', 'webp']} widths={[240, 480]} sizes="15rem" alt="A 1940 catalogue page of A.W. Faber coloured pencils, including red and blue editing pencils" style="aspect-ratio: 4 / 5; object-position: 50% 20%" />
+        <figcaption>A.W. Faber’s coloured pencils, 1940.</figcaption>
+      </figure>
+    </div>
+
+    <div class="rule-row" data-reveal>
+      <div class="text">
+        <h3>Stop when the content stops</h3>
+        <p>
+          No point announced before it is made, no closing line that repeats the paragraph as a saying, no “it’s not X,
+          it’s Y” unless the reader believes X. Lists for what a reader scans; paragraphs for the rest.
+        </p>
+      </div>
+    </div>
+
+    <div class="rule-row never" data-reveal>
+      <div class="text">
+        <h3>And the one that never bends: invent nothing</h3>
+        <p>
+          No made-up figures, quotes, incidents or sources, however specific they would make the draft sound. The others
+          are defaults that give way in ten named cases, from your own voice to legal text. <a href={blob('SKILL.md')}>The full text: SKILL.md</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="moved">
+    <div class="eras-head" data-reveal>
+      <h2 id="moved">Why a banned-word list goes stale</h2>
+      <p>
+        In July 2026 <cite>The Economist</cite> had ChatGPT, Claude, Gemini and Grok rewrite its own articles and compared
+        55,940 sentences with human journalism and novels. The tells it found are not the ones word lists ban.
+      </p>
+    </div>
+    <div class="eras" data-reveal>
+      <div class="old">
+        <h3>2023</h3>
+        <ul>
+          <li>“delve”, “tapestry”, “testament to”</li>
+          <li>“Moreover”, “In conclusion”</li>
+          <li>“In today’s fast-paced world”</li>
+          <li>The em dash, read as a sign of any model</li>
+        </ul>
+      </div>
+      <div class="now">
+        <h3>2026</h3>
+        <ul>
+          <li>Long, noun-built sentences chained with “and”</li>
+          <li>Metaphor where a plain statement would do</li>
+          <li>One-line closers and fragments for effect</li>
+          <li>“Not X but Y”, and lists of three</li>
+        </ul>
+      </div>
+    </div>
+    <div class="eras-foot" data-reveal>
+      <p>
+        We found this out the awkward way. Version 1.x told Claude to vary its sentence rhythm on purpose, and a model
+        told to do that writes the closer, the fragment and the colon reveal. The skill was rewriting 2023 text into the
+        2026 style. Version 2.0.0 is the rewrite that followed. <a class="cta-line" href="/tells">Every 2026 tell, with its source</a>
+      </p>
+      <aside class="margin" aria-label="Sources">
+        <a href={sources.wikipedia.href}>{sources.wikipedia.label}</a>
+        <a href={sources.economist.href}>{sources.economist.label}</a>
+        <a href={blob('reference/research/2026-update.md')}>What 1.x got wrong: 2026-update.md</a>
+      </aside>
+    </div>
+    <figure class="band">
+      <Picture src={binder} formats={['avif', 'webp']} widths={[800, 1400, 2000]} sizes="100vw" alt="A ring-bound manuscript in raking light, with handwritten edits between the typed lines" />
+      <figcaption>A manuscript, edited by hand.</figcaption>
+    </figure>
+  </section>
+
+  <section aria-labelledby="tested">
+    <h2 id="tested" data-reveal>Tested blind, with the losses on record</h2>
+    <div class="proof" style="margin-top: 2.5rem">
+      <div class="text" data-reveal>
+        <p class="big-figure">9, 9 and 10 of 12</p>
+        <p>
+          The pairs each of three judges preferred in the November 2026 test of the newest rule, written down before any
+          passage existed. With the rule, 12 of 12 passages opened with the answer, against 10 of 12 without it.
+        </p>
+        <p>
+          The earlier rounds set the skill against no skill and against 1.1.1. Fresh Claude instances wrote an
+          explanation of database indexes, a blog section on feature flags and a pull request description, and judges
+          read shuffled, unlabelled pairs.
+        </p>
+        <p class="cta-line"><a href="/research">Method, results and limits</a></p>
+      </div>
+      <div data-reveal>
+        <div class="scroll">
+          <table>
+            <caption class="visually-hidden">Pairs in which each judge preferred the text written with the skill</caption>
+            <thead>
+              <tr>
+                <th scope="col">Skill preferred over</th>
+                <th scope="col">Opus judge</th>
+                <th scope="col">Sonnet judge</th>
+                <th scope="col">Haiku judge</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">No skill, Sonnet and Opus writing</th>
+                <td>5 of 6</td>
+                <td>5 of 6</td>
+                <td>not run</td>
+              </tr>
+              <tr>
+                <th scope="row">No skill, Haiku writing</th>
+                <td>3 of 3</td>
+                <td>3 of 3</td>
+                <td>3 of 3</td>
+              </tr>
+              <tr>
+                <th scope="row">Version 1.1.1, Sonnet and Opus writing</th>
+                <td>5 of 6</td>
+                <td>4 of 6</td>
+                <td>not run</td>
+              </tr>
+              <tr>
+                <th scope="row">Version 1.1.1, Haiku writing</th>
+                <td>3 of 3</td>
+                <td>2 of 3, one tie</td>
+                <td>2 of 3</td>
+              </tr>
+              <tr>
+                <th scope="row">2.1.0, the lead-with-the-answer rule</th>
+                <td>9 of 12</td>
+                <td>10 of 12</td>
+                <td>9 of 12</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="margin-top: 1.5rem">
+          Where it lost: both first-round judges preferred the no-skill pull request description, because the skill’s was
+          a “Summary” and “Changes” skeleton whose bullets repeated the summary. And on four tasks written to invite it,
+          2 of 9 passages stated something about the reader’s team that nobody had supplied. Check what a draft says about
+          your own team.
+        </p>
+      </div>
+    </div>
+    <p class="sources" data-sources>
+      <span class="lead">The rules are built on</span>{' '}
+      {
+        nameSources.map((s, i) => (
+          <>
+            <a href={s.href}>{short(s.label)}</a>
+            {i < nameSources.length - 2 ? ', ' : i === nameSources.length - 2 ? ' and ' : '.'}
+          </>
+        ))
+      }
+    </p>
+  </section>
+
+  <section aria-labelledby="voice">
+    <h2 id="voice" data-reveal>Your voice outranks the rules</h2>
+    <div class="voice" style="margin-top: 2.5rem" data-reveal>
+      <div class="facts">
+        <p><b>Since</b>2.1.0, October 2026</p>
+        <p><b>Built from</b>about 55,000 words written without AI</p>
+        <p><b>Profile</b><a href={blob('voices/ashwin-sathian.md')}>voices/ashwin-sathian.md</a></p>
+      </div>
+      <div class="copy">
+        <p>
+          <span class="dropcap"><Picture src={lastWords} formats={['avif', 'webp']} widths={[200, 400]} sizes="8rem" alt="The last manuscript page Charles Dickens wrote, in a display case" /></span>
+          When Claude drafts from your writing sample or voice profile, your habits win. If you use dashes or rhetorical
+          questions, the draft does too, at about your rate.
+        </p>
+        <p class="soft">
+          It doesn’t get all the way there. In a test of that profile the drafts moved towards my use of “we” and of
+          questions, but their sentences stayed shorter than mine (15 words on average against 17 to 18), and they used no
+          dashes where I use five or six per 1,000 words.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="install">
+    <div class="install" data-reveal>
+      <div class="install-head">
+        <h2 id="install">Install it in one line</h2>
+        <p>
+          Three ways, and none needs an account. To check it is working, give Claude a short, obviously AI-toned paragraph
+          and ask for something similar. It fires on prose of a paragraph or more, not on a one-line commit subject.
+        </p>
+      </div>
+      <div class="install-ways">
+        <div>
+          <h3>With skills.sh</h3>
+          <Command text={install.skills} label="the skills.sh install command" />
+        </div>
+        <div>
+          <h3>As a Claude Code plugin</h3>
+          <Command text={install.plugin} label="the plugin commands, typed inside Claude Code" />
+        </div>
+        <div>
+          <h3>As a symlinked clone</h3>
+          <Command text={install.symlink} label="the clone and symlink commands" />
+        </div>
+      </div>
+      <p><a href={`${site.repo}#install`}>Troubleshooting and uninstalling, in the README</a></p>
+    </div>
+  </section>
+
+  <section aria-labelledby="questions">
+    <div class="faq-row head" data-reveal>
+      <h2 id="questions">Questions people ask first</h2>
+      <div></div>
+    </div>
+    {
+      homeFaqs.map((f) => (
+        <div class="faq-row" data-reveal>
+          <h3>{f.q}</h3>
+          <div class="answer">
+            <p>{f.a}</p>
+            {f.more && <p><a href={f.more.href}>{f.more.label}</a></p>}
+          </div>
+        </div>
+      ))
+    }
+    <div class="faq-row" data-reveal>
+      <div></div>
+      <p class="cta-line"><a href="/faq">All {faqs.length} questions</a></p>
+    </div>
+  </section>
+
+  <section aria-labelledby="colophon">
+    <h2 id="colophon" data-reveal>This site was written with the skill</h2>
+    <div class="proof" style="margin-top: 2.5rem">
+      <div class="text" data-reveal>
+        <p>
+          Every page was drafted by Claude with the skill loaded and my voice profile applied, and each figure was checked
+          against a file in the repository. The counts beside this are from the same script the tests use. It reports
+          numbers and gives no verdict.
+        </p>
+        <p>
+          The sentences are still shorter than mine and the dashes fewer, which is the miss the profile’s own test found.
+          If the skill mangles something of yours, <a href={`${site.repo}/issues`}>open an issue</a> with the before and
+          after. That is more useful than a star.
+        </p>
+      </div>
+      <div data-reveal>
+        <div class="scroll">
+          <table>
+            <caption class="visually-hidden">Prose counts for this site against the author’s voice profile</caption>
+            <thead>
+              <tr>
+                <th scope="col">Measured {measured.date}</th>
+                <th scope="col">This site</th>
+                <th scope="col">My essays</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Mean sentence length</th>
+                <td>{measured.sentence} words</td>
+                <td>18 words</td>
+              </tr>
+              <tr>
+                <th scope="row">Sentences of five words or fewer</th>
+                <td>{measured.short}</td>
+                <td>1 in 9</td>
+              </tr>
+              <tr>
+                <th scope="row">Dashes per 1,000 words</th>
+                <td>{measured.dashes}</td>
+                <td>6</td>
+              </tr>
+              <tr>
+                <th scope="row">“Moreover”, “Furthermore” and the like</th>
+                <td>{measured.transitions}</td>
+                <td>not counted</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="tally">
+          Released {released}. Two essays cover the thinking at more length:{' '}
+          <a href="https://ashwinsathian.com/writing/why-humanize-my-writing-tools-dont-work">why word lists fail</a>{' '}
+          and{' '}
+          <a href="https://ashwinsathian.com/writing/the-ai-tells-moved-my-tool-for-avoiding-them-hadnt">what changed in 2.0.0</a>.
+          Raw files: <a href={tree('reference')}>reference/</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import '../scripts/sources'
+  </script>
+</Base>

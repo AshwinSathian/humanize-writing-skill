@@ -36,6 +36,12 @@ under both versions). It stays because the test adopted the bullet as
 a whole, and it should go if a later test confirms it does nothing.
 Full counts and limits: `reference/held-out-reader-first-test/result.md`.
 
+**Site.** <https://humanize.ashwinsathian.com> is rebuilt in Astro and redesigned. The home page opens with a
+paragraph edited in four stages (draft, marked up, rewritten, checked), and a visitor can mark up their own
+paragraph with the same expressions as `scripts/measure.py`, in the browser, with no verdict. Bricolage Grotesque
+is the only text face; the Newsreader serif is gone. Fonts, pictures and headers follow the loupe site's
+performance rules, and `site/tests/` checks them on every build. Details: `site/README.md`.
+
 **Also.** `reference/claude-tics.md` has three Opus 5.5 entries from
 Graphite's phrase counts ("this matters" at about 116 times the human
 rate), read secondhand and marked that way.

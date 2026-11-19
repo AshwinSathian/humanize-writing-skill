@@ -1,0 +1,19 @@
+---
+// What the reader sees if a click takes longer than ~150 ms to land: the shape of the page they are going to,
+// shimmering. src/scripts/navigation.ts shows it; it goes with the old page the moment the new one arrives.
+---
+
+<div id="nav-progress" aria-hidden="true"></div>
+<div id="nav-skeleton" aria-hidden="true">
+  <div class="sk-view" data-kind="home">
+    <i class="sk sk-h1"></i>
+    <i class="sk sk-h1 short"></i>
+    <div class="sk-lines"><i class="sk"></i><i class="sk"></i></div>
+    <i class="sk sk-frame"></i>
+  </div>
+  <div class="sk-view" data-kind="list">
+    <i class="sk sk-h1 short"></i>
+    <div class="sk-lines"><i class="sk"></i><i class="sk"></i><i class="sk"></i></div>
+    <i class="sk sk-frame"></i>
+  </div>
+</div>

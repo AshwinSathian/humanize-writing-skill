@@ -1,0 +1,22 @@
+---
+interface Props {
+  text: string
+  label: string
+}
+const { text, label } = Astro.props
+const multi = text.includes('\n')
+---
+
+<div class="cmd-wrap">
+  <div class:list={['cmd', { multi }]}>
+    <pre tabindex="0" aria-label={label}><code>{text}</code></pre>
+    <button type="button" class="button" data-copy hidden>
+      <span data-copy-label>Copy</span><span class="visually-hidden"> {label}</span>
+    </button>
+  </div>
+  <p class="hint" role="status" data-copy-status></p>
+</div>
+
+<script>
+  import '../scripts/command'
+</script>

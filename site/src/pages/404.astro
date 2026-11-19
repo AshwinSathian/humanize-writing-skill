@@ -1,0 +1,30 @@
+---
+import Base from '../layouts/Base.astro'
+import PageHead from '../components/PageHead.astro'
+import binder from '../assets/archive/manuscript.jpg'
+
+const pages = [
+  ['/', 'The overview', 'What the skill does, one paragraph edited in four steps, and how to install it.'],
+  ['/tells', 'AI writing tells in 2026', 'What reads as machine-written now, each with its source.'],
+  ['/examples', 'Four drafts, rewritten', 'Before and after, with a note on every change.'],
+  ['/research', 'Testing', 'The blind rounds, the pre-registered test, and where the skill lost.'],
+  ['/faq', 'Questions and answers', 'Detectors, install, voice, and how far to trust the tests.'],
+]
+---
+
+<Base title="Page not found" description="There is no page at this address. Go to the overview, the tells, the examples, the testing notes, or the questions and answers." noindex>
+  <PageHead title="That page isn’t here" image={binder} alt="A ring-bound manuscript with handwritten edits between the typed lines" caption="A manuscript, edited by hand." focus="60% 50%">
+    The address may have changed. Every page the site has is listed below.
+  </PageHead>
+  <section aria-label="Pages on this site">
+    <ul class="pages-list" data-reveal>
+      {
+        pages.map(([href, name, about]) => (
+          <li>
+            <a href={href}>{name}</a>. {about}
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Base>

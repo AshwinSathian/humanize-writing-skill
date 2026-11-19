@@ -1,0 +1,20 @@
+{
+  "prefetch": [
+    {
+      "urls": ["/tells", "/examples", "/research", "/compare", "/faq"],
+      "eagerness": "eager"
+    }
+  ],
+  "prerender": [
+    {
+      "where": {
+        "and": [
+          { "href_matches": "/*" },
+          { "not": { "href_matches": ["/*.txt", "/*.xml", "/*.png", "/og/*"] } },
+          { "not": { "selector_matches": "[target=_blank]" } }
+        ]
+      },
+      "eagerness": "moderate"
+    }
+  ]
+}
