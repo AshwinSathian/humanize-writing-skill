@@ -7,7 +7,7 @@ emails, posts, PR descriptions) so it doesn't read as machine-written.
 It applies while Claude is writing, and also when you ask Claude to
 humanize a draft. It does not change AI-detector scores.
 
-[![A paragraph marked up by an editor: tells struck through in red, notes in the margin](site/public/og.png)](https://humanize.ashwinsathian.com)
+[![A paragraph marked up by an editor: stock phrases struck through in red, notes in blue in the margin](https://humanize.ashwinsathian.com/og.png)](https://humanize.ashwinsathian.com)
 
 **[humanize.ashwinsathian.com](https://humanize.ashwinsathian.com)** ·
 [AI writing tells in 2026](https://humanize.ashwinsathian.com/tells) ·
@@ -58,7 +58,7 @@ and a note in each file on what the 1.x rewrite got wrong.
 ## What it tells Claude
 
 Text reads as machine-written when every choice in it would suit any
-reader and any subject. The eleven rules in `SKILL.md` point Claude at
+reader and any subject. The twelve rules in `SKILL.md` point Claude at
 this reader and this subject:
 
 - **Claims.** Specific and checkable: the number, the command, the
@@ -236,7 +236,7 @@ reference/held-out-invention-test/ # a pre-registered test of one rule change, w
 examples/                      # worked before/after passages with annotated fixes
 voices/                        # an example voice profile: one author's habits as numbers and descriptions, no quoted text
 scripts/measure.py             # descriptive prose metrics for comparing passages (stdlib, no verdicts)
-site/                          # source of humanize.ashwinsathian.com (Next.js static export); not part of the skill
+site/                          # source of humanize.ashwinsathian.com (Astro, static); not part of the skill
 ```
 
 `SKILL.md` stays short on purpose: it loads into context whenever the

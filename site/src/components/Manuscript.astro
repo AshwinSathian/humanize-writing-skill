@@ -1,0 +1,179 @@
+---
+import { loadExamples } from '../lib/examples'
+
+// The live edit marks up examples/before-after-2.md. Segments are typed by what an editor does with them: cut
+// (struck, numbered note), keep (underlined, numbered note), or leave alone. The build fails if they drift from the file.
+type Seg = { t: string; cut?: number; keep?: number }
+
+const segments: Seg[] = [
+  { t: 'Rate limiting ' },
+  { t: 'plays a crucial role in maintaining the stability and reliability', cut: 1 },
+  { t: ' of modern APIs. ' },
+  { t: "It's not just a defensive measure — it's a foundational component of good API design.", cut: 2 },
+  { t: ' By implementing rate limits, engineering teams can ' },
+  { t: 'ensure fair usage, protect backend infrastructure, and foster a more predictable system', cut: 3 },
+  { t: ' for all consumers. ' },
+  { t: 'Additionally,', cut: 4 },
+  { t: ' rate limiting helps mitigate the risk of cascading failures, which can occur when ' },
+  { t: 'a single misbehaving client overwhelms shared resources', keep: 5 },
+  { t: '. ' },
+  { t: 'Furthermore,', cut: 4 },
+  { t: ' well-designed rate limiting strategies typically incorporate several key elements: ' },
+  { t: 'clear error messaging, transparent limits, and graceful degradation', keep: 6 },
+  { t: '. ' },
+  {
+    t: "Despite the added complexity it introduces, rate limiting remains a testament to thoughtful, resilient system design, and its importance cannot be overstated in today's increasingly interconnected digital landscape.",
+    cut: 7,
+  },
+]
+
+const notes: { n: number; text: string; kept?: boolean }[] = [
+  { n: 1, text: 'Says it matters and not why.' },
+  { n: 2, text: 'Denies a claim nobody made.' },
+  { n: 3, text: 'One point, said three ways.' },
+  { n: 4, text: 'Connectors that would fit any text.' },
+  { n: 5, text: 'The mechanism, buried in sentence four. Lead with it.', kept: true },
+  { n: 6, text: 'Three items, three different things. The list stays.', kept: true },
+  { n: 7, text: 'A closing line with no fact in it.' },
+]
+
+// SKILL.md's "Before finalizing" reread, answered for this rewrite.
+const checks = [
+  ['Is every claim supported?', 'Yes. The one addition is 429, the standard status for a rate-limited request. Which resource runs out, the draft never said, so neither does the rewrite.'],
+  ['Does anything repeat?', 'No. The mechanism is said once, and the last sentence names a cost instead of restating the paragraph as a saying.'],
+  ['Does a sentence keep going on “and”?', 'The first joins two clauses with “and”. Each says something new, so it stays.'],
+  ['Did a fix swap one pattern for another?', 'The remaining list of three names three different properties, so it is a list, not padding.'],
+]
+
+const words = (s: string) => s.split(/\s+/).filter(Boolean).length
+
+const example = loadExamples().find((e) => e.file.endsWith('before-after-2.md'))
+const before = segments.map((s) => s.t).join('')
+if (!example || example.before !== before) throw new Error('Manuscript segments no longer match examples/before-after-2.md')
+const after = example.after
+
+const stages = [
+  { id: 'st-draft', key: 'draft', label: 'Draft', clause: 'A draft in the 2023 style.', more: `${words(before)} words that would fit any API, from any team.` },
+  { id: 'st-marked', key: 'marked', label: 'Marked', clause: 'Seven marks, two of them keeps.', more: 'Red is cut, blue is kept. The numbers match the notes beside the text.' },
+  { id: 'st-after', key: 'after', label: 'Rewritten', clause: 'The mechanism goes first.', more: `${words(after)} words. Every fact was in the draft, except one standard status code.` },
+  { id: 'st-checked', key: 'checked', label: 'Checked', clause: 'Four questions before it goes out.', more: 'The reread the skill runs on every draft, answered for this one.' },
+]
+---
+
+<div class="edit">
+  <div class="edit-clause">
+    <div>
+      {
+        stages.map((s) => (
+          <div class="clause" data-stage={s.key}>
+            <p>{s.clause}</p>
+            <p class="more">{s.more}</p>
+          </div>
+        ))
+      }
+    </div>
+    <fieldset class="stages">
+      <legend class="visually-hidden">Stage of the edit</legend>
+      <div class="track">
+        {
+          stages.map((s) => (
+            <label>
+              <input type="radio" name="stage" id={s.id} checked={s.key === 'marked'} />
+              {s.label}
+            </label>
+          ))
+        }
+      </div>
+    </fieldset>
+  </div>
+
+  <div class="edit-sheet" aria-live="polite" data-ui>
+    <div class="panel" data-stage="draft">
+      <p class="specimen">{before}</p>
+    </div>
+
+    <div class="panel" data-stage="marked">
+      <div class="panel-grid">
+        <p class="specimen">
+          {
+            segments.map((s) =>
+              s.cut ? (
+                <>
+                  <del>
+                    <span>{s.t}</span>
+                  </del>
+                  <sup>{s.cut}</sup>
+                </>
+              ) : s.keep ? (
+                <>
+                  <mark>{s.t}</mark>
+                  <sup>{s.keep}</sup>
+                </>
+              ) : (
+                s.t
+              ),
+            )
+          }
+        </p>
+        <ol class="notes" aria-label="Editor’s notes">
+          {
+            notes.map((note) => (
+              <li data-kept={note.kept || undefined}>
+                <b>{note.n}</b>
+                <span>{note.text}</span>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </div>
+
+    <div class="panel" data-stage="after">
+      <p class="specimen">{after}</p>
+    </div>
+
+    <div class="panel" data-stage="checked">
+      <ul class="checks">
+        {
+          checks.map(([q, a]) => (
+            <li>
+              <svg viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M2 8.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.4" />
+              </svg>
+              <div>
+                <b>{q}</b>
+                <span>{a}</span>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="yours" data-yours hidden>
+  <div>
+    <h3>Mark up your own paragraph</h3>
+    <label for="yours-text">Paste a paragraph</label>
+    <textarea id="yours-text" rows="8" spellcheck="false" placeholder="Rate limiting plays a crucial role in modern APIs. Moreover, …"></textarea>
+    <p class="caveat">
+      This marks the patterns the skill’s rules name, with the same expressions as the repository’s measuring script.
+      It gives no verdict and it is not a detector: one mark proves little, and people write all of these too. Nothing
+      you paste leaves the page.
+    </p>
+  </div>
+  <div class="out-wrap">
+    <div class="out">
+      <div class="panel-grid">
+        <p class="specimen" data-out></p>
+        <ol class="notes" aria-label="Marks" data-notes></ol>
+      </div>
+      <p class="tally" data-tally></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  import '../scripts/markup'
+</script>

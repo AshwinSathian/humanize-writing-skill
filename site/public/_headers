@@ -1,8 +1,64 @@
+# Cloudflare Pages serves ./dist straight from its edge, so these apply to every file.
+
 /*
   X-Content-Type-Options: nosniff
-  X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+  X-Frame-Options: DENY
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+  Strict-Transport-Security: max-age=31536000
+  Speculation-Rules: "/speculation.json"
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests
 
-/_next/static/*
+# Rules for instant navigation: prerender a page when a link is hovered or pressed, prefetch the nav pages. Served as
+# a file because the CSP forbids inline scripts, and the inline form of the rules counts as one.
+/speculation.json
+  Content-Type: application/speculationrules+json
+  Cache-Control: public, max-age=3600
+
+# Pages: fresh for a minute, then served from the browser cache while it revalidates, so a second visit or a
+# back/forward costs no network wait. The Link headers let Cloudflare send both font cuts as 103 Early Hints. The
+# hashed file names are filled in at build time (astro.config.mjs).
+/
+  Cache-Control: public, max-age=60, stale-while-revalidate=600
+  Link: <__FONT__>; rel=preload; as=font; type=font/woff2; crossorigin
+  Link: <__DISPLAY__>; rel=preload; as=font; type=font/woff2; crossorigin
+/tells
+  Cache-Control: public, max-age=60, stale-while-revalidate=600
+  Link: <__FONT__>; rel=preload; as=font; type=font/woff2; crossorigin
+  Link: <__DISPLAY__>; rel=preload; as=font; type=font/woff2; crossorigin
+/examples
+  Cache-Control: public, max-age=60, stale-while-revalidate=600
+  Link: <__FONT__>; rel=preload; as=font; type=font/woff2; crossorigin
+  Link: <__DISPLAY__>; rel=preload; as=font; type=font/woff2; crossorigin
+/research
+  Cache-Control: public, max-age=60, stale-while-revalidate=600
+  Link: <__FONT__>; rel=preload; as=font; type=font/woff2; crossorigin
+  Link: <__DISPLAY__>; rel=preload; as=font; type=font/woff2; crossorigin
+/compare
+  Cache-Control: public, max-age=60, stale-while-revalidate=600
+  Link: <__FONT__>; rel=preload; as=font; type=font/woff2; crossorigin
+  Link: <__DISPLAY__>; rel=preload; as=font; type=font/woff2; crossorigin
+/faq
+  Cache-Control: public, max-age=60, stale-while-revalidate=600
+  Link: <__FONT__>; rel=preload; as=font; type=font/woff2; crossorigin
+  Link: <__DISPLAY__>; rel=preload; as=font; type=font/woff2; crossorigin
+
+# Hashed build output, images included: never changes.
+/_astro/*
   Cache-Control: public, max-age=31536000, immutable
+
+# Unhashed files: revalidate each hour so an edit shows up quickly.
+/og/*
+  Cache-Control: public, max-age=3600
+/og.png
+  Cache-Control: public, max-age=3600
+/favicon.svg
+  Cache-Control: public, max-age=86400
+
+# Files meant to be read by in-browser agents.
+/llms.txt
+  Access-Control-Allow-Origin: *
+/llms-full.txt
+  Access-Control-Allow-Origin: *

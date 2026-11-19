@@ -233,4 +233,5 @@ notes:
 - `reference/research/tells-catalog.md`: 27 ranked tells, ~25 corroborating sources across 5 credibility tiers
 - `reference/oss-skills-review.md`: teardown of 13 existing published humanizer skills/prompts
 - `reference/research/2026-update.md`: 18 further sources read for 2.0.0
+- `reference/research/2026-11-no-slop.md`: the No AI Slop manifesto and the reader-cost, length-bias and homogenization literature behind 2.2.0
 - `reference/claude-tics.md`: current Claude habits, dated, with evidence tiers

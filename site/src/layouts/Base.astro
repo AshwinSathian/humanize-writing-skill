@@ -1,0 +1,126 @@
+---
+import '../styles/global.css'
+import NavSkeleton from '../components/NavSkeleton.astro'
+import Mark from '../components/Mark.astro'
+import { baseGraph, blob, nav, ogAlt, site } from '../lib/site'
+import { ld } from '../lib/ld'
+import credits from '../assets/archive/credits.json'
+
+interface Props {
+  /** Page title without the brand. Omit on the home page. */
+  title?: string
+  description: string
+  /** Path on this site, no trailing slash ("" for home). */
+  path?: string
+  /** Name of the social card in /og/, without ".png". */
+  card?: string
+  schema?: object[]
+  noindex?: boolean
+}
+
+const { title, description, path = '', card = 'site', schema = [], noindex = false } = Astro.props
+const full = title ? `${title} | ${site.name}` : 'humanizing-writing: a Claude Code skill for prose that reads as written by a person'
+const url = site.url + (path || '/')
+const image = `${site.url}/og/${card}.png`
+const here = path === '' ? '/' : path
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{full}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f2f4f3" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#121418" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="author" content={site.author} />
+    <meta
+      name="robots"
+      content={noindex ? 'noindex, follow' : 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1'}
+    />
+    {!noindex && <link rel="canonical" href={url} />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:type" content={path ? 'article' : 'website'} />
+    <meta property="og:title" content={full} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={title ? `Social card for “${title}” on humanizing-writing` : ogAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={full} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    {!noindex && [baseGraph, ...schema].map((s) => <script type="application/ld+json" set:html={ld(s)} />)}
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <div class="wrap">
+      <header class="masthead">
+        <a class="wordmark" href="/"><Mark />{site.name}</a>
+        <nav aria-label="Main">
+          <ul>
+            {
+              nav.map((item) => (
+                <li>
+                  <a href={item.href} aria-current={here.startsWith(item.href) ? 'page' : undefined}>
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
+            <li><a class="action" href={site.repo}>GitHub</a></li>
+          </ul>
+        </nav>
+      </header>
+      <main id="main"><slot /></main>
+    </div>
+    <footer class="colophon">
+      <div class="wrap top">
+        <p>
+          {site.name} {site.version}. A Claude Code skill, free under the MIT licence. Every page on this site was
+          drafted with it.
+        </p>
+        <a href="#main">Back to the top</a>
+      </div>
+      <p class="wrap display">
+        <a href={`${site.repo}/issues/new`}>Show us a bad rewrite</a>
+      </p>
+      <div class="wrap meta">
+        <ul>
+          <li><a href={site.repo}>Source</a></li>
+          <li><a href={blob('SKILL.md')}>SKILL.md</a></li>
+          <li><a href={blob('CHANGELOG.md')}>Changelog</a></li>
+          <li><a href="/llms.txt">llms.txt</a></li>
+        </ul>
+        <p class="credits">
+          Pictures:{' '}
+          {
+            credits.map((c, i) => (
+              <>
+                <a href={c.page}>{c.title.replace(/\.$/, '')}</a>
+                {c.creator ? `, ${c.creator}` : ''}, {c.license}
+                {i < credits.length - 1 ? '; ' : '.'}
+              </>
+            ))
+          }
+        </p>
+        <p>Built by <a href={site.authorUrl}>{site.author}</a>, 2026.</p>
+      </div>
+    </footer>
+    <NavSkeleton />
+    <script>
+      // One file for every page: navigation feedback, link prefetching, entrances.
+      import '../scripts/site'
+    </script>
+  </body>
+</html>

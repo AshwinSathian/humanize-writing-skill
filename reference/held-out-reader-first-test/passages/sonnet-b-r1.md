@@ -1,0 +1,1 @@
+Probably, but it depends on one bug fix landing on time. QA found two bugs last week and one is fixed. The other writes dates in UTC instead of the user's time zone, and the fix is expected Thursday. The deploy freeze starts at 3pm Friday, so if the fix slips past Thursday, the export misses this week's deploy.

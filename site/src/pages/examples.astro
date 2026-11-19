@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro'
+import PageHead from '../components/PageHead.astro'
+import dickens from '../assets/archive/manuscript-from-the-life-of-charles-dickens.jpg'
+import { loadExamples } from '../lib/examples'
+import { breadcrumb, tree } from '../lib/site'
+
+const examples = loadExamples()
+
+const title = 'Four drafts, rewritten'
+const description =
+  'Four worked rewrites from the humanizing-writing skill, two in the 2023 style and two in the 2026 style, with a note on every change and on what the earlier version of each rewrite got wrong.'
+---
+
+<Base title={title} description={description} path="/examples" card="examples" schema={[breadcrumb('Examples', '/examples')]}>
+  <PageHead title={title} image={dickens} alt="A letter in Charles Dickens’s hand, with a word added above the line" caption="Dickens, adding the word he meant." focus="30% 30%">
+    Each rewrite removes the machine habits from a draft and adds no fact the draft lacked. All four are read straight from the repository’s <a href={tree('examples')}>examples folder</a>.
+  </PageHead>
+
+  {examples.map((ex, i) => (
+    <article class="example" data-reveal aria-labelledby={`ex-${i + 1}`}>
+      <h2 id={`ex-${i + 1}`}>{ex.title}</h2>
+      {ex.intro && <p style="margin-top: 0.8rem; max-width: 41rem">{ex.intro.replace(/`/g, '')}</p>}
+      <div class="pair">
+        <div class="before">
+          <h3>Before</h3>
+          <p class="specimen">{ex.before}</p>
+        </div>
+        <div class="after">
+          <h3>After</h3>
+          <p class="specimen">{ex.after}</p>
+        </div>
+      </div>
+      <h3 class="changed">What changed, and why</h3>
+      <div
+        class="prose"
+        style="max-width: 41rem; margin-top: 0.8rem"
+        set:html={ex.notesHtml}
+      />
+    </article>
+  ))}
+</Base>

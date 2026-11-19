@@ -1,0 +1,45 @@
+---
+import Base from '../layouts/Base.astro'
+import PageHead from '../components/PageHead.astro'
+import lastWords from '../assets/archive/the-last-words-dickens-ever-wrote.jpg'
+import { faqs } from '../lib/content'
+import { breadcrumb, site } from '../lib/site'
+
+const description =
+  'Answers about the humanizing-writing skill for Claude Code: whether it gets past AI detectors (it does not), how it differs from blader/humanizer, how to install it, and how it was tested.'
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': `${site.url}/faq#faq`,
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+}
+---
+
+<Base title="FAQ: detectors, install, and how it differs" description={description} path="/faq" card="faq" schema={[faqLd, breadcrumb('FAQ', '/faq')]}>
+  <PageHead title="Questions and answers" image={lastWords} alt="The last manuscript page Charles Dickens wrote, in a display case" caption="Dickens’s last manuscript page, on display." focus="45% 50%">
+    The short version: it makes Claude’s prose read well to a person, it does not change AI-detector scores, and it’s free.
+  </PageHead>
+
+  <section aria-label="All questions">
+    {
+      faqs.map((f) => (
+        <div class="faq-row" data-reveal>
+          <h2>{f.q}</h2>
+          <div class="answer">
+            <p>{f.a}</p>
+            {f.more && (
+              <p>
+                <a href={f.more.href}>{f.more.label}</a>
+              </p>
+            )}
+          </div>
+        </div>
+      ))
+    }
+  </section>
+</Base>

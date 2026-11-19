@@ -1,0 +1,31 @@
+Task r1: A product manager asks you in the team's chat channel: "Can the CSV export ship this Friday?" Write your reply. Facts you have:
+- QA found two bugs in the export last week. One is fixed.
+- The other bug writes dates in UTC instead of the user's time zone. The fix is expected on Thursday.
+- The Friday deploy freeze starts at 3pm.
+- The designer on the feature is on leave this week.
+- The export uses papaparse 5.4.
+- The feature was first planned for last sprint.
+
+Task r2: Write the description for your pull request. Reviewers are two engineers on your team. Facts about the change:
+- The order status page used to poll the server every 5 seconds. It now uses server-sent events.
+- The change removes 140 lines.
+- On a dropped connection the client reconnects with exponential backoff, capped at 30 seconds.
+- You tested it by hand in Chrome and Safari. You did not test Firefox.
+- It is behind the environment variable ORDERS_SSE_ENABLED, which defaults to off.
+- You also renamed a local variable in the same file from `res` to `response`.
+
+Task r3: Write an email to your manager after evaluating three error-tracking vendors. Facts:
+- Legal requires that error data stays in the EU. Security requires SSO.
+- Vendor A: $260 a month, can be self-hosted, no SSO.
+- Vendor B: $180 a month, no EU data residency, has SSO.
+- Vendor C: $310 a month, EU data residency, SSO included.
+- You recommend Vendor C and need your manager's approval of the spend by 28 November, when the free trial ends.
+- You spent four days on the evaluation and set up test projects in all three.
+- Vendor B's sales rep has emailed you three times.
+
+Task r4: Write an update for the customer support team about an incident that is now resolved. Facts:
+- From 14:02 to 14:39 UTC today, about 3% of card payments at checkout failed and showed customers the error "card declined", though the cards were not declined.
+- The cause was an expired TLS certificate on the connection to the payment provider. A new certificate is in place and payments have worked since 14:39.
+- Customers who saw the error were not charged.
+- Support should tell affected customers to try the payment again.
+- The certificate renewal job failed because of a misconfigured cron schedule. Engineering is fixing the job this week.
