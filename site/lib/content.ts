@@ -6,7 +6,7 @@ export type Faq = { q: string; a: string; more?: { href: string; label: string }
 export const faqs: Faq[] = [
   {
     q: 'What is humanizing-writing?',
-    a: "It's a skill for Claude Code that guides how Claude writes prose: docs, READMEs, reports, emails, blog posts, pull request descriptions. It loads whenever Claude is about to write a paragraph or more for a human reader, so the draft comes out without the usual machine habits and there's no separate rewrite step. You can also hand it a finished draft and ask Claude to humanize it. It's free, open source under the MIT licence, and at version 2.1.0 as of October 2026.",
+    a: "It's a skill for Claude Code that guides how Claude writes prose: docs, READMEs, reports, emails, blog posts, pull request descriptions. It loads whenever Claude is about to write a paragraph or more for a human reader, so the draft comes out without the usual machine habits and there's no separate rewrite step. You can also hand it a finished draft and ask Claude to humanize it. It's free, open source under the MIT licence, and at version 2.2.0 as of November 2026.",
   },
   {
     q: 'Does it get text past AI detectors such as GPTZero or Pangram?',
@@ -254,7 +254,7 @@ export const compareRows: CompareRow[] = [
   {
     name: 'humanizing-writing',
     runs: 'While Claude writes, and on request over a draft',
-    mechanism: 'Eleven rules on claims, sentence shape, and endings. About 1,150 words loaded per use',
+    mechanism: 'Twelve rules on claims, order, sentence shape, and endings. About 1,200 words loaded per use',
     scope: 'Ten named cases, from API reference to fiction to your own voice',
     test: '18 blind pairs over two rounds, on Haiku, Sonnet, and Opus. Claude judges. Losses published',
     better: '',

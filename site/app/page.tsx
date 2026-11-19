@@ -112,7 +112,7 @@ export default function Home() {
 
       <section className="row" aria-labelledby="rules">
         <div className="body">
-          <h2 id="rules">Eleven rules, and one that never bends</h2>
+          <h2 id="rules">Twelve rules, and one that never bends</h2>
           <p>
             Text reads as machine-written when every choice in it would suit any reader and any subject. The rules
             point Claude at this reader and this subject, in the places where the default shows most.
@@ -123,6 +123,13 @@ export default function Home() {
               <dd>
                 Make them specific and checkable: the number, the command, the file, the error text. Say each thing
                 once.
+              </dd>
+            </div>
+            <div>
+              <dt>Order</dt>
+              <dd>
+                Lead with what the reader came for: the answer, the decision, or what you need from them, in the first
+                sentence or two. Added in 2.2.0, after a pre-registered test.
               </dd>
             </div>
             <div>

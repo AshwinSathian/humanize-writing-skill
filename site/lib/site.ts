@@ -13,7 +13,7 @@ export const site = {
   url: 'https://humanize.ashwinsathian.com',
   repo: 'https://github.com/AshwinSathian/humanize-writing-skill',
   version: plugin.version,
-  released: '2026-10-09',
+  released: '2026-11-19',
   updated: '2026-10-10',
   author: 'Ashwin Sathian',
   authorUrl: 'https://ashwinsathian.com/',

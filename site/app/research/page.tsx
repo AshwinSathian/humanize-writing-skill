@@ -306,6 +306,66 @@ export default function Research() {
         </aside>
       </section>
 
+      <section className="row" aria-labelledby="reader-first">
+        <div className="body">
+          <h2 id="reader-first">A rule change we tested and made</h2>
+          <p>
+            The &ldquo;No AI Slop&rdquo; manifesto from the AI Engineer Code Summit defines slop by what it costs the
+            reader: less effort went into producing it than the reader has to spend understanding it. No 2.1.0 rule
+            said where the main point goes. The candidate added one: lead with what the reader came for. We wrote the
+            test down first, on four new tasks (a chat reply, a pull request description, an approval email, an
+            incident update), each with facts the reader didn&rsquo;t need.
+          </p>
+          <div className="scroll">
+            <table>
+              <caption className="sr">Held-out test of the lead-with-the-answer rule against 2.1.0</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Held-out test, 19 November 2026</th>
+                  <th scope="col">2.1.0</th>
+                  <th scope="col">With the rule</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Passages opening with the answer or request, of 12</th>
+                  <td>10</td>
+                  <td>12</td>
+                </tr>
+                <tr>
+                  <th scope="row">Pairs preferred by the Haiku, Opus, and Sonnet judges, of 12</th>
+                  <td>3, 2, 0</td>
+                  <td>9, 9, 10</td>
+                </tr>
+                <tr>
+                  <th scope="row">Passages missing a fact the reader needed, of 12</th>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <th scope="row">Median length, words</th>
+                  <td>130</td>
+                  <td>112</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            All four conditions held, so the rule is in 2.2.0. Half of it did nothing we could measure. The rule also
+            says to leave out what the reader won&rsquo;t use, and the passages kept the planted noise at almost the
+            same rate: the cron misconfiguration turned up in 3 of 3 support-team updates under both versions. If you
+            want a draft trimmed of true but useless facts, you still have to ask.
+          </p>
+        </div>
+        <aside className="margin" aria-label="Sources">
+          <a href={blob('reference/held-out-reader-first-test/preregistration.md')}>
+            The test as written down beforehand
+          </a>
+          <a href={blob('reference/held-out-reader-first-test/result.md')}>The result, with the noise counts</a>
+          <a href="https://gist.github.com/dexhorthy/4cc96f01be5b1208519e75dad250a948">The No AI Slop manifesto</a>
+        </aside>
+      </section>
+
       <section className="row" aria-labelledby="limits">
         <div className="body prose">
           <h2 id="limits">Limits</h2>
@@ -330,6 +390,10 @@ export default function Research() {
             <li>
               The held-out test has nine passages per version on tasks written to invite claims about a team, so its
               2 in 9 isn&rsquo;t a rate for ordinary writing.
+            </li>
+            <li>
+              In the 2.2.0 test the judges were told which facts each reader needed, which may have pulled their
+              preference toward passages that put those facts first.
             </li>
             <li>No AI detector was run. The skill makes no claim about detector scores.</li>
             <li>
