@@ -1,0 +1,18 @@
+{
+ "r1": {
+  "task": "A product manager asks you in the team's chat channel: \"Can the CSV export ship this Friday?\" Write your reply. Facts you have:\n- QA found two bugs in the export last week. One is fixed.\n- The other bug writes dates in UTC instead of the user's time zone. The fix is expected on Thursday.\n- The Friday deploy freeze starts at 3pm.\n- The designer on the feature is on leave this week.\n- The export uses papaparse 5.4.\n- The feature was first planned for last sprint.",
+  "needed": ["the answer depends on the time-zone fix landing Thursday (or equivalent yes-if)", "the open bug is dates written in UTC instead of the user's time zone", "the deploy has to happen before the 3pm Friday freeze"]
+ },
+ "r2": {
+  "task": "Write the description for your pull request. Reviewers are two engineers on your team. Facts about the change:\n- The order status page used to poll the server every 5 seconds. It now uses server-sent events.\n- The change removes 140 lines.\n- On a dropped connection the client reconnects with exponential backoff, capped at 30 seconds.\n- You tested it by hand in Chrome and Safari. You did not test Firefox.\n- It is behind the environment variable ORDERS_SSE_ENABLED, which defaults to off.\n- You also renamed a local variable in the same file from `res` to `response`.",
+  "needed": ["polling every 5 seconds replaced by server-sent events", "behind ORDERS_SSE_ENABLED, default off", "tested by hand in Chrome and Safari only; Firefox not tested", "reconnect with exponential backoff capped at 30 seconds"]
+ },
+ "r3": {
+  "task": "Write an email to your manager after evaluating three error-tracking vendors. Facts:\n- Legal requires that error data stays in the EU. Security requires SSO.\n- Vendor A: $260 a month, can be self-hosted, no SSO.\n- Vendor B: $180 a month, no EU data residency, has SSO.\n- Vendor C: $310 a month, EU data residency, SSO included.\n- You recommend Vendor C and need your manager's approval of the spend by 28 November, when the free trial ends.\n- You spent four days on the evaluation and set up test projects in all three.\n- Vendor B's sales rep has emailed you three times.",
+  "needed": ["recommendation is Vendor C", "approval of the spend needed by 28 November (trial ends)", "C costs $310 a month", "A fails SSO and B fails EU residency (why the cheaper ones are out)"]
+ },
+ "r4": {
+  "task": "Write an update for the customer support team about an incident that is now resolved. Facts:\n- From 14:02 to 14:39 UTC today, about 3% of card payments at checkout failed and showed customers the error \"card declined\", though the cards were not declined.\n- The cause was an expired TLS certificate on the connection to the payment provider. A new certificate is in place and payments have worked since 14:39.\n- Customers who saw the error were not charged.\n- Support should tell affected customers to try the payment again.\n- The certificate renewal job failed because of a misconfigured cron schedule. Engineering is fixing the job this week.",
+  "needed": ["it is resolved (payments working since 14:39)", "affected customers were not charged", "tell affected customers to retry the payment", "window 14:02-14:39 UTC and the misleading \"card declined\" error"]
+ }
+}
