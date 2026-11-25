@@ -7,7 +7,7 @@ import { article, blob, breadcrumb, site } from '../lib/site'
 
 const title = 'How the skill was tested, and where it lost'
 const description =
-  'The blind comparisons behind humanizing-writing: three tasks, written by Claude Haiku, Sonnet, and Opus, judged without labels, eighteen pairs. Results, the pairs it lost, a known miss, and the limits of the test.'
+  'The blind comparisons behind humanizing-writing: three tasks, written by Claude Haiku, Sonnet, and Opus, judged without labels, eighteen pairs. Results, the pairs it lost, three pre-registered rule tests, a known miss, and the limits.'
 ---
 
 <Base title={title} description={description} path="/research" card="research" schema={[article(title, description, '/research'), breadcrumb('Testing', '/research')]}>
@@ -267,8 +267,8 @@ const description =
             </tr>
             <tr>
               <th scope="row">Pairs preferred by the Haiku, Opus, and Sonnet judges, of 12</th>
-              <td>4, 5, 6</td>
-              <td>8, 7, 6</td>
+              <td>4,&nbsp;5,&nbsp;6</td>
+              <td>8,&nbsp;7,&nbsp;6</td>
             </tr>
             <tr>
               <th scope="row">Control passages that hedged or dropped a supplied fact, of 3</th>
@@ -328,8 +328,8 @@ const description =
             </tr>
             <tr>
               <th scope="row">Pairs preferred by the Haiku, Opus, and Sonnet judges, of 12</th>
-              <td>3, 2, 0</td>
-              <td>9, 9, 10</td>
+              <td>3,&nbsp;2,&nbsp;0</td>
+              <td>9,&nbsp;9,&nbsp;10</td>
             </tr>
             <tr>
               <th scope="row">Passages missing a fact the reader needed, of 12</th>
@@ -357,6 +357,81 @@ const description =
       </a>
       <a href={blob('skills/humanizing-writing/reference/held-out-reader-first-test/result.md')}>The result, with the noise counts</a>
       <a href="https://gist.github.com/dexhorthy/4cc96f01be5b1208519e75dad250a948">The No AI Slop manifesto</a>
+    </aside>
+  </section>
+
+  <section class="row" data-reveal aria-labelledby="labels">
+    <div class="body">
+      <h2 id="labels">A second rule change we tested and didn&rsquo;t make</h2>
+      <p>
+        OpenAI&rsquo;s guide to GPT-6.2 says the model &ldquo;can carry shorthand from its reasoning or from other
+        agents into its final answer.&rdquo; Agents using this skill usually write after doing the work, so the
+        candidate told them to say what a label coined along the way stands for (&ldquo;H2&rdquo;, &ldquo;Plan
+        B&rdquo;, &ldquo;fix-2&rdquo;), or to drop it. We wrote the test down first: four new tasks, each a message
+        written from working notes full of those labels, for a reader who never saw the notes.
+      </p>
+      <div class="scroll">
+        <table>
+          <caption class="visually-hidden">Held-out test of the working-labels rule against 2.2.1</caption>
+          <thead>
+            <tr>
+              <th scope="col">Held-out test, 25 November 2026</th>
+              <th scope="col">2.2.1</th>
+              <th scope="col">Candidate</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Passages with a term the reader couldn&rsquo;t decode, of 12</th>
+              <td>3</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <th scope="row">Passages flagged for invention by two or more judges, of 12</th>
+              <td>3</td>
+              <td>5</td>
+            </tr>
+            <tr>
+              <th scope="row">Pairs preferred by the Haiku, Opus, and Sonnet judges, of 12</th>
+              <td>3,&nbsp;5,&nbsp;4</td>
+              <td>8,&nbsp;7,&nbsp;8</td>
+            </tr>
+            <tr>
+              <th scope="row">Labels from the notes found in the passages</th>
+              <td>20</td>
+              <td>11</td>
+            </tr>
+            <tr>
+              <th scope="row">Median length, words</th>
+              <td>166</td>
+              <td>161</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        To be adopted, the rule had to bring the unclear passages down from 3 to 1. It left them at 3, so the skill
+        stays at 2.2.1. It did halve the labels that reached the reader, and the judges preferred it, but they
+        hadn&rsquo;t counted most of those labels as unclear in the first place, because the writers had defined
+        them. The ones that did lose a reader got through anyway: &ldquo;DR-1&rdquo; in a Haiku-written migration
+        message under both versions, and, with the rule, a Sonnet message that dropped the plan names but kept
+        &ldquo;option B below&rdquo;.
+      </p>
+      <p>
+        Explaining a label can also add a claim. Two of the candidate&rsquo;s five invention flags came from that:
+        &ldquo;bf2&rdquo; became a script &ldquo;I wrote&rdquo;, and the shop&rsquo;s payment provider became the
+        customer&rsquo;s. The invention gap isn&rsquo;t firm, though. Two judge runs were discarded for breaking
+        the test&rsquo;s rules, and with them in place it reverses. All the writers were Claude models, and the
+        habit OpenAI describes is GPT-6.2&rsquo;s, which wasn&rsquo;t tested. When an agent writes up its work for
+        you, look for references to things only the agent saw.
+      </p>
+    </div>
+    <aside class="margin" aria-label="Sources">
+      <a href={blob('skills/humanizing-writing/reference/held-out-labels-test/preregistration.md')}>
+        The test as written down beforehand
+      </a>
+      <a href={blob('skills/humanizing-writing/reference/held-out-labels-test/result.md')}>The result, with every flagged passage quoted</a>
+      <a href={blob('skills/humanizing-writing/reference/held-out-labels-test/candidate-rule.md')}>The wording that was tried</a>
     </aside>
   </section>
 
@@ -388,6 +463,11 @@ const description =
         <li>
           In the 2.2.0 test the judges were told which facts each reader needed, which may have pulled their
           preference toward passages that put those facts first.
+        </li>
+        <li>
+          The labels test had three judge runs that broke its rules. Two were rerun, and the Sonnet rerun broke the
+          same rule again and was kept. Its result file gives the counts under every combination of runs; the
+          decision is the same in all of them.
         </li>
         <li>No AI detector was run. The skill makes no claim about detector scores.</li>
         <li>
