@@ -1,0 +1,101 @@
+{
+  "pair01": {
+    "more_machine": "tie",
+    "prefer": "A",
+    "undefined": {"A": ["captured"], "B": ["PAY-771", "captured"]},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": [], "B": []},
+    "why": "Both passages give the reader the same facts: charged once, a pending authorization that clears in 3 to 5 business days, shipped, and the Pay-press cause with a fix in progress. B puts the internal ticket number PAY-771 in a customer email, which Dana cannot use, and A stays plainer. Neither passage has a clear machine tell, so the machine call is a tie."
+  },
+  "pair02": {
+    "more_machine": "B",
+    "prefer": "A",
+    "undefined": {"A": [], "B": []},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": [], "B": []},
+    "why": "Both give every needed fact, and neither invents anything: the 'other customers' line in B is backed by the notes' 'double-charge reports this week'. B's 'Here is what happened.' and the closing 'Other customers have run into the same thing this week' read more like templated model prose than A's direct account."
+  },
+  "pair03": {
+    "more_machine": "A",
+    "prefer": "B",
+    "undefined": {"A": [], "B": []},
+    "missing": {"A": [], "B": []},
+    "invented": {
+      "A": ["the payment page did not confirm the first payment", "your bank will release it by itself", "reply with a screenshot of your card statement"],
+      "B": ["your card provider typically releases it within 3 to 5 business days"]
+    },
+    "why": "A states a cause the notes do not support ('the page did not confirm the first payment') and asks for a screenshot procedure the notes never mention. B's only invented detail is the attribution to the card provider with 'typically', which is a smaller stretch. A is also the more generic of the two, with 'I am sorry for the scare this caused' and the bank-release line."
+  },
+  "pair04": {
+    "more_machine": "A",
+    "prefer": "B",
+    "undefined": {"A": ["DR-1"], "B": ["DR-1"]},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": ["I will start the dual-write change first and run bf2 against staging before production"], "B": []},
+    "why": "Both give the recommendation, the two-week and 3-hour trade-off, the sales-period constraint and the decision deadline. A adds a commitment about the next steps that the notes never make, and it says 'Plan B is the only option that fits', which overstates the rejection of Plan C. B states the bf1/bf2 risk directly and rejects Plan C in one line."
+  },
+  "pair05": {
+    "more_machine": "tie",
+    "prefer": "B",
+    "undefined": {"A": [], "B": []},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": [], "B": []},
+    "why": "Both carry all the facts: Plan B with no downtime and about two weeks, the 3-hour staging dry run, the sales-period constraint, logical replication ruled out, and the bf2 history. B adds a practical option for the lead to weigh today ('a 3-hour window outside the sales period'), which is a suggestion rather than an invented fact. Neither has a clear machine tell."
+  },
+  "pair06": {
+    "more_machine": "B",
+    "prefer": "A",
+    "undefined": {"A": [], "B": []},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": [], "B": []},
+    "why": "Both give the cause, the cart_factory fix, the 200-run result with 0 failures, the ruled-out clock and lock options, and the reviewer check. B's 'Other things I tried:' list and 'Please check that...' read more like generated PR prose. A's 'What I ruled out:' and its note about the old fixture carry the same content with less padding."
+  },
+  "pair07": {
+    "more_machine": "tie",
+    "prefer": "no preference",
+    "undefined": {"A": [], "B": []},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": [], "B": []},
+    "why": "Both reports say the same thing with the same facts: merge once the Redis race is fixed (INCR with EXPIRE in MULTI, or Lua), add Retry-After, rename RL_WIN, and the 0.8 ms p50 cost. Both lead with the verdict and carry the same must-fix and suggested labels. Neither differs enough on fit or tells to prefer one."
+  },
+  "pair08": {
+    "more_machine": "A",
+    "prefer": "B",
+    "undefined": {"A": [], "B": []},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": ["I did not run the fix for F1 or F2, so the suggested fixes are unverified"], "B": []},
+    "why": "Both cover F1 to F3, the merge verdict and the latency figure. A's 'I did not run the fix for F1 or F2' is a process claim the notes never make. Its 'Verdict:' opener and the hedging about verification read as generated. B states the same findings directly and says what each fix does in one clause."
+  },
+  "pair09": {
+    "more_machine": "B",
+    "prefer": "A",
+    "undefined": {"A": [], "B": []},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": [], "B": []},
+    "why": "Both give the cause, cart_factory fix, 200 runs with no failures, the ruled-out lock and clock options, and the file list. B opens with 'This fixes the intermittent failure' and repeats the same facts in a longer, more generic structure. A is tighter and gives the same information in fewer words."
+  },
+  "pair10": {
+    "more_machine": "tie",
+    "prefer": "A",
+    "undefined": {"A": [], "B": []},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": [], "B": []},
+    "why": "Both reports carry the merge condition, the atomic counter fix, the Retry-After request and the 0.8 ms figure, with F-labels that the reader can follow. Neither invents anything. A is slightly more direct in its verdict, so I prefer it, but the two differ little."
+  },
+  "pair11": {
+    "more_machine": "A",
+    "prefer": "B",
+    "undefined": {"A": ["option B below"], "B": ["DR-1"]},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": ["I have not run it against the full table yet"], "B": []},
+    "why": "A refers to 'option B below' though no options are labeled in the passage, so the lead cannot follow it. It also states that the backfill has not run against the full table, which the notes do not say. B names Plan A and Plan B clearly, gives the bf2 history, and states the constraints; its only gap is the DR-1 reference."
+  },
+  "pair12": {
+    "more_machine": "A",
+    "prefer": "B",
+    "undefined": {"A": [], "B": []},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": ["I have not run it on CI"], "B": []},
+    "why": "Both cover the cause, the cart_factory fix, the lock and clock options, and the 200-run result. A adds 'I have not run it on CI', which the notes never say. B's 'Verification:' paragraph states only what was run, and its heading names the change directly."
+  }
+}
