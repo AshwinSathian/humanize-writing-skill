@@ -11,7 +11,7 @@ import re
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "skills" / "humanizing-writing" / "scripts"))
 from measure import measure  # noqa: E402
 
 PAGES = ["index", "tells", "research", "compare", "faq"]

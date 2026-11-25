@@ -20,11 +20,11 @@ export const faqs: Faq[] = [
   },
   {
     q: 'How do I install it?',
-    a: 'Run npx skills add AshwinSathian/humanize-writing-skill in a terminal. Or, inside Claude Code, run /plugin marketplace add AshwinSathian/humanize-writing-skill and then /plugin install humanizing-writing@humanize-writing-skill. You can also clone the repository and symlink it into ~/.claude/skills/humanizing-writing. None of the three needs an account or a review.',
+    a: 'Run npx skills add AshwinSathian/humanize-writing-skill in a terminal. Or, inside Claude Code, run /plugin marketplace add AshwinSathian/humanize-writing-skill and then /plugin install humanizing-writing@humanize-writing-skill. You can also clone the repository and symlink its skills/humanizing-writing folder into ~/.claude/skills/humanizing-writing. None of the three needs an account or a review.',
   },
   {
     q: 'Does it work with Codex, Cursor, or models other than Claude?',
-    a: "We don't know. The file is a standard SKILL.md, so an agent that reads that format can load it. But it was written against the habits of Claude models, and every test in the repository ran on Claude Haiku, Sonnet, or Opus. Nothing here says how it behaves on another vendor's model.",
+    a: "It installs in them, but whether it helps there is untested. On 25 November 2026, Codex CLI 0.172.0 and Gemini CLI 0.71.1 both listed the skill after npx skills add AshwinSathian/humanize-writing-skill -g -a codex (or -a gemini-cli). Cursor and Copilot were checked against their documentation only. Every blind test in the repository used Claude writers and Claude judges, so nothing here says whether the rules change GPT or Gemini output. What is known about those models' habits is in reference/gpt-tics.md and reference/gemini-tics.md.",
   },
   {
     q: 'Does it ban "delve", em dashes, or other words?',

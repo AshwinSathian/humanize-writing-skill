@@ -6,7 +6,7 @@ import { join } from 'node:path'
 export const REPO_ROOT = join(process.cwd(), '..')
 export const readRepo = (path: string) => readFileSync(join(REPO_ROOT, path), 'utf8')
 
-const plugin = JSON.parse(readRepo('.claude-plugin/plugin.json')) as { version: string }
+const plugin = JSON.parse(readRepo('skills/humanizing-writing/.claude-plugin/plugin.json')) as { version: string }
 
 export const site = {
   name: 'humanizing-writing',
@@ -39,7 +39,7 @@ export const install = {
   plugin:
     '/plugin marketplace add AshwinSathian/humanize-writing-skill\n/plugin install humanizing-writing@humanize-writing-skill',
   symlink:
-    'git clone https://github.com/AshwinSathian/humanize-writing-skill.git\nln -s "$(pwd)/humanize-writing-skill" ~/.claude/skills/humanizing-writing',
+    'git clone https://github.com/AshwinSathian/humanize-writing-skill.git\nln -s "$(pwd)/humanize-writing-skill/skills/humanizing-writing" ~/.claude/skills/humanizing-writing',
 }
 
 const ids = {

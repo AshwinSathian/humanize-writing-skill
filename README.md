@@ -2,10 +2,12 @@
 
 [![Release](https://img.shields.io/github/v/release/AshwinSathian/humanize-writing-skill)](https://github.com/AshwinSathian/humanize-writing-skill/releases) [![License: MIT](https://img.shields.io/github/license/AshwinSathian/humanize-writing-skill)](LICENSE) [![skills.sh](https://img.shields.io/badge/skills.sh-listed-black)](https://skills.sh/ashwinsathian/humanize-writing-skill) [![Stars](https://img.shields.io/github/stars/AshwinSathian/humanize-writing-skill?style=flat)](https://github.com/AshwinSathian/humanize-writing-skill)
 
-A Claude Code skill that guides how Claude writes prose (docs, reports,
-emails, posts, PR descriptions) so it doesn't read as machine-written.
-It applies while Claude is writing, and also when you ask Claude to
-humanize a draft. It does not change AI-detector scores.
+A skill that guides how Claude writes prose (docs, reports, emails,
+posts, PR descriptions) so it doesn't read as machine-written. It
+applies while Claude is writing, and also when you ask Claude to
+humanize a draft. It does not change AI-detector scores. It is a
+standard [`SKILL.md`](skills/humanizing-writing/SKILL.md), so Codex and Gemini CLI load it too, but every
+test of what it does ran on Claude ([other agents](#other-agents)).
 
 [![A paragraph marked up by an editor: stock phrases struck through in red, notes in blue in the margin](https://humanize.ashwinsathian.com/og.png)](https://humanize.ashwinsathian.com)
 
@@ -32,9 +34,29 @@ Or, inside Claude Code:
 Neither needs an account or a review. [More ways to install, and how to
 check it's working](#install-details).
 
+### Other agents
+
+The skill lives in `skills/humanizing-writing/`, and every install
+route copies only that folder. The table says what was checked, because
+loading a skill and following it are different things.
+
+| Agent | Install | Checked |
+|---|---|---|
+| Codex CLI | `npx skills add AshwinSathian/humanize-writing-skill -g -a codex` | **Ran Codex CLI 0.172.0** (25 Nov 2026). `codex debug prompt-input`, which prints what the model is given, lists the skill from `~/.agents/skills`, as `humanizing-writing:humanizing-writing`. |
+| Gemini CLI | `npx skills add AshwinSathian/humanize-writing-skill -g -a gemini-cli`, or `gemini skills install https://github.com/AshwinSathian/humanize-writing-skill.git` | **Ran Gemini CLI 0.71.1** (25 Nov 2026). `gemini skills list` shows it as enabled from `~/.agents/skills`. No extension manifest is needed. |
+| Cursor | `npx skills add AshwinSathian/humanize-writing-skill -g -a cursor` | **Not run** (its CLI needs a login). Checked against [Cursor's skills documentation](https://cursor.com/docs/skills) only. |
+| GitHub Copilot | copy `skills/humanizing-writing/` to `.github/skills/` in a repo | **Not run.** From [GitHub's documentation](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-skills) only, which gives more than one path. |
+
+Not checked anywhere: whether the rules change GPT or Gemini output.
+Every blind round in [`reference/validation-note.md`](skills/humanizing-writing/reference/validation-note.md)
+used Claude writers and Claude judges. What is known about those
+models' habits is in [`reference/gpt-tics.md`](skills/humanizing-writing/reference/gpt-tics.md)
+and [`reference/gemini-tics.md`](skills/humanizing-writing/reference/gemini-tics.md),
+with evidence grades.
+
 ## Example
 
-One of four worked examples in `examples/` (full annotations there):
+One of four worked examples in [`examples/`](skills/humanizing-writing/examples/) (full annotations there):
 
 **Before:**
 > Rate limiting plays a crucial role in maintaining the stability and
@@ -51,14 +73,14 @@ One of four worked examples in `examples/` (full annotations there):
 > API more complex.
 
 The rewrite states the mechanism the original buried, and adds no fact
-the original did not have. `examples/` also has two 2026-style drafts
+the original did not have. [`examples/`](skills/humanizing-writing/examples/) also has two 2026-style drafts
 (one all fragments and "load-bearing", one a single 61-word sentence)
 and a note in each file on what the 1.x rewrite got wrong.
 
 ## What it tells Claude
 
 Text reads as machine-written when every choice in it would suit any
-reader and any subject. The twelve rules in `SKILL.md` point Claude at
+reader and any subject. The twelve rules in [`SKILL.md`](skills/humanizing-writing/SKILL.md) point Claude at
 this reader and this subject:
 
 - **Claims.** Specific and checkable: the number, the command, the
@@ -72,7 +94,7 @@ this reader and this subject:
 
 One rule never yields: Claude does not invent a figure, quote,
 incident, or source to sound specific. The others are defaults, and
-`SKILL.md` names ten cases where they give way, among them API
+[`SKILL.md`](skills/humanizing-writing/SKILL.md) names ten cases where they give way, among them API
 reference, legal text, fiction, marketing copy, someone else's writing,
 and your own voice.
 
@@ -81,7 +103,7 @@ and your own voice.
 **It is written for human readers and does not get text past AI
 detectors.** Current detectors are trained classifiers that key on how
 an instruction-tuned model writes, which a style guide does not change
-(`reference/research/2026-update.md` §3). If you need a detector score,
+([`reference/research/2026-update.md`](skills/humanizing-writing/reference/research/2026-update.md) §3). If you need a detector score,
 this is the wrong tool.
 
 It also doesn't ban words. An em dash is fine where a comma would hide
@@ -114,20 +136,20 @@ inventing should have stopped. A follow-up test on four new tasks
 found the same slip in 2 of 9 passages. A reworded rule brought that to
 1 of 9, which was short of the bar set before the test ran, so the rule
 was left alone
-([`reference/held-out-invention-test/`](reference/held-out-invention-test/result.md)).
+([`reference/held-out-invention-test/`](skills/humanizing-writing/reference/held-out-invention-test/result.md)).
 If Claude drafts something addressed to your own team, check what it
 says about that team.
 
 The samples are small, the judges are Claude models, and the rules were
 revised after earlier drafts did badly on the same three tasks. The
 pairs, the keys, the losses, and the limits are in
-`reference/validation-note.md`.
+[`reference/validation-note.md`](skills/humanizing-writing/reference/validation-note.md).
 
 ## Why this one
 
 Most public humanizer skills reduce to a banned-word list: swap "delve"
 for something else, cap em dashes, and call it done. That works until
-the list goes stale, and it goes stale fast (`reference/research.md`
+the list goes stale, and it goes stale fast ([`reference/research.md`](skills/humanizing-writing/reference/research.md)
 §3). Wikipedia's own list of AI vocabulary is now sorted by model era,
 and its list for mid-2025 onward is four words, one of which was on its
 2023 list.
@@ -137,7 +159,7 @@ The tells have moved since 2023. Current models have mostly dropped
 plain statement, and short closing lines written for effect. Version
 1.x of this skill did not cover those, and its own rewritten examples
 contained some of them. Version 2.0.0 (October 2026) rewrote the rules
-against 2026 sources. `reference/research/2026-update.md` has the
+against 2026 sources. [`reference/research/2026-update.md`](skills/humanizing-writing/reference/research/2026-update.md) has the
 detail.
 
 | | This skill | The widely used alternatives |
@@ -150,7 +172,7 @@ detail.
 The last row is where this skill is weaker, and
 [blader/humanizer](https://github.com/blader/humanizer) is the better
 choice if you want the best-tested rewrite tool.
-`reference/oss-skills-review.md` has the teardown of 13 public skills
+[`reference/oss-skills-review.md`](skills/humanizing-writing/reference/oss-skills-review.md) has the teardown of 13 public skills
 and what this one took from them.
 
 ## Your own voice
@@ -158,7 +180,7 @@ and what this one took from them.
 Since 2.1.0, when Claude drafts in your voice from a writing sample or
 a voice profile, your habits outrank the style rules. If you use
 dashes, rhetorical questions, or "not X but Y", the draft does too, at
-about your rate. `voices/ashwin-sathian.md` is a worked profile: one
+about your rate. [`voices/ashwin-sathian.md`](skills/humanizing-writing/voices/ashwin-sathian.md) is a worked profile: one
 author's habits as counts and descriptions, with no quoted text. It
 gets stance and person right and rhythm only partly; the file lists the
 misses.
@@ -168,27 +190,31 @@ misses.
 <details>
 <summary>Symlinked clone, try without installing, verify, uninstall</summary>
 
-**As a symlinked clone.** Clone the repo, then symlink it into your
-Claude Code skills directory:
+**As a symlinked clone.** Clone the repo, then symlink its skill folder
+into your Claude Code skills directory:
 
 ```bash
 git clone https://github.com/AshwinSathian/humanize-writing-skill.git
-ln -s "$(pwd)/humanize-writing-skill" ~/.claude/skills/humanizing-writing
+ln -s "$(pwd)/humanize-writing-skill/skills/humanizing-writing" ~/.claude/skills/humanizing-writing
 ```
 
 The symlink means editing the cloned repo updates the live skill
-directly: pull to update, no reinstall step.
+directly: pull to update, no reinstall step. Before 2.2.1 the skill sat
+at the repo root, so a symlink made then points at a folder with no
+[`SKILL.md`](skills/humanizing-writing/SKILL.md) after you pull. Remove it and run the `ln -s` line above.
 
 **Try it without installing anything:**
 
 ```bash
-claude --plugin-dir /path/to/humanize-writing-skill
+claude --plugin-dir /path/to/humanize-writing-skill/skills/humanizing-writing
 ```
 
-**About the plugin marketplace.** The repo ships both a
-`.claude-plugin/plugin.json` manifest and a
-`.claude-plugin/marketplace.json`, so it's a self-contained plugin
-marketplace of one. It is not submitted to Anthropic's official
+**About the plugin marketplace.** The repo root has
+`.claude-plugin/marketplace.json`, which lists one plugin whose source
+is `skills/humanizing-writing/`, where the plugin's own manifest
+(`.claude-plugin/plugin.json`) sits beside [`SKILL.md`](skills/humanizing-writing/SKILL.md). So it's a
+self-contained plugin marketplace of one, and installing the plugin
+copies only the skill folder. It is not submitted to Anthropic's official
 community marketplace (`@claude-community`), which requires a
 submission review. This repo's own marketplace gets you the same
 install at the price of one extra `marketplace add` command.
@@ -196,12 +222,13 @@ install at the price of one extra `marketplace add` command.
 **Verify it's working.** After installing, ask Claude something like
 "what skills do you have available?" or give it a short, obviously
 AI-toned paragraph and ask it to write something similar. A working
-install should visibly avoid the tells in `SKILL.md`'s quick-reference
+install should visibly avoid the tells in [`SKILL.md`](skills/humanizing-writing/SKILL.md)'s quick-reference
 table. The skill triggers on prose of a paragraph or more; it is not
 meant to fire on a one-line commit subject or a chat reply. If it
 doesn't trigger: for the symlink method, confirm it resolves
 (`ls -la ~/.claude/skills/humanizing-writing`); for `--plugin-dir`,
-confirm the flag points at this repo's root, not a subdirectory; for
+confirm the flag points at `skills/humanizing-writing/`, not the repo
+root; for
 the marketplace method, run `/plugin list` and confirm
 `humanizing-writing@humanize-writing-skill` shows as enabled.
 
@@ -212,7 +239,7 @@ flag. Marketplace install:
 `/plugin marketplace remove humanize-writing-skill` if you added the
 marketplace only for this. None of these leave other state behind. To
 disable it for one request without uninstalling, tell Claude directly.
-Per `SKILL.md`'s own "Scope" section, an explicit user instruction
+Per [`SKILL.md`](skills/humanizing-writing/SKILL.md)'s own "Scope" section, an explicit user instruction
 overrides the skill's defaults.
 
 </details>
@@ -220,29 +247,32 @@ overrides the skill's defaults.
 ## What's in here
 
 ```
-.claude-plugin/plugin.json     # plugin manifest (validated, claude plugin validate . --strict)
-.claude-plugin/marketplace.json # self-hosted marketplace, one plugin: this one
-SKILL.md                       # the skill itself, lean and always-loadable
+skills/humanizing-writing/     # the skill: everything an install copies
+  SKILL.md                     # the skill itself, lean and always-loadable
+  .claude-plugin/plugin.json   # plugin manifest (claude plugin validate skills/humanizing-writing --strict)
+  reference/research.md        # research synthesis: what the literature actually says
+  reference/research/          # raw, fully-cited research reports, and the 2026 updates behind 2.x
+  reference/claude-tics.md     # habits of current Claude models, dated, with evidence tiers
+  reference/gpt-tics.md        # the same for GPT models
+  reference/gemini-tics.md     # the same for Gemini models (thin evidence, and it says so)
+  reference/oss-skills-review.md # teardown of 13 existing public humanizer skills
+  reference/validation-note.md # blind comparisons against no skill and against 1.1.1 on Haiku, Sonnet, and Opus, with the losses
+  reference/validation-*/      # the blind pairs, keys, judges' answers and prompts for each round
+  reference/held-out-*/        # pre-registered tests of single rule changes, with results
+  examples/                    # worked before/after passages with annotated fixes
+  voices/                      # an example voice profile: one author's habits as numbers and descriptions, no quoted text
+  scripts/measure.py           # descriptive prose metrics for comparing passages (stdlib, no verdicts)
+  LICENSE                      # a copy, so the notice travels with every install
+.claude-plugin/marketplace.json # self-hosted marketplace, one plugin: skills/humanizing-writing
 CHANGELOG.md                   # what changed each version, and why
-reference/research.md          # research synthesis: what the literature actually says
-reference/research/2026-update.md # newer sources behind 2.0.0, and the 1.x claims they weakened
-reference/claude-tics.md       # habits of current Claude models, dated, with evidence tiers
-reference/oss-skills-review.md # teardown of 13 existing public humanizer skills
-reference/research/            # raw, fully-cited research reports (academic, editorial, tells catalog, OSS survey)
-reference/validation-note.md   # blind comparisons against no skill and against 1.1.1 on Haiku, Sonnet, and Opus, with the losses
-reference/validation-2.0.0/    # the blind pairs, the key, both judges' answers, the adversarial review
-reference/validation-2.1.0-haiku/ # the Haiku round: passages, pairs, key, three judges' answers, prompts, scripts
-reference/held-out-invention-test/ # a pre-registered test of one rule change, with the result (not adopted)
-examples/                      # worked before/after passages with annotated fixes
-voices/                        # an example voice profile: one author's habits as numbers and descriptions, no quoted text
-scripts/measure.py             # descriptive prose metrics for comparing passages (stdlib, no verdicts)
+tools/                         # repo checks: layout and links, what each install route copies
 site/                          # source of humanize.ashwinsathian.com (Astro, static); not part of the skill
 ```
 
-`SKILL.md` stays short on purpose: it loads into context whenever the
-skill triggers. The `reference/` directory carries the depth: full source
+[`SKILL.md`](skills/humanizing-writing/SKILL.md) stays short on purpose: it loads into context whenever the
+skill triggers. The [`reference/`](skills/humanizing-writing/reference/) directory carries the depth: full source
 citations, credibility notes, and the reasoning behind every design
-decision, so nothing in `SKILL.md` has to be taken on faith.
+decision, so nothing in [`SKILL.md`](skills/humanizing-writing/SKILL.md) has to be taken on faith.
 
 ## Research
 
@@ -251,8 +281,8 @@ editorial and practitioner style guides, and a cross-referenced catalog
 of 27 specific AI-writing tells), a teardown of 13 existing public
 humanizer skills, and three adversarial review rounds.
 
-`reference/research.md` is the entry point, with
-`reference/research/2026-update.md` as its correction for current
+[`reference/research.md`](skills/humanizing-writing/reference/research.md) is the entry point, with
+[`reference/research/2026-update.md`](skills/humanizing-writing/reference/research/2026-update.md) as its correction for current
 models. The first is a synthesis of stylometry and
 AI-text-detection research (DetectGPT, Binoculars, watermarking studies,
 lexical-marker research on the "delve" phenomenon), Wikipedia's
@@ -272,7 +302,7 @@ Two essays cover the thinking at more length:
 
 This skill makes judgment calls, and judgment calls are sometimes wrong.
 A prior adversarial round caught it stripping a marketing page's closing
-line before that got fixed (`reference/validation-note.md` has the full
+line before that got fixed ([`reference/validation-note.md`](skills/humanizing-writing/reference/validation-note.md) has the full
 account, including the miss). If it mangles something, [open an
 issue](https://github.com/AshwinSathian/humanize-writing-skill/issues/new/choose)
 with the before/after text; that's more useful than a star. Pull requests

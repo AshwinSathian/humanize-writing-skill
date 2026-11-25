@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "checks": [
+    {
+      "id": "C1",
+      "slice": "S1",
+      "kind": "acceptance",
+      "cmd": "python3 -I tools/check-skill.py",
+      "expect": {
+        "exit": 0
+      },
+      "timeout_s": 30,
+      "fast": true,
+      "protects": [
+        "tools/check-skill.py"
+      ]
+    },
+    {
+      "id": "C2",
+      "slice": "S1",
+      "kind": "regression",
+      "cmd": "claude plugin validate . --strict",
+      "expect": {
+        "exit": 0
+      },
+      "timeout_s": 60,
+      "fast": true
+    },
+    {
+      "id": "C3",
+      "slice": "S1",
+      "kind": "regression",
+      "cmd": "npm --prefix site test",
+      "expect": {
+        "exit": 0
+      },
+      "timeout_s": 300,
+      "fast": false
+    },
+    {
+      "id": "C4",
+      "slice": "S1",
+      "kind": "acceptance",
+      "cmd": "bash tools/check-install.sh",
+      "expect": {
+        "exit": 0,
+        "stdout": "install ok"
+      },
+      "timeout_s": 300,
+      "fast": false,
+      "protects": [
+        "tools/check-install.sh"
+      ]
+    },
+    {
+      "id": "C5",
+      "slice": "S2",
+      "kind": "acceptance",
+      "cmd": "python3 -I tools/check-skill.py --tics",
+      "expect": {
+        "exit": 0,
+        "stdout": "tics ok"
+      },
+      "timeout_s": 30,
+      "fast": true
+    },
+    {
+      "id": "C6",
+      "slice": "S4",
+      "kind": "acceptance",
+      "cmd": "git ls-files --error-unmatch skills/humanizing-writing/reference/held-out-labels-test/preregistration.md skills/humanizing-writing/reference/held-out-labels-test/candidate-rule.md && test ! -e skills/humanizing-writing/reference/held-out-labels-test/passages",
+      "expect": {
+        "exit": 0
+      },
+      "timeout_s": 10,
+      "fast": true
+    },
+    {
+      "id": "C7",
+      "slice": "S1",
+      "kind": "acceptance",
+      "cmd": "bash tools/check-plugin.sh",
+      "expect": {
+        "exit": 0,
+        "stdout": "plugin ok"
+      },
+      "timeout_s": 300,
+      "fast": false,
+      "protects": [
+        "tools/check-plugin.sh"
+      ]
+    }
+  ]
+}

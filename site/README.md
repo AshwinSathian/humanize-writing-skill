@@ -9,11 +9,11 @@ npm test           # astro check, build, then tests/*.test.mjs against dist/
 npm run deploy     # build + wrangler pages deploy
 ```
 
-Everything the site quotes (SKILL.md, the examples, the test results) is read from the repository root at build time, so the pages cannot drift from the skill. The live edit on the home page fails the build if its segments stop matching `examples/before-after-2.md`.
+Everything the site quotes (SKILL.md, the examples, the test results) is read from `skills/humanizing-writing/` at build time, so the pages cannot drift from the skill. The live edit on the home page fails the build if its segments stop matching `examples/before-after-2.md`.
 
 ## Design
 
-An editor's proof: paper, ink, a red pencil for what is cut and a blue pencil for what is kept and where a claim comes from. The home page is built as one sentence with a picture of a corrected typescript where a word would be, then a paragraph edited in four stages, which a visitor can also run on their own text. The marker in `src/lib/patterns.ts` uses the same expressions as `scripts/measure.py`; it marks and gives no verdict.
+An editor's proof: paper, ink, a red pencil for what is cut and a blue pencil for what is kept and where a claim comes from. The home page is built as one sentence with a picture of a corrected typescript where a word would be, then a paragraph edited in four stages, which a visitor can also run on their own text. The marker in `src/lib/patterns.ts` uses the same expressions as `skills/humanizing-writing/scripts/measure.py`; it marks and gives no verdict.
 
 The pictures are archival and openly licensed, listed in `src/assets/archive/credits.json` and credited in the footer of every page.
 

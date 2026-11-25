@@ -1,5 +1,70 @@
 # Changelog
 
+## 2.2.1 (25 November 2026)
+
+**If you installed by symlink, re-point it.** The skill moved from the
+repo root to `skills/humanizing-writing/`. After `git pull`, an old
+symlink points at a folder with no `SKILL.md`:
+
+```bash
+rm ~/.claude/skills/humanizing-writing
+ln -s "/path/to/humanize-writing-skill/skills/humanizing-writing" ~/.claude/skills/humanizing-writing
+```
+
+`npx skills` and `/plugin install` users need no action beyond the
+usual update. The rules in `SKILL.md` are unchanged.
+
+**Why the move.** `npx skills` copies the whole folder that holds
+`SKILL.md`, and `/plugin install` copies the whole plugin source, so
+every install carried the website in `site/` (61 files, 4.7 MB). A
+symlink to the repo root also exposed `site/node_modules`, where Codex
+CLI listed a skill bundled with one of the site's dependencies. The skill, its references, a
+copy of the LICENSE and the plugin manifest now live in
+`skills/humanizing-writing/`, and the marketplace entry points there.
+Links to `blob/main/SKILL.md` and `blob/main/reference/...` from
+outside the repo now 404; the same files are under
+`skills/humanizing-writing/`.
+
+**Model habits, checked against the primary source.**
+`reference/claude-tics.md` cited Graphite's phrase counts secondhand.
+Graphite's reports (16 September and 1 October 2026) are now read in
+full, and several entries changed:
+
+- Claude Opus 5.5 uses 0.015 em dashes per 1,000 words, against 2.92
+  for Opus 5 (down 99%). The em-dash row now covers Opus 5 and earlier.
+- New Opus 5.5 rows: evaluative adjectives ("dependable" at 23 times
+  the human rate), helpfulness phrasing, superlatives. Two of those are
+  measured against Opus 5 or GPT-6 Astra rather than against human
+  writers, and the file now says which basis each figure uses.
+- The semicolon-pivot row, from one community source, is removed.
+- "load-bearing", fragments for drama and announced candor are marked
+  as Opus 5 habits. Graphite's Opus 5.5 lists have none of the first
+  two, and measure "is genuinely" at 26 times the Opus 5.5 rate in
+  Opus 5.
+
+New `reference/gpt-tics.md` (GPT-6 Astra and 6.2, from Graphite,
+OpenAI's GPT-6.2 guide and Wikipedia) and `reference/gemini-tics.md`
+(Gemini 3.1 Pro, from Graphite and Google's prompting guide; the file
+says the evidence is thin). The Sources line in `SKILL.md` points at
+all three. That line is the only change to `SKILL.md`.
+
+**Other agents.** The README has a table of where the skill was
+checked: Codex CLI 0.172.0 and Gemini CLI 0.71.1 load it (run on
+25 November 2026); Cursor and Copilot from their documentation only.
+No test has measured its effect on GPT or Gemini output.
+
+**Pre-registered for 2.3.0.** A rule against carrying labels coined
+during the work ("H2", "Plan B", "fix-2") into prose for a reader who
+never saw them, from OpenAI's note that GPT-6.2 "can carry shorthand
+from its reasoning or from other agents into its final answer". The
+tasks, candidate wording and decision rule are committed, with no
+passages: `reference/held-out-labels-test/`.
+
+**Checks.** `tools/check-skill.py` fails if the layout, a link in the
+README or the site, or the versions drift, or if a habit-file figure
+lacks its basis. `tools/check-install.sh` and `tools/check-plugin.sh`
+install from the working tree and fail if `site/` comes along.
+
 ## 2.2.0 (19 November 2026)
 
 Adds one rule to "Write this way", after "Say each thing once":

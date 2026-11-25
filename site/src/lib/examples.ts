@@ -17,11 +17,11 @@ const flat = (s: string) => s.replace(/\s+/g, ' ').trim()
 // Repo-relative file mentions (`reference/...`, `SKILL.md`) mean nothing on
 // the site, so the notes keep them as plain code.
 export function loadExamples(): Example[] {
-  return readdirSync(join(REPO_ROOT, 'examples'))
+  return readdirSync(join(REPO_ROOT, 'skills/humanizing-writing/examples'))
     .filter((f) => f.endsWith('.md'))
     .sort()
     .map((f) => {
-      const file = `examples/${f}`
+      const file = `skills/humanizing-writing/examples/${f}`
       const [head, ...sections] = readRepo(file).split(/^## /m)
       const section = (name: string) => {
         const hit = sections.find((s) => s.startsWith(name))
