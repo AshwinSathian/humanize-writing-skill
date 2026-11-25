@@ -1,7 +1,7 @@
 # 2.2.1: skill in its own folder, current model habits, cross-agent installs
 
 Status: building · Tier: full · Baseline: 66edd80 · Updated: 2026-11-25
-Now: S2 next.
+Now: S2 doing.
 
 ## Outcome
 An install of 2.2.1 by `npx skills`, by `/plugin install` or by symlink gets only the skill folder, not `site/`. The model-habit files match what Graphite, OpenAI and Wikipedia say as of November 2026. The README says which agents the skill was checked in and how. The 2.3.0 test is pre-registered before any passage for it exists. 2.2.1 is tagged, released, deployed, and installed on this machine.
@@ -46,7 +46,7 @@ Order: first snapshot an `npx skills` install from GitHub `main` (still 2.2.0) i
 - Risk: Claude Code doesn't load SKILL.md at the root of the moved plugin. Detect: C7 installs the local marketplace into a temp `CLAUDE_CONFIG_DIR`, asserts the plugin cache has no `site/`, and runs `claude --plugin-dir skills/humanizing-writing` with Haiku to list skills. Fallback: keep the plugin root at the repo root and narrow the Outcome to `npx skills` and symlink installs.
 - Risk: the site quietly links to a moved path. Detect: C1 checks every `blob()`, `tree()` and `readRepo()` argument in site/src. Fallback: fix the path.
 
-### S2: Model-habit files current [todo]
+### S2: Model-habit files current [doing]
 Goal: claude-tics.md is corrected against Graphite (1 Oct 2026). gpt-tics.md and gemini-tics.md exist, and every row carries an evidence tier and a comparison basis.
 Touch: `skills/humanizing-writing/reference/claude-tics.md (new)`, `skills/humanizing-writing/reference/gpt-tics.md (new)`, `skills/humanizing-writing/reference/gemini-tics.md (new)`, `skills/humanizing-writing/SKILL.md (new)`, `tools/check-skill.py (new)`
 Checks: C1, C5
@@ -57,9 +57,9 @@ Goal: The README has the cross-agent table (checked vs docs only, with versions 
 Touch: `README.md`, `CHANGELOG.md`, `skills/humanizing-writing/.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json`, `site/src/lib/content.ts`, `site/src/lib/llms.ts`
 Checks: C1, C2, C3
 
-### S4: Pre-register the 2.3.0 labels test [todo]
+### S4: Pre-register the 2.3.0 labels test [done]
 Goal: The preregistration and candidate rule are committed before any task output exists.
-Touch: `skills/humanizing-writing/reference/held-out-labels-test/preregistration.md (new)`, `skills/humanizing-writing/reference/held-out-labels-test/candidate-rule.md (new)`
+Touch: `skills/humanizing-writing/reference/held-out-labels-test/preregistration.md (new)`, `skills/humanizing-writing/reference/held-out-labels-test/candidate-rule.md (new)`, `skills/humanizing-writing/reference/held-out-labels-test/tasks.json (new)`
 Checks: C6
 
 ### S5: Ship and install [todo]
@@ -79,3 +79,5 @@ Order: tag v2.2.0 at 66edd80 and push it; merge the PR; run `npx skills update` 
 - 2026-11-25 22:10: jig verify S1: C1 pass; C2 pass; C3 pass; C4 pass; C7 pass
 - 2026-11-25: S1 done. The skill, its references and the plugin manifest now live in `skills/humanizing-writing/`, and the marketplace points there, so `npx skills` and `/plugin install` copy only that folder (C4, C7). Site paths, the site test and measure-site.py follow the move; C1 now fails if any of them points at a missing file. The local symlink was re-pointed at the start. Before the move, a GitHub `main` install was snapshotted into a scratch HOME for the S5 upgrade test; it carried `site/`, which confirms the problem.
 - 2026-11-25: Touch lists edited after the move: the old root paths no longer exist, and plugin.json now lives in the skill folder. Scope unchanged.
+- 2026-11-25: S4 committed before S2, because gpt-tics.md (S2) links to `reference/held-out-labels-test/`, and C1 fails on a dangling link. tasks.json added to S4's Touch: the four tasks are pre-registered with the rule, so they can't be written after seeing passages.
+- 2026-11-25: S4 done. Pre-registration, candidate rule and four tasks are committed alone, with no passages. The decision rule adds a condition the 2.2.0 test lacked: if Claude writers don't leak labels without the rule (C_unclear under 3), the rule is not adopted.
