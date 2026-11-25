@@ -1,7 +1,7 @@
 # Site: publish the 2.3.0 labels test (tested, not adopted)
 
-Status: approved · Tier: brief · Baseline: 462253f · Updated: 2026-11-25
-Now: S1.
+Status: shipped · Tier: brief · Baseline: 462253f · Updated: 2026-11-25
+Now: shipped; deployed from 79969e6.
 
 ## Outcome
 The live research page, llms.txt, the FAQ, the comparison row and the README report the 25 November labels test as a rule tested and not adopted, with the counts from `result.md`. The site's version facts match 2.2.1.
@@ -31,7 +31,7 @@ Done when:
 
 ## Slices
 
-### S1: Site and README text, tested, deployed [doing]
+### S1: Site and README text, tested, deployed [done]
 Goal: all text changes in, checks green, PR merged, site deployed, live pages verified.
 Touch: `site/src/pages/research.astro`, `site/src/lib/llms.ts`, `site/src/lib/content.ts`, `site/src/lib/site.ts`, `site/src/lib/og.ts`, `site/src/pages/404.astro`, `README.md`, `docs/plans/labels-test-2-3-0/PLAN.md`, `docs/plans/site-labels-test/PLAN.md`
 Checks: `npm --prefix site test`, `python3 -I tools/check-skill.py`
@@ -42,3 +42,4 @@ Checks: `npm --prefix site test`, `python3 -I tools/check-skill.py`
 - 2026-11-25: Plan started at 462253f. Approved by agent; the one deploy door was settled by the owner's request; no gate applied.
 - 2026-11-25: Built page checked: every figure matches result.md; the new table fits at 390 px. The two first-round tables (#results, #haiku) are 2 px wider than their scroll box at 390 px; pre-existing, they scroll, left alone. The Haiku/Opus/Sonnet list cells wrapped at 390 px ("3, 5," / "4"), so all six list cells on the page now use non-breaking spaces, including the two earlier tables. Fonts checked on all seven pages: every visible text element computes to Bricolage Grotesque, code to JetBrains Mono; the only other face is Arial on the stage radio inputs, which are opacity 0 and draw no text. No font change made.
 - 2026-11-25: `npm --prefix site test` 42/42 pass; `python3 -I tools/check-skill.py` passes.
+- 2026-11-25: S1 done. PR #6 merged (79969e6, merge commit). Deployed to humanize-writing-site (fd94ba72.humanize-writing-site.pages.dev). Live: /research has the #labels section, llms.txt cites held-out-labels-test and says "Version: 2.2.1 (released 2026-11-25)", the FAQ says 2.2.1, and the three GitHub source links return 200.
