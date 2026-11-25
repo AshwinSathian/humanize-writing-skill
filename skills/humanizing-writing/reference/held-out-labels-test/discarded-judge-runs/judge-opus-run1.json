@@ -1,0 +1,98 @@
+{
+  "pair01": {
+    "more_machine": "B",
+    "prefer": "A",
+    "undefined": {"A": ["captured"], "B": ["PAY-771", "never captured"]},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": [], "B": ["I'll follow up with the payment provider (no such step in the notes)"]},
+    "why": "B passes the internal ticket ID \"(PAY-771)\" to a customer who can do nothing with it, and \"never captured\" is payment jargon. A says the same thing in customer terms (\"will not be collected\") and ends with an apology. Both cover every fact Dana needs."
+  },
+  "pair02": {
+    "more_machine": "B",
+    "prefer": "A",
+    "undefined": {"A": [], "B": []},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": [], "B": ["\"Your payment provider never collected the second one\": the notes mean the merchant's payment provider (PSP), not Dana's"]},
+    "why": "B announces itself with \"Here is what happened.\" and gets wrong whose provider it was (\"Your payment provider\"). A is direct and accurate: \"Only the first one went through as a payment.\" Both include every needed fact."
+  },
+  "pair03": {
+    "more_machine": "A",
+    "prefer": "B",
+    "undefined": {"A": ["captured"], "B": []},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": ["\"the page did not confirm the first payment\"", "the request to reply with a screenshot of the card statement"], "B": []},
+    "why": "A uses the stock opener \"Here is what happened.\" and adds a cause the notes don't give (\"the page did not confirm the first payment\"). B is shorter and clearer (\"a pending authorization, not a payment\"), though it skips an apology and offers no follow-up if the hold stays."
+  },
+  "pair04": {
+    "more_machine": "A",
+    "prefer": "B",
+    "undefined": {"A": ["DR-1"], "B": ["DR-1"]},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": ["next steps: start the dual-write change first and run bf2 against staging before production"], "B": []},
+    "why": "A coins a label for the reader (\"which we call bf2\") and commits to next steps the notes don't contain. B asks for the decision in its second paragraph (\"I need a decision today\") and puts the bf1 timeout under \"One risk to know about\". Both carry the internal labels Plan A/B/C and DR-1, but each one is explained where it appears."
+  },
+  "pair05": {
+    "more_machine": "B",
+    "prefer": "A",
+    "undefined": {"A": [], "B": []},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": [], "B": ["\"If ... we can find a 3-hour window outside the sales period, that plan is simpler\""]},
+    "why": "A fits the recommendation, the trade-off, the reason and \"I need your call on this today\" into one opening paragraph. B adds an alternative the notes never raised (\"that plan is simpler\") and spreads the same facts across more paragraphs."
+  },
+  "pair06": {
+    "more_machine": "A",
+    "prefer": "B",
+    "undefined": {"A": [], "B": []},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": [], "B": []},
+    "why": "A files the lock under \"What I ruled out\" even though the lock worked, and speaks of the reviewers in the third person (\"Reviewers may want to check\") in a description written for them. B labels it accurately (\"My first fix put a lock\") and asks directly: \"Please check that no other tests still use the old shared cart fixture.\""
+  },
+  "pair07": {
+    "more_machine": "tie",
+    "prefer": "no preference",
+    "undefined": {"A": [], "B": []},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": [], "B": []},
+    "why": "The two are nearly the same in structure, content and wording (\"says what it is and what unit it's in\" vs \"says what it holds and in what unit\"). B adds the dropped test-clock concern, which the reader doesn't need but which isn't wrong either. Both are accurate and complete."
+  },
+  "pair08": {
+    "more_machine": "A",
+    "prefer": "B",
+    "undefined": {"A": [], "B": []},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": [], "B": []},
+    "why": "A opens with a formal \"Verdict:\" line listing F1, F2 and F3 before it has defined them, and stacks extra hedges (\"so the suggested fixes are unverified\", \"I do not see a performance problem\"). B makes the same points more briefly, for example \"rename `RL_WIN` to `RATE_LIMIT_WINDOW_SECONDS`.\""
+  },
+  "pair09": {
+    "more_machine": "A",
+    "prefer": "B",
+    "undefined": {"A": [], "B": []},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": [], "B": ["\"one test sometimes saw the other's items\" (a specific symptom the notes don't state)"]},
+    "why": "A states the conftest and factory change in its prose and then repeats it in a \"Changes:\" list. B gives the cause, the fix, the before/after numbers (\"about 1 of every 20 runs\" and then 200 clean runs) and the attempts it rejected, each once, with the file list at the end."
+  },
+  "pair10": {
+    "more_machine": "tie",
+    "prefer": "no preference",
+    "undefined": {"A": [], "B": []},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": [], "B": []},
+    "why": "The content is almost identical, down to the mention of the dropped test-clock concern. B uses F1, F2 and F3 labels and adds a concrete header value (\"the seconds left in the current window\"). A labels its sections by severity (\"Must fix\", \"Strongly suggested\"). Neither one is clearly better."
+  },
+  "pair11": {
+    "more_machine": "A",
+    "prefer": "B",
+    "undefined": {"A": ["option B below (no option is labeled B anywhere below)"], "B": ["DR-1"]},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": ["\"I have not run it against the full table yet\"", "\"so I wrote a second version\" (the notes don't say who wrote bf2)"]},
+    "why": "A points to \"option B below\", which never appears, and adds claims the notes don't support (\"I have not run it against the full table yet\"). B is accurate and puts the request first (\"Can you confirm today?\"). Its labels (Plan A, DR-1, bf2) are each explained in place."
+  },
+  "pair12": {
+    "more_machine": "A",
+    "prefer": "B",
+    "undefined": {"A": [], "B": []},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": ["\"I have not run it on CI\""], "B": []},
+    "why": "A says the same thing twice (\"so I reverted it and did not keep it\") and repeats the changed files in a list after the prose already named them. B covers the same facts more tightly and gives a clean before/after under \"Verification\", though its title leaves out that the test was flaky."
+  }
+}

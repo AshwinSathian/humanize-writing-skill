@@ -1,5 +1,44 @@
 # Changelog
 
+## After 2.2.1 (no release, `SKILL.md` unchanged)
+
+**A rule change tested and not made, 25 November 2026.** The candidate
+2.3.0 rule told writers to explain or drop labels they coined while
+working ("H2", "Plan B", "fix-2") when writing for a reader who never
+saw the notes. The test was pre-registered before any passage existed:
+four new tasks, each a message written from working notes full of
+labels, three writer models, three judges, and five conditions that all
+had to hold.
+
+Two failed. The 2.2.1 rules left 3 of 12 passages with a term the
+reader could not decode, which met the bar for a problem worth fixing,
+but the candidate also left 3. Adoption needed 1 or fewer. Candidate
+passages were flagged for invention 5 times against 3, though that gap
+reversed when the two discarded judge runs were used instead, so it is
+noise at this size. The other three conditions held. All three judges
+preferred the candidate passages (8, 7 and 8 of 12), no passage under
+either version left out a fact the reader needed, and the candidate
+median was 161 words against 166.
+
+**What did not work.** The candidate halved the labels that reached the
+reader (11 against 20), but the judges did not find the passages
+clearer, because most leaked labels were already defined in the
+passage. The ones that did confuse a reader got through anyway: "DR-1"
+in the Haiku migration message under both versions, and, under the
+candidate, a Sonnet message that removed the plan names but kept a
+pointer to one ("option B below"). Explaining a label also produced two
+of the five invention flags: "bf2" became a script "I wrote", and
+"PSP-side" became Dana's own payment provider.
+
+**Run notes.** Two judge runs broke the rules set before the run. One
+file failed the schema, and a Sonnet judge wrote its answers with Bash
+instead of Write, which happened again on the rerun. The Opus rerun
+replaced the bad file, and the owner chose to keep the Sonnet rerun.
+Condition 2 fails whichever runs are used. Counts, quotes of every
+flagged passage, the discarded runs and the limits:
+`reference/held-out-labels-test/result.md`. No second wording will be
+tried on these tasks.
+
 ## 2.2.1 (25 November 2026)
 
 **If you installed by symlink, re-point it.** The skill moved from the

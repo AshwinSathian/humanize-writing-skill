@@ -1,0 +1,98 @@
+{
+  "pair01": {
+    "more_machine": "B",
+    "prefer": "A",
+    "undefined": {"A": ["captured"], "B": ["captured", "PAY-771"]},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": [], "B": []},
+    "why": "Both cover every fact. B leaks an internal ticket id to a customer (\"a ticket open (PAY-771)\") and \"your case matches it\" reads like notes being transcribed. A says it plainly (\"will not be collected\") and closes with an apology, which suits a worried customer."
+  },
+  "pair02": {
+    "more_machine": "B",
+    "prefer": "A",
+    "undefined": {"A": [], "B": []},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": [], "B": ["\"Your payment provider never collected the second one\" assigns the provider to Dana; the notes mean the shop's payment processor"]},
+    "why": "B announces its explanation (\"Here is what happened.\") and gets the provider wrong with \"Your payment provider\". A is tighter and every claim is accurate: \"was never completed\", \"Only the first one went through as a payment.\""
+  },
+  "pair03": {
+    "more_machine": "A",
+    "prefer": "A",
+    "undefined": {"A": ["captured"], "B": []},
+    "missing": {"A": [], "B": ["no step to take if the hold has not dropped off after 5 business days"]},
+    "invented": {"A": ["the page \"did not confirm the first payment\"", "the request for a screenshot of the card statement"], "B": []},
+    "why": "A has the announced \"Here is what happened.\" and adds a cause the notes don't give (\"did not confirm the first payment\"). I still prefer A because it tells Dana what to do if the hold stays (\"reply to this email\"). B ends with no fallback, only \"Thank you for reporting this.\""
+  },
+  "pair04": {
+    "more_machine": "B",
+    "prefer": "A",
+    "undefined": {"A": ["DR-1"], "B": ["DR-1", "bf2 (used in the first paragraph before it is explained at the end)"]},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": ["the next steps: start the dual-write change first, then run bf2 against staging before production"], "B": []},
+    "why": "A gives the recommendation, its cost and the reason together, then the alternatives, then the ask. B puts \"I need a decision today\" in the middle of the paragraph about Plan A and uses \"bf2\" before saying what it is. B's \"One risk to know about:\" is a stock signpost."
+  },
+  "pair05": {
+    "more_machine": "B",
+    "prefer": "A",
+    "undefined": {"A": [], "B": []},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": [], "B": ["the suggestion that a 3-hour window outside the sales period would make the one-shot plan \"simpler\" and viable"]},
+    "why": "A fits every needed fact and the ask (\"I need your call on this today\") into its first paragraph. B splits the 3-hour staging figure away from the alternative it belongs to, adds a hedge the notes don't support (\"that plan is simpler\"), and leaves the ask for the last line."
+  },
+  "pair06": {
+    "more_machine": "B",
+    "prefer": "A",
+    "undefined": {"A": [], "B": []},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": [], "B": []},
+    "why": "The two are close. B's list \"Other things I tried:\" includes \"I did not test network effects\", which it didn't try, so the list contradicts itself. A's \"What I ruled out:\" holds up better, and it states the risk directly: \"If another test starts using the old shared cart fixture, it can bring the flake back.\""
+  },
+  "pair07": {
+    "more_machine": "tie",
+    "prefer": "A",
+    "undefined": {"A": [], "B": []},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": [], "B": []},
+    "why": "The two are nearly identical in structure and content. B adds \"I also suspected a problem with the test clock, but it turned out to be fine\", which this developer doesn't need. A's \"will tend to retry right away\" states the consequence more concretely than \"have to guess\"."
+  },
+  "pair08": {
+    "more_machine": "A",
+    "prefer": "B",
+    "undefined": {"A": [], "B": []},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": [], "B": []},
+    "why": "A opens with a \"Verdict:\" label and ends with boilerplate that doesn't fit a review (\"I did not run the fix for F1 or F2, so the suggested fixes are unverified\"). It also adds an editorial line, \"so I do not see a performance problem\". B gives the same findings with less padding."
+  },
+  "pair09": {
+    "more_machine": "A",
+    "prefer": "B",
+    "undefined": {"A": [], "B": []},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": [], "B": []},
+    "why": "A says cart_factory() lives in tests/conftest.py and then says it again in the \"Changes:\" list. B reads like a person explaining, in order: the cause, the before and after numbers (\"about 1 of every 20 runs before the change\"), what was ruled out, then the files."
+  },
+  "pair10": {
+    "more_machine": "tie",
+    "prefer": "A",
+    "undefined": {"A": [], "B": ["F1, F2 (used in the opening line before they are defined)"]},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": [], "B": []},
+    "why": "The content is equivalent. B opens with \"once F1 is fixed ... fixing F2\" before the reader knows what F1 and F2 are. A names the issues in its verdict line (\"once the race condition in the limit counter is fixed\"), so it can be read top-down."
+  },
+  "pair11": {
+    "more_machine": "A",
+    "prefer": "B",
+    "undefined": {"A": ["\"option B below\" (no option is labelled B anywhere in the message)"], "B": ["DR-1"]},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": ["\"I have not run it against the full table yet\"", "\"I wrote a second version\" (the notes don't say who wrote it)"], "B": []},
+    "why": "A points to a label that never appears (\"(option B below)\") and states facts about the backfill script the notes don't contain. B names the plans consistently, explains bf2 when it first uses it, and every claim traces to the notes."
+  },
+  "pair12": {
+    "more_machine": "A",
+    "prefer": "B",
+    "undefined": {"A": [], "B": []},
+    "missing": {"A": [], "B": []},
+    "invented": {"A": ["\"I have not run it on CI\""], "B": []},
+    "why": "A repeats itself (\"so I reverted it and did not keep it\"), lists the files again after already naming them, and adds a CI claim the notes don't give. B covers the same facts more tightly and puts the before and after numbers together under \"Verification\"."
+  }
+}

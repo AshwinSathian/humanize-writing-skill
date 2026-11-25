@@ -1,7 +1,7 @@
 # 2.3.0: run the pre-registered working-labels test, ship only on a pass
 
 Status: building · Tier: full · Baseline: 2ff1450 · Updated: 2026-11-25
-Now: S3, judges. Passages committed.
+Now: S6, PR open for the owner. Decision: do not adopt.
 
 ## Outcome
 The test in `skills/humanizing-writing/reference/held-out-labels-test/` is run exactly as `preregistration.md` (with its 25 Nov amendment) says, and its record (guides, 24 passages, key, pairs, three judges' answers, tally, result) is committed after the preregistration. If all five conditions hold, 2.3.0 ships with the bullet; if any fails, `SKILL.md` stays as it is and the CHANGELOG gets an "After 2.2.1 (no release)" note.
@@ -52,26 +52,26 @@ Checks: C3
 - Risk: a writer invokes a skill or reads the preregistration. Detect: transcript read. Fallback: the rerun rule in Decisions.
 - Risk: hook-injected terse style shows up in passages. Detect: transcript shows injected context; passages read before commit. Fallback: report as a limit; both arms share it.
 
-### S3: Pairs and three judges [todo]
+### S3: Pairs and three judges [done]
 Goal: `pairs.md` and `key.json` built with seed 20261125; Opus, Sonnet and Haiku judges each answer all 12 pairs; files committed.
 Touch: `skills/humanizing-writing/reference/held-out-labels-test/pairs.md (new)`, `skills/humanizing-writing/reference/held-out-labels-test/key.json (new)`, `skills/humanizing-writing/reference/held-out-labels-test/judge-opus.json (new)`, `skills/humanizing-writing/reference/held-out-labels-test/judge-sonnet.json (new)`, `skills/humanizing-writing/reference/held-out-labels-test/judge-haiku.json (new)`, `docs/plans/labels-test-2-3-0/PLAN.md`
 Checks: C4
 - Risk: a judge writes invalid JSON or skips a field. Detect: C4's schema check. Fallback: rerun that judge fresh once and log it; never hand-edit an answer.
 
-### S4: Tally and result [todo]
+### S4: Tally and result [done]
 Goal: `result.md` gives every count, each condition's verdict, the leaks table, per-model counts, and quotes of every flagged item, losses first where there are losses.
 Touch: `skills/humanizing-writing/reference/held-out-labels-test/result.md (new)`, `docs/plans/labels-test-2-3-0/PLAN.md`
 Checks: C4, C13
 
 S5 and S6 exclude each other. The one the decision rules out is marked `[dropped]` with a Log line.
 
-### S5: Ship 2.3.0 (pass only) [todo]
+### S5: Ship 2.3.0 (pass only) [dropped]
 Goal: 2.3.0 merged with a merge commit, site deployed, v2.3.0 tagged at the merge and released.
 Touch: `skills/humanizing-writing/SKILL.md`, `skills/humanizing-writing/.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json`, `CHANGELOG.md`, `site/src/pages/research.astro`, `site/src/lib/llms.ts`, `site/src/lib/content.ts`, `site/src/lib/site.ts`, `docs/plans/labels-test-2-3-0/PLAN.md`
 Checks: C5, C6, C7, C8, C9, C10, C11
 - Risk: the site claims more than the result. Detect: every number on the page is checked against `tally.py` output before deploy. Fallback: fix and redeploy.
 
-### S6: Record the fail (fail only) [todo]
+### S6: Record the fail (fail only) [done]
 Goal: CHANGELOG has a dated "After 2.2.1 (no release, `SKILL.md` unchanged)" note above 2.2.1; PR open, not merged; nothing released.
 Touch: `CHANGELOG.md`, `docs/plans/labels-test-2-3-0/PLAN.md`
 Checks: C6, C12, C14
@@ -84,3 +84,12 @@ Checks: C6, C12, C14
 - 2026-11-25: S1 done. guide-a.md is SKILL.md at 2ff1450; guide-b.md adds only the candidate bullet after "Lead with what the reader came for" (C2). make_pairs.py differs from the reader-first copy in seed, docstring and the reader/notes split. tally.py and prompts.md written before any passage.
 - 2026-11-25 22:37: jig verify S1: C1 pass; C2 pass
 - 2026-11-25: S2 done. Six fresh general-purpose subagents (claude-haiku-5-5, claude-sonnet-5-5, claude-opus-5-5 per the transcripts), each in its own scratch dir holding only its guide. Every transcript has exactly one Read (its guide) and four Writes (its four files), no Skill call, so no rerun. Every writer's context carried the owner's global rules (no-slop.md, which names the humanizing-writing skill) and the project MEMORY.md; no caveman or ponytail hook text was found. Passages 114 to 203 words.
+- 2026-11-25 22:40: jig verify: C3 pass
+- 2026-11-25: First judge runs. Haiku: one Read, one Write, valid file, kept. Sonnet: one Read, then wrote its answers with a Bash heredoc instead of Write; under the rule set before the run, discarded. Opus: one Read, one Write, but pair11 `invented` has only an "A" key, so C4's schema check fails; discarded rather than hand-edited. Both rerun fresh in new scratch dirs. The discarded files are kept in the scratchpad and their tally is reported in result.md as a sensitivity check (Opus's missing "B" read as empty), not used in the decision.
+- 2026-11-25: Reruns. Opus rerun: one Read, one Write, valid. Sonnet rerun: one Read, then Bash (a heredoc writing answers.json) again, plus an extra empty `invented_note` key in pair04. By the rule set before the run, a second violation stops the run for the owner. The tally had already been run in the same command as the transcript audit, so the result was seen before the stop: unclear C=3 K=3, missing 0/0, invented C=3 K=5, median 166 vs 161 words, preference 8/7/8 of 12 candidate (Haiku/Opus/Sonnet). Conditions 2 and 5 fail. Sensitivity over the four combinations of first and rerun files for Opus and Sonnet: condition 2 fails in all four (K_unclear 3, C_unclear 3 or 4); condition 5 fails only in the combination as run. Waiting for the owner.
+- 2026-11-25 23:01: jig verify: C4 pass; C13 pass
+- 2026-11-25: Owner chose to accept the Sonnet rerun as the third judge and record the fail. S3 done: judge-opus.json (rerun), judge-sonnet.json (rerun), judge-haiku.json (first run); discarded runs committed in discarded-judge-runs/.
+- 2026-11-25: S4 done. result.md gives the counts block verbatim from tally.py (C13), the condition table, quotes of every passage flagged by two judges, leaks both ways, per-writer counts, the discarded-run sensitivity table and the limits. Condition 2 fails in every combination of runs.
+- 2026-11-25: S5 dropped: the decision is "do not adopt". S6 started: CHANGELOG "After 2.2.1" note above 2.2.1.
+- 2026-11-25 23:01: jig verify: C1 pass; C2 pass; C3 pass; C6 pass; C7 pass; C12 pass; C14 pass
+- 2026-11-25: S6 done. Record and CHANGELOG note committed on test/2-3-0-labels; PR opened, not merged, per the fail-path decision. No tag, release or deploy.
