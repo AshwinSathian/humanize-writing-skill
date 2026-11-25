@@ -87,3 +87,4 @@ Order: tag v2.2.0 at 66edd80 and push it; merge the PR; run `npx skills update` 
 - 2026-11-25 22:18: jig verify: C1 pass; C2 pass; C3 pass; C5 pass; C6 pass; C7 pass
 - 2026-11-25 22:18: jig verify: C4 pass
 - 2026-11-25: S3 done. README: intro says it loads in Codex and Gemini CLI but was tested only on Claude; new "Other agents" table (Codex 0.172.0 and Gemini CLI 0.71.1 run, Cursor and Copilot docs only); symlink, --plugin-dir, marketplace note and file tree use the new layout; skill paths are links C1 resolves. CHANGELOG 2.2.1 leads with the symlink re-point. Versions 2.2.1. Site FAQ on other agents states the install facts.
+- 2026-11-25: Codex CLI 0.172.0 and Gemini CLI 0.71.1 re-run on the new layout (npx skills install from the working tree into a scratch HOME): `codex debug prompt-input` lists `humanizing-writing:humanizing-writing` from `~/.agents/skills`; `gemini skills list` shows `humanizing-writing [Enabled]`. README notes the prefixed name.

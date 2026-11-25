@@ -42,7 +42,7 @@ loading a skill and following it are different things.
 
 | Agent | Install | Checked |
 |---|---|---|
-| Codex CLI | `npx skills add AshwinSathian/humanize-writing-skill -g -a codex` | **Ran Codex CLI 0.172.0** (25 Nov 2026). `codex debug prompt-input`, which prints what the model is given, lists the skill from `~/.agents/skills`. |
+| Codex CLI | `npx skills add AshwinSathian/humanize-writing-skill -g -a codex` | **Ran Codex CLI 0.172.0** (25 Nov 2026). `codex debug prompt-input`, which prints what the model is given, lists the skill from `~/.agents/skills`, as `humanizing-writing:humanizing-writing` (Codex reads the plugin manifest and prefixes the plugin name). |
 | Gemini CLI | `npx skills add AshwinSathian/humanize-writing-skill -g -a gemini-cli`, or `gemini skills install https://github.com/AshwinSathian/humanize-writing-skill.git` | **Ran Gemini CLI 0.71.1** (25 Nov 2026). `gemini skills list` shows it from `~/.agents/skills`. A project's `.agents/skills` is skipped until you trust the folder. No extension manifest is needed. |
 | Cursor | `npx skills add AshwinSathian/humanize-writing-skill -g -a cursor` | **Not run** (its CLI needs a login). Checked against [Cursor's skills documentation](https://cursor.com/docs/skills) only. |
 | GitHub Copilot | copy `skills/humanizing-writing/` to `.github/skills/` in a repo | **Not run.** From [GitHub's documentation](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-skills) only, which gives more than one path. |
