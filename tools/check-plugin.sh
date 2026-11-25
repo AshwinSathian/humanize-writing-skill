@@ -17,20 +17,29 @@ claude plugin marketplace add "$tmp/src" >/dev/null
 claude plugin install humanizing-writing@humanize-writing-skill >/dev/null
 
 fail=0
-cache="$(find "$CLAUDE_CONFIG_DIR/plugins" -type f -name SKILL.md -path '*humanizing-writing*' | head -1)"
-[ -n "$cache" ] || { echo "no SKILL.md in the plugin cache"; fail=1; }
-if [ -n "$cache" ]; then
-  plugin_root="$(dirname "$cache")"
-  for p in site tools docs; do
-    [ ! -e "$plugin_root/$p" ] || { echo "plugin cache carries $p/"; fail=1; }
-  done
+# Where /plugin install actually put the plugin.
+install_path="$(python3 -I -c '
+import json, os, sys
+d = json.load(open(os.path.join(os.environ["CLAUDE_CONFIG_DIR"], "plugins", "installed_plugins.json")))
+entries = d.get("plugins", d).get("humanizing-writing@humanize-writing-skill")
+print(entries[0]["installPath"] if entries else "")
+')"
+if [ -z "$install_path" ] || [ ! -f "$install_path/SKILL.md" ]; then
+  echo "plugin not installed, or no SKILL.md at its root: '$install_path'"; fail=1
+else
+  stray="$(find "$CLAUDE_CONFIG_DIR/plugins" \( -name site -o -name tools -o -name docs -o -name README.md \) -print)"
+  [ -z "$stray" ] || { echo "plugin cache carries repo files: $stray"; fail=1; }
 fi
 
-# The model call uses the real config (it needs the login). The personal skill there has the
-# same bare name, so look for the plugin's namespaced name.
-answer="$(cd "$tmp" && env -u CLAUDE_CONFIG_DIR claude -p --model haiku --plugin-dir "$tmp/src/skills/humanizing-writing" \
-  "List the exact names of every skill available to you whose name contains 'humaniz'. Reply with the names only, one per line." 2>&1 || true)"
-echo "$answer" | grep -q "humanizing-writing:humanizing-writing" || { echo "Claude did not list the skill: $answer"; fail=1; }
+# The model call needs the login, so it runs on the real config, loading the installed copy
+# by path. If the real config already has this plugin, the name would show up anyway.
+if grep -q 'humanizing-writing@humanize-writing-skill' "$HOME/.claude/plugins/installed_plugins.json" 2>/dev/null; then
+  echo "the real config has humanizing-writing@humanize-writing-skill installed; uninstall it to run this check"; fail=1
+elif [ "$fail" = 0 ]; then
+  answer="$(cd "$tmp" && env -u CLAUDE_CONFIG_DIR claude -p --model haiku --plugin-dir "$install_path" \
+    "List the exact names of every skill available to you whose name contains 'humaniz'. Reply with the names only, one per line." </dev/null 2>&1 || true)"
+  echo "$answer" | grep -q "humanizing-writing:humanizing-writing" || { echo "Claude did not list the installed plugin's skill: $answer"; fail=1; }
+fi
 
 [ "$fail" = 0 ] && echo "plugin ok"
 exit "$fail"

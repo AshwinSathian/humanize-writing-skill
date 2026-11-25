@@ -1,7 +1,7 @@
 # 2.2.1: skill in its own folder, current model habits, cross-agent installs
 
 Status: building · Tier: full · Baseline: 66edd80 · Updated: 2026-11-25
-Now: S3 next.
+Now: S5 next (ship).
 
 ## Outcome
 An install of 2.2.1 by `npx skills`, by `/plugin install` or by symlink gets only the skill folder, not `site/`. The model-habit files match what Graphite, OpenAI and Wikipedia say as of November 2026. The README says which agents the skill was checked in and how. The 2.3.0 test is pre-registered before any passage for it exists. 2.2.1 is tagged, released, deployed, and installed on this machine.
@@ -52,10 +52,10 @@ Touch: `skills/humanizing-writing/reference/claude-tics.md (new)`, `skills/human
 Checks: C1, C5
 - Risk: a figure is copied wrong. Detect: each figure is checked against the verbatim quotes in the Log (Graphite, OpenAI, Wikipedia, Google) before commit; C5 rejects rows with an empty or placeholder basis. Fallback: drop the row.
 
-### S3: README, site text, changelog, version [todo]
+### S3: README, site text, changelog, version [done]
 Goal: The README has the cross-agent table (checked vs docs only, with versions and date) and the new paths. The site FAQ states the install facts. CHANGELOG has 2.2.1 with the upgrade note. Both manifests say 2.2.1.
-Touch: `README.md`, `CHANGELOG.md`, `skills/humanizing-writing/.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json`, `site/src/lib/content.ts`, `site/src/lib/llms.ts`
-Checks: C1, C2, C3
+Touch: `README.md`, `CHANGELOG.md`, `skills/humanizing-writing/.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json`, `site/src/lib/content.ts`, `site/src/lib/llms.ts`, `tools/check-skill.py`, `tools/check-plugin.sh`
+Checks: C1, C2, C3, C7
 
 ### S4: Pre-register the 2.3.0 labels test [done]
 Goal: The preregistration and candidate rule are committed before any task output exists.
@@ -83,3 +83,7 @@ Order: tag v2.2.0 at 66edd80 and push it; merge the PR; run `npx skills update` 
 - 2026-11-25: S4 done. Pre-registration, candidate rule and four tasks are committed alone, with no passages. The decision rule adds a condition the 2.2.0 test lacked: if Claude writers don't leak labels without the rule (C_unclear under 3), the rule is not adopted.
 - 2026-11-25 22:12: jig verify S2: C5 pass
 - 2026-11-25: S2 done. claude-tics.md: Graphite rows re-graded to read (1 Oct 2026), em-dash row limited to Opus 5 and earlier (Opus 5.5 at 0.015 per 1,000 words), four Opus 5.5 rows and one Opus 5 vendor row added, Opus-5-only rows marked, semicolon-pivot row removed with the reason. New gpt-tics.md and gemini-tics.md; every multiplier names its basis, and C5 now checks the Example column too (a mutation that dropped "times the human rate" from two Gemini rows was caught). SKILL.md Sources line points at all three files.
+- 2026-11-25: S1 diff review (jig-reviewer): 4 findings, all applied in S3. C7 could not fail on a wrong plugin source (it took dirname of SKILL.md); it now reads installPath from installed_plugins.json, fails on any site/tools/docs/README in the cache, and loads the installed copy for the model call; with source reverted to "." it goes red. The README's ln -s, --plugin-dir and file tree were still root-style; C1 now checks those targets and every tree entry (a mutation of the ln -s target was caught). content.ts and patterns.ts were edited in S1 outside its Touch list; both edits were small path fixes.
+- 2026-11-25 22:18: jig verify: C1 pass; C2 pass; C3 pass; C5 pass; C6 pass; C7 pass
+- 2026-11-25 22:18: jig verify: C4 pass
+- 2026-11-25: S3 done. README: intro says it loads in Codex and Gemini CLI but was tested only on Claude; new "Other agents" table (Codex 0.172.0 and Gemini CLI 0.71.1 run, Cursor and Copilot docs only); symlink, --plugin-dir, marketplace note and file tree use the new layout; skill paths are links C1 resolves. CHANGELOG 2.2.1 leads with the symlink re-point. Versions 2.2.1. Site FAQ on other agents states the install facts.

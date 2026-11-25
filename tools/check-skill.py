@@ -67,6 +67,18 @@ def readme_links():
         need((ROOT / p.split("#")[0]).exists(), f"README.md: link ({p}) does not resolve from the repo root")
     for p in re.findall(rf"`({PATHLIKE})`", text):
         need((ROOT / p).exists() or (SK / p).exists(), f"README.md: `{p}` exists neither at the root nor in {SKILL}/")
+    for kind, target in re.findall(r"(ln -s|--plugin-dir) \"?([^\s\"]+)", text):
+        need(target.rstrip("/").endswith(SKILL), f"README.md: {kind} points at {target}, not at {SKILL}")
+    tree = re.search(r"## What's in here\n\n```\n(.*?)```", text, re.S)
+    need(tree, "README.md: no file tree under \"What's in here\"")
+    if tree:
+        parent = ""
+        for line in tree.group(1).splitlines():
+            name = line.split("#")[0].strip()
+            path = (parent + name) if line.startswith("  ") else name
+            if not line.startswith("  "):
+                parent = name if name.endswith("/") else ""
+            need(list(ROOT.glob(path.rstrip("/"))), f"README.md file tree: {path} does not exist")
 
 
 def site_refs():
