@@ -32,9 +32,9 @@ ${pages.map(([path, name, about]) => `- [${name}](${site.url}${path}): ${about}`
 
 ## Source files
 
-- [SKILL.md](${site.repo}/blob/main/SKILL.md): the skill itself
-- [Validation note](${site.repo}/blob/main/reference/validation-note.md): the blind test, with losses and limits
-- [2026 research update](${site.repo}/blob/main/reference/research/2026-update.md): sources for the current rules
+- [SKILL.md](${site.repo}/blob/main/skills/humanizing-writing/SKILL.md): the skill itself
+- [Validation note](${site.repo}/blob/main/skills/humanizing-writing/reference/validation-note.md): the blind test, with losses and limits
+- [2026 research update](${site.repo}/blob/main/skills/humanizing-writing/reference/research/2026-update.md): sources for the current rules
 - [Changelog](${site.repo}/blob/main/CHANGELOG.md)
 
 ## Full text
@@ -91,4 +91,4 @@ ${loadExamples()
 
 ## The skill, verbatim (SKILL.md)
 
-${readRepo('SKILL.md').replace(/^---[\s\S]*?---\n/, '')}`
+${readRepo('skills/humanizing-writing/SKILL.md').replace(/^---[\s\S]*?---\n/, '')}`

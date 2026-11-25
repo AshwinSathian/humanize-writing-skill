@@ -114,7 +114,7 @@ inventing should have stopped. A follow-up test on four new tasks
 found the same slip in 2 of 9 passages. A reworded rule brought that to
 1 of 9, which was short of the bar set before the test ran, so the rule
 was left alone
-([`reference/held-out-invention-test/`](reference/held-out-invention-test/result.md)).
+([`reference/held-out-invention-test/`](skills/humanizing-writing/reference/held-out-invention-test/result.md)).
 If Claude drafts something addressed to your own team, check what it
 says about that team.
 

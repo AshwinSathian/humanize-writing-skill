@@ -1,4 +1,4 @@
-// The live marker on the home page. Its first five patterns are scripts/measure.py's PATTERNS, ported as written, so
+// The live marker on the home page. Its first five patterns are skills/humanizing-writing/scripts/measure.py's PATTERNS, ported as written, so
 // the page marks what the repository measures. The others are phrases SKILL.md names. It marks; it gives no verdict,
 // and it is not a detector: a single mark proves little, which is what the skill's own tells table says.
 export type Mark = { id: string; note: string; rule: string; re: RegExp }

@@ -20,7 +20,7 @@ export const faqs: Faq[] = [
   },
   {
     q: 'How do I install it?',
-    a: 'Run npx skills add AshwinSathian/humanize-writing-skill in a terminal. Or, inside Claude Code, run /plugin marketplace add AshwinSathian/humanize-writing-skill and then /plugin install humanizing-writing@humanize-writing-skill. You can also clone the repository and symlink it into ~/.claude/skills/humanizing-writing. None of the three needs an account or a review.',
+    a: 'Run npx skills add AshwinSathian/humanize-writing-skill in a terminal. Or, inside Claude Code, run /plugin marketplace add AshwinSathian/humanize-writing-skill and then /plugin install humanizing-writing@humanize-writing-skill. You can also clone the repository and symlink its skills/humanizing-writing folder into ~/.claude/skills/humanizing-writing. None of the three needs an account or a review.',
   },
   {
     q: 'Does it work with Codex, Cursor, or models other than Claude?',

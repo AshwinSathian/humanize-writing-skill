@@ -89,7 +89,7 @@ test('every social card exists and is a PNG', () => {
 
 test('the text files for agents carry the skill', () => {
   const full = fs.readFileSync(path.join(DIST, 'llms-full.txt'), 'utf8')
-  const skill = fs.readFileSync('../SKILL.md', 'utf8').replace(/^---[\s\S]*?---\n/, '')
+  const skill = fs.readFileSync('../skills/humanizing-writing/SKILL.md', 'utf8').replace(/^---[\s\S]*?---\n/, '')
   assert.ok(full.includes(skill.slice(0, 400)), 'llms-full.txt does not quote SKILL.md')
   assert.match(fs.readFileSync(path.join(DIST, 'robots.txt'), 'utf8'), /Sitemap: https:\/\/humanize\.ashwinsathian\.com\/sitemap-index\.xml/)
 })
