@@ -90,7 +90,7 @@ const title = (label: string, heading: string, blurb: string) =>
 const pages: Record<string, [label: string, heading: string, blurb: string]> = {
   tells: ['Tells', 'AI writing tells in 2026', 'Long noun-built sentences, metaphor for plain statement, one-line closers. Each with its source.'],
   examples: ['Examples', 'Four drafts, rewritten', 'Before and after, with a note on every change and on what earlier rewrites got wrong.'],
-  research: ['Testing', 'How it was tested, and where it lost', 'Blind pairs on Haiku, Sonnet and Opus, a pre-registered rule test, and the limits.'],
+  research: ['Testing', 'How it was tested, and where it lost', 'Blind pairs on Haiku, Sonnet and Opus, three pre-registered rule tests, and the limits.'],
   compare: ['Compare', 'Against other humanizer skills', 'When blader/humanizer, avoid-ai-writing, stop-slop or no-ai-slop is the better choice.'],
   faq: ['FAQ', 'Questions and answers', 'Detectors, install, voice, invention, and how far to trust the tests.'],
 }

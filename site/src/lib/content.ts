@@ -6,7 +6,7 @@ export type Faq = { q: string; a: string; more?: { href: string; label: string }
 export const faqs: Faq[] = [
   {
     q: 'What is humanizing-writing?',
-    a: "It's a skill for Claude Code that guides how Claude writes prose: docs, READMEs, reports, emails, blog posts, pull request descriptions. It loads whenever Claude is about to write a paragraph or more for a human reader, so the draft comes out without the usual machine habits and there's no separate rewrite step. You can also hand it a finished draft and ask Claude to humanize it. It's free, open source under the MIT licence, and at version 2.2.0 as of November 2026.",
+    a: "It's a skill for Claude Code that guides how Claude writes prose: docs, READMEs, reports, emails, blog posts, pull request descriptions. It loads whenever Claude is about to write a paragraph or more for a human reader, so the draft comes out without the usual machine habits and there's no separate rewrite step. You can also hand it a finished draft and ask Claude to humanize it. It's free, open source under the MIT licence, and at version 2.2.1 as of November 2026.",
   },
   {
     q: 'Does it get text past AI detectors such as GPTZero or Pangram?',
@@ -41,7 +41,7 @@ export const faqs: Faq[] = [
   },
   {
     q: 'How was it tested, and how far should I trust the result?',
-    a: "Blind, more than once. Fresh Claude instances wrote three pieces with no skill, with version 1.1.1, and with the current rules, and model judges compared shuffled, unlabelled pairs. With Sonnet and Opus writing, each of two judges preferred the skill's text to the no-skill text in 5 of 6 pairs. With Haiku writing, three judges each preferred it in 3 of 3. The 2.2.0 rule on leading with what the reader came for had its own pre-registered test on four new tasks, and three judges preferred the passages written with it in 9, 9, and 10 of 12 pairs. Those are small samples and the judges are Claude models. The rules were also revised after earlier drafts did badly on the same three tasks, so the result is partly fitted to them. The pairs, the keys, and the losses are in the repository.",
+    a: "Blind, more than once. Fresh Claude instances wrote three pieces with no skill, with version 1.1.1, and with the current rules, and model judges compared shuffled, unlabelled pairs. With Sonnet and Opus writing, each of two judges preferred the skill's text to the no-skill text in 5 of 6 pairs. With Haiku writing, three judges each preferred it in 3 of 3. The 2.2.0 rule on leading with what the reader came for had its own pre-registered test on four new tasks, and three judges preferred the passages written with it in 9, 9, and 10 of 12 pairs. A rule on explaining labels a writer coins while working (\"H2\", \"Plan B\") was tested the same way and not adopted: it left 3 of 12 passages with a term the reader couldn't decode, the same as without it. Those are small samples and the judges are Claude models. The rules were also revised after earlier drafts did badly on the same three tasks, so the result is partly fitted to them. The pairs, the keys, and the losses are in the repository.",
     more: { href: '/research', label: 'Method, results, limits' },
   },
   {
@@ -267,7 +267,7 @@ export const compareRows: CompareRow[] = [
     runs: 'While Claude writes, and on request over a draft',
     mechanism: 'Twelve rules on claims, order, sentence shape, and endings. About 1,200 words loaded per use',
     scope: 'Ten named cases, from API reference to fiction to your own voice',
-    test: '18 blind pairs against no skill and 1.1.1, plus 12 in a pre-registered test of one rule. Haiku, Sonnet, and Opus writing; Claude judges. Losses published',
+    test: '18 blind pairs against no skill and 1.1.1, plus 36 in three pre-registered tests of single rules. Haiku, Sonnet, and Opus writing; Claude judges. Losses published',
     better: '',
   },
   {

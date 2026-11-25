@@ -140,6 +140,12 @@ was left alone
 If Claude drafts something addressed to your own team, check what it
 says about that team.
 
+A rule on labels a writer coins while working ("H2", "Plan B") was
+tested the same way on 25 November 2026 and not adopted. With it, 3 of
+12 passages still had a term the reader could not decode, the same as
+without it, and the bar was 1
+([`reference/held-out-labels-test/`](skills/humanizing-writing/reference/held-out-labels-test/result.md)).
+
 The samples are small, the judges are Claude models, and the rules were
 revised after earlier drafts did badly on the same three tasks. The
 pairs, the keys, the losses, and the limits are in

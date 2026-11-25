@@ -1,7 +1,7 @@
 # 2.3.0: run the pre-registered working-labels test, ship only on a pass
 
-Status: building · Tier: full · Baseline: 2ff1450 · Updated: 2026-11-25
-Now: S6, PR open for the owner. Decision: do not adopt.
+Status: shipped · Tier: full · Baseline: 2ff1450 · Updated: 2026-11-25
+Now: shipped as a test record (PR #5, merged 462253f). Decision: do not adopt.
 
 ## Outcome
 The test in `skills/humanizing-writing/reference/held-out-labels-test/` is run exactly as `preregistration.md` (with its 25 Nov amendment) says, and its record (guides, 24 passages, key, pairs, three judges' answers, tally, result) is committed after the preregistration. If all five conditions hold, 2.3.0 ships with the bullet; if any fails, `SKILL.md` stays as it is and the CHANGELOG gets an "After 2.2.1 (no release)" note.
@@ -93,3 +93,4 @@ Checks: C6, C12, C14
 - 2026-11-25: S5 dropped: the decision is "do not adopt". S6 started: CHANGELOG "After 2.2.1" note above 2.2.1.
 - 2026-11-25 23:01: jig verify: C1 pass; C2 pass; C3 pass; C6 pass; C7 pass; C12 pass; C14 pass
 - 2026-11-25: S6 done. Record and CHANGELOG note committed on test/2-3-0-labels; PR opened, not merged, per the fail-path decision. No tag, release or deploy.
+- 2026-11-25: Owner merged PR #5 with a merge commit (462253f). Site update follows in docs/plans/site-labels-test.
