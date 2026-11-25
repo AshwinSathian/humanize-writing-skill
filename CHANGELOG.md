@@ -38,7 +38,9 @@ full, and several entries changed:
   writers, and the file now says which basis each figure uses.
 - The semicolon-pivot row, from one community source, is removed.
 - "load-bearing", fragments for drama and announced candor are marked
-  as Opus 5 habits; none is in Graphite's Opus 5.5 lists.
+  as Opus 5 habits. Graphite's Opus 5.5 lists have none of the first
+  two, and measure "is genuinely" at 26 times the Opus 5.5 rate in
+  Opus 5.
 
 New `reference/gpt-tics.md` (GPT-6 Astra and 6.2, from Graphite,
 OpenAI's GPT-6.2 guide and Wikipedia) and `reference/gemini-tics.md`

@@ -24,7 +24,7 @@ export const faqs: Faq[] = [
   },
   {
     q: 'Does it work with Codex, Cursor, or models other than Claude?',
-    a: "It installs in them, but whether it helps there is untested. On 25 November 2026, Codex CLI 0.172.0 and Gemini CLI 0.71.1 both found the skill after npx skills add AshwinSathian/humanize-writing-skill -g -a codex (or -a gemini-cli). Cursor and Copilot were checked against their documentation only. Every blind test in the repository used Claude writers and Claude judges, so nothing here says whether the rules change GPT or Gemini output. What is known about those models' habits is in reference/gpt-tics.md and reference/gemini-tics.md.",
+    a: "It installs in them, but whether it helps there is untested. On 25 November 2026, Codex CLI 0.172.0 and Gemini CLI 0.71.1 both listed the skill after npx skills add AshwinSathian/humanize-writing-skill -g -a codex (or -a gemini-cli). Cursor and Copilot were checked against their documentation only. Every blind test in the repository used Claude writers and Claude judges, so nothing here says whether the rules change GPT or Gemini output. What is known about those models' habits is in reference/gpt-tics.md and reference/gemini-tics.md.",
   },
   {
     q: 'Does it ban "delve", em dashes, or other words?',

@@ -57,16 +57,26 @@ passages and 12 pairs, built by a copy of
 `tasks.json`, notes included.
 
 Three judges (Opus, Sonnet, Haiku), each started fresh, see only the
-shuffled pairs: the task as the reader would know it (the first
-paragraph of the task, without the notes), the needed facts, and the
-two passages. For each pair they answer:
+shuffled pairs. Each pair shows the task as the reader would know it
+(the first paragraph of the task), the needed facts, the two passages,
+and, last and marked as material the reader never sees, the writer's
+working notes. For each pair they answer:
 
 - which reads more like unedited model output;
-- which they would rather receive as the stated reader;
+- which they would rather receive as the stated reader, or "no
+  preference";
 - for each passage, every term or reference this reader could not
-  understand from the passage alone (`undefined`);
+  understand from the passage alone, judged as the reader, without the
+  notes (`undefined`);
 - which needed facts it leaves out or gets wrong (`missing`);
-- what it states as fact that the task did not supply (`invented`).
+- what it states as fact that neither the task nor the notes supply
+  (`invented`). A detail from the notes that the reader did not need is
+  not invented.
+
+The notes come last so that a judge reads the passages as the reader
+first. They are needed for `invented`: defining a label means saying
+what the notes say it stands for, and without the notes a judge would
+count that as invented.
 
 `tally.py` also counts, for each passage, how many of the task's
 `labels` appear in it word for word, case-insensitive, with or without
@@ -107,6 +117,17 @@ definition counts as a leak, and the rule allows that.
 Otherwise the rule is not adopted, and `result.md` says which condition
 failed. No second wording will be tried against these four tasks.
 
+## Amendment, 25 November 2026, before any passage
+
+The first version of this file, committed the same day, showed judges
+the task without the notes and asked what each passage states "that the
+task did not supply". A review found that this would count true details
+from the notes as invented, and that a passage which defines its labels
+would be hit hardest, biasing condition 5 against the candidate. The
+first version also counted ties in condition 3 but gave judges no way
+to record one. Both are fixed above. Nothing else changed, and no
+passage existed when this amendment was committed.
+
 ## Known weaknesses, stated in advance
 
 - The evidence for the rule is about GPT-6.2. The writers here are
@@ -123,6 +144,9 @@ failed. No second wording will be tried against these four tasks.
   planted on purpose.
 - One writer per model and version writes all four tasks, so passages
   from one writer are not independent.
+- Judges see the notes, so they may recognise a label from them and
+  under-report `undefined`. The notes come after the passages for that
+  reason, and the question tells judges to answer as the reader.
 - Some labels sit close to real terms. "PSP" is a standard abbreviation
   for a payment service provider, but a customer does not know it.
   Judges decide that as the named reader, which is the point, and also
