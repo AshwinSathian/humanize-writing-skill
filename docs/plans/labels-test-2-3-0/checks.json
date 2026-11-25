@@ -1,0 +1,171 @@
+{
+  "version": 1,
+  "checks": [
+    {
+      "id": "C1",
+      "slice": "S1",
+      "kind": "acceptance",
+      "cmd": "python3 -I skills/humanizing-writing/reference/held-out-labels-test/tally.py --selftest",
+      "expect": {
+        "exit": 0,
+        "stdout": "selftest ok"
+      },
+      "timeout_s": 30,
+      "fast": true,
+      "protects": [
+        "skills/humanizing-writing/reference/held-out-labels-test/tally.py"
+      ]
+    },
+    {
+      "id": "C2",
+      "slice": "S1",
+      "kind": "acceptance",
+      "cmd": "python3 -I skills/humanizing-writing/reference/held-out-labels-test/tally.py --guides",
+      "expect": {
+        "exit": 0,
+        "stdout": "guides ok"
+      },
+      "timeout_s": 30,
+      "fast": true
+    },
+    {
+      "id": "C3",
+      "slice": "S2",
+      "kind": "acceptance",
+      "cmd": "bash -c 'd=skills/humanizing-writing/reference/held-out-labels-test; test $(find $d/passages -name \"*.md\" -size +0 | wc -l) -eq 24 && p=$(git log --diff-filter=A --format=%H -- $d/passages | tail -1) && test -n \"$p\" && for c in a0227c4 8ce1597; do git merge-base --is-ancestor $c $p^ || exit 1; done && echo order ok'",
+      "expect": {
+        "exit": 0,
+        "stdout": "order ok"
+      },
+      "timeout_s": 30,
+      "fast": true
+    },
+    {
+      "id": "C4",
+      "slice": "S3",
+      "kind": "acceptance",
+      "cmd": "python3 -I skills/humanizing-writing/reference/held-out-labels-test/tally.py",
+      "expect": {
+        "exit": 0,
+        "stdout": "Decision: (adopt|do not adopt)"
+      },
+      "timeout_s": 30,
+      "fast": true
+    },
+    {
+      "id": "C5",
+      "slice": "S5",
+      "kind": "acceptance",
+      "cmd": "diff skills/humanizing-writing/reference/held-out-labels-test/guide-b.md skills/humanizing-writing/SKILL.md",
+      "expect": {
+        "exit": 0
+      },
+      "timeout_s": 10,
+      "fast": true
+    },
+    {
+      "id": "C6",
+      "slice": "S5",
+      "kind": "regression",
+      "cmd": "python3 -I tools/check-skill.py",
+      "expect": {
+        "exit": 0
+      },
+      "timeout_s": 30,
+      "fast": true
+    },
+    {
+      "id": "C7",
+      "slice": "S5",
+      "kind": "regression",
+      "cmd": "python3 -I tools/check-skill.py --tics",
+      "expect": {
+        "exit": 0,
+        "stdout": "tics ok"
+      },
+      "timeout_s": 30,
+      "fast": true
+    },
+    {
+      "id": "C8",
+      "slice": "S5",
+      "kind": "regression",
+      "cmd": "claude plugin validate . --strict",
+      "expect": {
+        "exit": 0
+      },
+      "timeout_s": 60,
+      "fast": true
+    },
+    {
+      "id": "C9",
+      "slice": "S5",
+      "kind": "regression",
+      "cmd": "npm --prefix site test",
+      "expect": {
+        "exit": 0
+      },
+      "timeout_s": 300,
+      "fast": false
+    },
+    {
+      "id": "C10",
+      "slice": "S5",
+      "kind": "regression",
+      "cmd": "bash tools/check-install.sh",
+      "expect": {
+        "exit": 0,
+        "stdout": "install ok"
+      },
+      "timeout_s": 300,
+      "fast": false
+    },
+    {
+      "id": "C11",
+      "slice": "S5",
+      "kind": "regression",
+      "cmd": "bash tools/check-plugin.sh",
+      "expect": {
+        "exit": 0
+      },
+      "timeout_s": 300,
+      "fast": false
+    },
+    {
+      "id": "C12",
+      "slice": "S6",
+      "kind": "acceptance",
+      "cmd": "git diff --quiet 2ff1450 -- skills/humanizing-writing/SKILL.md skills/humanizing-writing/.claude-plugin/plugin.json .claude-plugin/marketplace.json && echo unchanged",
+      "expect": {
+        "exit": 0,
+        "stdout": "unchanged"
+      },
+      "timeout_s": 10,
+      "fast": true
+    },
+    {
+      "id": "C13",
+      "slice": "S4",
+      "kind": "acceptance",
+      "cmd": "bash -c 'cd skills/humanizing-writing/reference/held-out-labels-test && python3 -I tally.py | sed -n \"/^Counts/,/^Decision/p\" | grep -v \"^Counts\\|^Preference\" > /tmp/jig-c13.txt && test -s /tmp/jig-c13.txt && while IFS= read -r l; do grep -qF -- \"${l#  }\" result.md || { echo \"not in result.md: $l\"; exit 1; }; done < /tmp/jig-c13.txt && echo result ok'",
+      "expect": {
+        "exit": 0,
+        "stdout": "result ok"
+      },
+      "timeout_s": 30,
+      "fast": true
+    },
+    {
+      "id": "C14",
+      "slice": "S6",
+      "kind": "acceptance",
+      "cmd": "bash -c 'grep -m1 \"^## \" CHANGELOG.md | grep -q \"^## After 2.2.1 (no release\" && echo note ok'",
+      "expect": {
+        "exit": 0,
+        "stdout": "note ok"
+      },
+      "timeout_s": 10,
+      "fast": true
+    }
+  ]
+}
