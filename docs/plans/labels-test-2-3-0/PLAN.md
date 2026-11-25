@@ -1,7 +1,7 @@
 # 2.3.0: run the pre-registered working-labels test, ship only on a pass
 
 Status: building · Tier: full · Baseline: 2ff1450 · Updated: 2026-11-25
-Now: S2, writers. S1 committed.
+Now: S3, judges. Passages committed.
 
 ## Outcome
 The test in `skills/humanizing-writing/reference/held-out-labels-test/` is run exactly as `preregistration.md` (with its 25 Nov amendment) says, and its record (guides, 24 passages, key, pairs, three judges' answers, tally, result) is committed after the preregistration. If all five conditions hold, 2.3.0 ships with the bullet; if any fails, `SKILL.md` stays as it is and the CHANGELOG gets an "After 2.2.1 (no release)" note.
@@ -45,7 +45,7 @@ Touch: `skills/humanizing-writing/reference/held-out-labels-test/guide-a.md (new
 Checks: C1, C2
 - Risk: the self-test passes on a wrong rule (for example `<` for `<=`). Detect: C1 builds a boundary case for each condition (exactly at the threshold, and one step past it) and asserts the verdict flips. Fallback: fix tally.py before S2.
 
-### S2: 24 passages [todo]
+### S2: 24 passages [done]
 Goal: six fresh writers (Haiku, Sonnet, Opus × guide-a, guide-b) have each written all four tasks; transcripts checked; passages committed.
 Touch: `skills/humanizing-writing/reference/held-out-labels-test/passages/ (new)`, `docs/plans/labels-test-2-3-0/PLAN.md`
 Checks: C3
@@ -83,3 +83,4 @@ Checks: C6, C12, C14
 - 2026-11-25: Approved by agent. Both one-way doors were settled by the owner's request (ship on a pass; on a fail, record, no release). No open questions, so no gate.
 - 2026-11-25: S1 done. guide-a.md is SKILL.md at 2ff1450; guide-b.md adds only the candidate bullet after "Lead with what the reader came for" (C2). make_pairs.py differs from the reader-first copy in seed, docstring and the reader/notes split. tally.py and prompts.md written before any passage.
 - 2026-11-25 22:37: jig verify S1: C1 pass; C2 pass
+- 2026-11-25: S2 done. Six fresh general-purpose subagents (claude-haiku-5-5, claude-sonnet-5-5, claude-opus-5-5 per the transcripts), each in its own scratch dir holding only its guide. Every transcript has exactly one Read (its guide) and four Writes (its four files), no Skill call, so no rerun. Every writer's context carried the owner's global rules (no-slop.md, which names the humanizing-writing skill) and the project MEMORY.md; no caveman or ponytail hook text was found. Passages 114 to 203 words.
