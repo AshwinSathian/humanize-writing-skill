@@ -112,8 +112,9 @@ together are the signal.
 | "Moreover", "Furthermore", "In conclusion" plus recap | Connectors and endings that fit any text |
 
 Sources: `reference/research/2026-update.md`. Habits reported for
-specific Claude versions, with evidence grades:
-`reference/claude-tics.md`.
+specific model versions, with evidence grades:
+`reference/claude-tics.md`, `reference/gpt-tics.md`,
+`reference/gemini-tics.md`.
 
 ## Before finalizing
 

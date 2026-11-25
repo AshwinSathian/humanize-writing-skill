@@ -104,10 +104,10 @@ def tics():
             if len(cells) != 4:
                 problems.append(f"{where} has {len(cells)} cells, expected 4")
                 continue
-            habit, _, rule, ev = cells
+            habit, example, rule, ev = cells
             need(not PLACEHOLDER.match(habit) and not PLACEHOLDER.match(rule), f"{where}: empty habit or rule")
             need(ev.startswith(TIERS), f"{where}: evidence does not start with a tier {TIERS}")
-            if re.search(r"\d(?:\.\d+)?x\b", ev):
+            if re.search(r"\d(?:\.\d+)?x\b", example + ev):
                 need(re.search(r"(human|Opus 5(?:\.5)?|Astra) (rate|score)", ev),
                      f"{where}: a multiplier without its basis (human rate, Opus 5 rate, Astra rate)")
 
